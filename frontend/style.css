@@ -1,5 +1,13 @@
 :root {
     --background-color: #F0F2FA;
+    --primary-color: #000B58;
+    --primary-text-color: #FFF;
+    --secondary-color: #4A2C86;
+    --secondary-text-color: #000;
+    --tertiary-color: #006A67;
+    --acent-color: #065084;
+    --main-font: 'Allerta Stencil', sans-serif;
+    --secondary-font: 'Nunito', sans-serif;
 }
 
 body {
@@ -12,13 +20,117 @@ body {
     background-color: var(--background-color);
 }
 
-header {
+
+
+nav {
     display: flex;
     width: 1200px;
-    height: 80px;
+    height: 40px;
     padding: 20px 40px;
     justify-content: space-between;
     align-items: center;
     border-radius: 16px;
     background: #FFF;
+}
+
+
+#logo {
+    gap: 12px;
+    width: 44px;
+    height: 66px;
+    aspect-ratio: 2/3;
+    position: relative;
+    border-radius: 12.5px;
+    fill: var(--1, var(--primary-color));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#logo-image {
+    width: 45px;
+    height: 45px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    align-items: center;
+    justify-items: center;
+    display: flex;
+}
+
+#logo-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+
+nav a {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    color: var(--secondary-text-color);
+    text-decoration: none;
+    font-family: var(--secondary-font);
+}
+
+#auth-buttons {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+#signin {
+    background-color: var(--primary-color);
+    color: var(--primary-text-color);
+    padding: 12px 16px;
+    border-radius: 32px;
+    border: none;
+
+}
+
+h1 {
+    font-family: var(--main-font);
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+}
+
+h2 {
+    font-family: var(--main-font);
+    font-size: 42px;
+    font-style: normal;
+    font-weight: 400;
+
+}
+
+h3 {
+    font-family: var(--secondary-font);
+}
+
+h4 {
+    font-family: var(--secondary-font);
+}
+
+h5 {
+    font-family: var(--secondary-font);
+}
+
+p {
+    font-family: var(--secondary-font);
+}
+
+#hero {
+    display: flex;
+    border-radius: 16px;
+    width: 1200px;
+    height: 700px;
+    padding: 60px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    background-color: #FFF;
 }

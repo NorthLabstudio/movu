@@ -5,25 +5,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Allerta+Stencil&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" href="\assets\img\image.png" type="image/x-icon">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Allerta+Stencil&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+        rel="stylesheet">
     <title>Movu</title>
 </head>
 
 <body>
-    <nav></nav>
     <header>
         <nav>
-            <h1>Movu</h1>
-            <a href="#problema">Sobre Movu</a>
-            <a href="#funcion">¿Cómo funciona Movu?</a>
-            <a href="#beneficios">¿Qué puedes hacer con Movu?</a>
-            <button>Regístrate</button>
-            <button>Iniciar sesión</button>
-        </nav>
+            <div id="logo-container">
+                <div id="logo-image">
+                    <img id="logo" src="\assets\img\logombpng.png" alt="Movu">
 
+                </div>
+                <h1>Movu</h1>
+            </div>
+            <a href="#problema" class="active">Sobre Movu</a>
+            <a href="#funcion" class="active">¿Cómo funciona Movu?</a>
+            <a href="#beneficios" class="active">¿Qué puedes hacer con Movu?</a>
+            <div id="auth-buttons">
+                <button id="signin">Regístrate</button>
+                <button id="login">Iniciar sesión</button>
+            </div>
+        </nav>
     </header>
     <main>
         <section id="hero">
-            <h2>Muéévete sin sorpresas. Llega con confianza.</h2>
+            <h2>Muévete sin sorpresas. Llega con confianza.</h2>
             <p>Movu reúne en un solo lugar la información que necesitas para planificar tus desplazamientos en
                 transporte público. Consulta rutas, recibe alertas de movilidad y encuentra alternativas para llegar a
                 tu destino con mayor tranquilidad.</p>
