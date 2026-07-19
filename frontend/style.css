@@ -10,6 +10,10 @@
     --secondary-font: 'Nunito', sans-serif;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 body {
     display: flex;
     width: 1440px;
@@ -25,7 +29,7 @@ body {
 nav {
     display: flex;
     width: 1200px;
-    height: 40px;
+    height: 80px;
     padding: 20px 40px;
     justify-content: space-between;
     align-items: center;
@@ -222,71 +226,38 @@ li {
     border-radius: 24px;
 }
 
-/* Círculos decorativos */
-
-.circle {
-
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(70px);
-    z-index: 1;
-}
-
-.circle-1 {
-
-    width: 180px;
-    height: 180px;
-
-    top: -30px;
-    right: -30px;
-}
-
-.circle-2 {
-
-    width: 260px;
-    height: 260px;
-
-    bottom: -40px;
-    left: -40px;
+#benefits {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
 }
 
 .benefits-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 24px;
-    margin-top: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 1rem;
 }
 
 .benefit-card {
+    border-color: var(--primary-color);
+    border-width: 2px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-style: solid;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-
     padding: 48px 36px;
-
     border-radius: 24px;
-
-    transition: all .3s ease;
-}
-
-.benefit-icon {
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    width: 100px;
-    height: 100px;
-
-    border-radius: 50%;
-
-    margin-bottom: 32px;
-}
-
-.benefit-icon .material-symbols-outlined {
-
-    font-size: 56px;
+    width: 100%;
+    position: relative;
+    background-color: #FFF;
 }
 
 .benefit-card h3 {
@@ -332,12 +303,32 @@ li {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-
     padding: 32px;
     border-radius: 24px;
-
     overflow: hidden;
     transition: all .3s ease;
+}
+
+#card1 {
+    background-color: var(--primary-color);
+    color: var(--primary-text-color);
+}
+
+#card2 {
+    background-color: var(--secondary-color);
+    color: var(--primary-text-color);
+}
+
+#card3 {
+    background-color: var(--acent-color);
+    color: var(--primary-text-color);
+}
+
+#card4 {
+    border-color: var(--tertiary-color);
+    border-width: 2px;
+    border-style: solid;
+    background-color: #FFF;
 }
 
 .feature-card:hover {
@@ -390,6 +381,11 @@ li {
 
 .feature-large:hover .feature-pattern {
     opacity: .2;
+}
+
+#about {
+    padding: 60px 0;
+    margin: 0 auto;
 }
 
 .about-grid {
