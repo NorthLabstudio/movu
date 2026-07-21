@@ -22,13 +22,13 @@
         <nav>
             <div id="logo-container">
                 <div id="logo-image">
-                    <img id="logo" src="\assets\img\logombpng.png" alt="Movu">
+                    <img id="logo" src="\assets\img\logomovu.png" alt="Movu">
                 </div>
                 <h1>Movu</h1>
             </div>
-            <a href="#problema" class="active">Sobre Movu</a>
-            <a href="#funcion" class="active">¿Cómo funciona Movu?</a>
-            <a href="#beneficios" class="active">Mision</a>
+            <a href="#problema" class="active">¿Cómo funciona?</a>
+            <a href="#funcion" class="active">¿Por qué usar Movu?</a>
+            <a href="#beneficios" class="active">Nuestra misión</a>
             <div id="auth-buttons">
                 <button id="signin">Regístrate</button>
                 <button id="login">Iniciar sesión</button>
@@ -37,11 +37,19 @@
     </header>
     <main>
         <section id="hero">
-            <h2>Muévete sin sorpresas. Llega con confianza.</h2>
-            <p>Movu reúne en un solo lugar la información que necesitas para planificar tus desplazamientos en
-                transporte público. Consulta rutas, recibe alertas de movilidad y encuentra alternativas para llegar a
-                tu destino con mayor tranquilidad.</p>
-            <button>Comienza ahora</button>
+            <img src="\assets\img\heroimg.png" alt="Persona esperando un bus">
+            <div class="hero-content">
+                <h2>Muévete sin sorpresas. Llega con confianza.</h2>
+                <p>Movu reúne en un solo lugar la información que necesitas para planificar tus desplazamientos en
+                    transporte público. Consulta rutas, recibe alertas de movilidad y encuentra alternativas para llegar
+                    a
+                    tu destino con mayor tranquilidad.</p>
+                <div class="button-container">
+                    <button>Comienza ahora</button>
+                    <button class="secondary-button">Descubre más</button>
+                </div>
+            </div>
+
         </section>
         <section id="problema">
 
@@ -74,11 +82,8 @@
                 <div class="problema-image">
 
                     <div class="image-card">
-                        <img src="img/problema.png" alt="Persona esperando un bus">
+                        <img src="\assets\img\problemimg.png" alt="Persona esperando un bus">
                     </div>
-
-                    <div class="circle circle-1"></div>
-                    <div class="circle circle-2"></div>
 
                 </div>
 
@@ -141,7 +146,7 @@
                 <div class="feature-card feature-large" id="card1">
 
                     <div class="feature-icon">
-                        <span class="material-symbols-outlined">plan</span>
+                        <img src="/assets/img/planificacion.png" alt="Icono de planificación">
                     </div>
 
                     <div class="feature-content">
@@ -156,7 +161,7 @@
                 <div class="feature-card" id="card2">
 
                     <span class="material-symbols-outlined feature-small-icon">
-                        route
+                        <img src="/assets/img/ruta.png" alt="Icono de ruta">
                     </span>
 
                     <div class="feature-content">
@@ -172,7 +177,7 @@
                 <div class="feature-card" id="card3">
 
                     <span class="material-symbols-outlined feature-small-icon">
-                        alarm
+                        <img src="/assets/img/notificacion.png" alt="Icono de alarma">
                     </span>
 
                     <div class="feature-content">
@@ -189,7 +194,7 @@
                 <div class="feature-card feature-large" id="card4">
 
                     <span class="material-symbols-outlined feature-small-icon">
-                        assistant
+                        <img src="/assets/img/asistente.png" alt="Icono de asistente">
                     </span>
 
                     <div class="feature-content">
@@ -213,7 +218,7 @@
 
                     <div class="about-gallery">
 
-                        <img src="/assets/img/imgsec2.png" alt="Personas esperando un bus">
+                        <img src="/assets/img/img.png" alt="Personas esperando un bus">
 
                         <img src="/assets/img/imgsec.png" alt="Aplicación Movu">
 
@@ -277,9 +282,17 @@
     <!-- En el Footer se agregar links de nav para accesibilidad -->
     <footer>
         <p>© 2026 Movu. All rights reserved.</p>
-        <h2>Movu</h2>
-        <a href="#funcion">¿Cómo funciona Movu?</a>
-        <a href="#beneficios">¿Qué puedes hacer con Movu?</a>
+        <div class="footer-logo">
+            <div class="logo-container">
+                <img src="/assets/img/logomovu.png" alt="logo">
+            </div>
+            <h2>Movu</h2>
+        </div>
+        <div class="footer-nav">
+            <a href="#problema" class="active">¿Cómo funciona?</a>
+            <a href="#funcion" class="active">¿Por qué usar Movu?</a>
+            <a href="#beneficios" class="active">Nuestra misión</a>
+        </div>
     </footer>
 </body>
 
