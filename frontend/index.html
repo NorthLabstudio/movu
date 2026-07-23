@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Allerta+Stencil&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="icon" href="./assets/img/logomovu.png" type="image/x-icon">
+    <link rel="icon" href="assets/img/logomovu.png" type="image/x-icon">
     <link
         href="https://fonts.googleapis.com/css2?family=Allerta+Stencil&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
         rel="stylesheet">
@@ -18,17 +18,20 @@
 </head>
 
 <body>
-    <header>
+    <!-- nav bar -->
+    <header id="nav-bar">
         <nav>
             <div id="logo-container">
                 <div id="logo-image">
-                    <img id="logo" src="/assets/img/logomovu.png" alt="Movu">
+                    <img id="logo" src="assets/img/logomovu.png" alt="Movu">
                 </div>
-                <h1>Movu</h1>
+                <h2>Movu</h2>
             </div>
-            <a href="#problema" class="active">¿Cómo funciona?</a>
-            <a href="#funcion" class="active">¿Por qué usar Movu?</a>
-            <a href="#beneficios" class="active">Nuestra misión</a>
+            <div id="nav-links">
+                <a href="#features" class="link">¿Cómo funciona?</a>
+                <a href="#benefits" class="link">¿Por qué usar Movu?</a>
+                <a href="#mission" class="link">Nuestra misión</a>
+            </div>
             <div id="auth-buttons">
                 <button id="signin">Regístrate</button>
                 <button id="login">Iniciar sesión</button>
@@ -36,10 +39,11 @@
         </nav>
     </header>
     <main>
+        <!-- section de hero -->
         <section id="hero">
-            <img src="../assets/img/heroimg.png" alt="Persona esperando un bus">
+            <img src="assets/img/heroimg.png" alt="Persona esperando un bus">
             <div class="hero-content">
-                <h2>Muévete sin sorpresas. Llega con confianza.</h2>
+                <h1>Muevete sin sorpresas. Llega con confianza.</h1>
                 <p>Movu reúne en un solo lugar la información que necesitas para planificar tus desplazamientos en
                     transporte público. Consulta rutas, recibe alertas de movilidad y encuentra alternativas para llegar
                     a
@@ -51,6 +55,7 @@
             </div>
 
         </section>
+        <!-- section de problema -->
         <section id="problema">
 
             <div class="problema-container">
@@ -78,67 +83,18 @@
 
                     </div>
 
-
                 </div>
-
-                <!-- Imagen -->
                 <div class="problema-image">
 
                     <div class="image-card">
                         <img src="assets/img/problemimg.png" alt="Persona esperando un bus">
                     </div>
-
                 </div>
 
             </div>
 
         </section>
-        <article id="benefits">
-            <h2>¿Por qué usar Movu?</h2>
-            <p>Movu está diseñado para hacer que cada desplazamiento sea más simple y confiable. Reunimos la información
-                que necesitas para planificar tu viaje, mantenerte informado y tomar mejores decisiones mientras te
-                mueves por la ciudad.</p>
-            <div class="benefits-grid">
 
-                <div class="benefit-card">
-
-
-                    <h3>Muévete con confianza</h3>
-
-                    <p>
-                        Accede a la información que necesitas para planificar tus recorridos
-                        y tomar decisiones con mayor tranquilidad.
-                    </p>
-
-                </div>
-
-                <div class="benefit-card">
-
-
-                    <h3>Menos incertidumbre</h3>
-
-                    <p>
-                        Conoce las novedades de movilidad y encuentra alternativas cuando
-                        una ruta cambie o se presenten imprevistos en la ciudad.
-                    </p>
-
-                </div>
-
-                <div class="benefit-card">
-
-                    <h3>Creado desde la experiencia</h3>
-
-                    <p>
-                        Movu nació para resolver problemas cotidianos del transporte público
-                        y ayudar a que cada recorrido sea más sencillo, organizado y
-                        predecible.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </article>
         <!-- Se creara una sección de Features para mostrar las ventajas de usar Movu -->
         <section id="features">
             <h2>Navega con confianza.</h2>
@@ -208,11 +164,48 @@
                     </div>
 
                 </div>
-
             </div>
 
         </section>
-        <section id="about">
+        <!-- section de benefits -->
+        <article id="benefits">
+            <h2>¿Por qué usar Movu?</h2>
+            <p>Movu está diseñado para hacer que cada desplazamiento sea más simple y confiable. Reunimos la información
+                que necesitas para planificar tu viaje, mantenerte informado y tomar mejores decisiones mientras te
+                mueves por la ciudad.</p>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <h3>Muévete con confianza</h3>
+                    <p>
+                        Accede a la información que necesitas para planificar tus recorridos
+                        y tomar decisiones con mayor tranquilidad.
+                    </p>
+                </div>
+                <div class="benefit-card">
+                    <h3>Menos incertidumbre</h3>
+                    <p>
+                        Conoce las novedades de movilidad y encuentra alternativas cuando
+                        una ruta cambie o se presenten imprevistos en la ciudad.
+                    </p>
+                </div>
+                <div class="benefit-card">
+
+                    <h3>Creado desde la experiencia</h3>
+
+                    <p>
+                        Movu nació para resolver problemas cotidianos del transporte público
+                        y ayudar a que cada recorrido sea más sencillo, organizado y
+                        predecible.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </article>
+        <!-- section de mission -->
+
+        <section id="mission">
 
             <div class="about-grid">
 
@@ -227,8 +220,7 @@
 
                     </div>
                 </div>
-
-                <!-- Contenido -->
+                <!-- Contenido mision -->
                 <div class="about-content">
 
                     <span class="about-tag">
@@ -292,9 +284,9 @@
             <h2>Movu</h2>
         </div>
         <div class="footer-nav">
-            <a href="#problema" class="active">¿Cómo funciona?</a>
-            <a href="#funcion" class="active">¿Por qué usar Movu?</a>
-            <a href="#beneficios" class="active">Nuestra misión</a>
+            <a href="#features" class="link">¿Cómo funciona?</a>
+            <a href="#benefits" class="link">¿Por qué usar Movu?</a>
+            <a href="#mission" class="link">Nuestra misión</a>
         </div>
     </footer>
 </body>
