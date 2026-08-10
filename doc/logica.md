@@ -23,9 +23,12 @@ Inicio
 
 Landing Page
 
-• Información del proyecto
-• Beneficios
-• Funcionalidades
+• Información del proyecto (¿Qué es Movu? y que resuelve)
+• Funcionalidades (¿Que puede hacer?)
+• Beneficios (¿Por qué usar Movu?)
+• Publico dirigido
+• Contacto
+• Call to action
 • Registro / Iniciar sesión
 
 ↓
@@ -50,6 +53,10 @@ El usuario ingresa
 
 • Origen
 • Destino
+• Fecha y hora de salida
+• Tipo de transporte (bus, transmetro, etc.)
+• Nombre de la empresa
+• Nombre del bus o ruta
 
 ↓
 

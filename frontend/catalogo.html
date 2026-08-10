@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Allerta+Stencil&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="icon" href="assets/img/logomovu.png" type="image/x-icon">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Allerta+Stencil&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+    rel="stylesheet">
+  <title>Movu - Catalogo de rutas</title>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <a href="index.html" class="link">
+        <div id="logo-container">
+          <div id="logo-image">
+            <img id="logo" src="assets/img/logomovu.png" alt="Movu">
+          </div>
+          <h2>Movu</h2>
+        </div>
+      </a>
+      <div id="nav-links">
+        <a href="#features" class="link">¿Cómo funciona?</a>
+      </div>
+      <div id="auth-buttons">
+        <button id="signin">Regístrate</button>
+        <button id="login">Iniciar sesión</button>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <!-- Novedades -->
+    <section id="novedades">
+      <h2>Novedades</h2>
+      <!-- section para filtrar y buscar rutas -->
+    </section>
+    <section id="search">
+      <div id="search-container">
+        <input type="text" id="origen" placeholder="Origen">
+        <input type="text" id="destino" placeholder="Destino">
+        <input type="datetime-local" id="fecha" placeholder="Fecha y hora de salida">
+        <select class="category-select">
+          <option value="all">Todas categorías</option>
+          <option value="1">Categoría 1</option>
+          <option value="2">Categoría 2</option>
+          <option value="3">Categoría 3</option>
+        </select>
+        <select class="category-select">
+          <option value="all">Todas categorías</option>
+          <option value="1">Categoría 1</option>
+          <option value="2">Categoría 2</option>
+          <option value="3">Categoría 3</option>
+        </select>
+
+
+        <input type="text" id="search-input" placeholder="Buscar rutas">
+        <button id="search-button">Buscar</button>
+      </div>
+    </section>
+
+    <!-- rutas en forma de cards con su informacion visible, separado o divididos por empresa, como transmetro, colitoral, etc-->
+    <section id="rutas">
+      <h2>Rutas</h2>
+      <div>
+        <span class="card">
+          <h3>nombre ruta</h3>
+          <h4>tiempo estimado</h4>
+          <p>informacion de ruta</p>
+          <p>recorrido</p>
+          <p>cambios</p>
+          <p>costo</p>
+          <p>novedades</p>
+        </span>
+      </div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </section>
+
+  </main>
+  <footer>
+    <p>&copy; 2023 Movu. Todos los derechos reservados.</p>
+  </footer>
