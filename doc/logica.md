@@ -45,7 +45,27 @@ Dashboard Principal
 
 ↓
 
-Buscador de rutas
+Buscador de rutas (catalogo)
+[estructura del catalogo:
+
+  Directorio de rutas
+    ↓
+Buscador + filtros
+    ↓
+Coolitoral
+    ├── tarjeta B1
+    ├── tarjeta B2A
+    └── tarjeta B10
+    ↓
+Sobusa
+    ├── tarjeta K54
+    ├── tarjeta C10
+    └── ...
+    ↓
+Transmetro
+    ├── tarjeta S1
+    └── ...
+    ]
 
 ↓
 

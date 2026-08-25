@@ -38,52 +38,107 @@
     </nav>
   </header>
   <main>
-    <!-- Novedades -->
-    <section id="novedades">
-      <h2>Novedades</h2>
-      <!-- section para filtrar y buscar rutas -->
+    <!--intro-->
+    <section class="intro">
+      <div class="intro-content">
+        <h1>Directorio de Rutas</h1>
+        <p>Explora las rutas de transporte público de Barranquilla,
+          conoce sus recorridos y encuentra información útil para
+          planificar mejor tu viaje.</p>
+      </div>
     </section>
+    <!-- section para filtrar y buscar rutas -->
+
     <section id="search">
       <div id="search-container">
-        <input type="text" id="origen" placeholder="Origen">
-        <input type="text" id="destino" placeholder="Destino">
-        <input type="datetime-local" id="fecha" placeholder="Fecha y hora de salida">
-        <select class="category-select">
-          <option value="all">Todas categorías</option>
-          <option value="1">Categoría 1</option>
-          <option value="2">Categoría 2</option>
-          <option value="3">Categoría 3</option>
-        </select>
-        <select class="category-select">
-          <option value="all">Todas categorías</option>
-          <option value="1">Categoría 1</option>
-          <option value="2">Categoría 2</option>
-          <option value="3">Categoría 3</option>
-        </select>
+        <div class="search-box">
+          <input type="text" id="origen" placeholder="Origen">
+          <input type="text" id="destino" placeholder="Destino">
+          <input type="datetime-local" id="fecha" placeholder="Fecha y hora de salida">
+          <div class="filter">
+            <button>Empresa</button>
+            <select class="category-select">
+              <option value="all">Todas categorías</option>
+              <option value="1">Categoría 1</option>
+              <option value="2">Categoría 2</option>
+              <option value="3">Categoría 3</option>
+            </select>
+          </div>
+          <div class="filter">
+            <button>Destino</button>
+            <select class="category-select">
+              <option value="all">Todas categorías</option>
+              <option value="1">Categoría 1</option>
+              <option value="2">Categoría 2</option>
+              <option value="3">Categoría 3</option>
+            </select>
+          </div>
 
 
-        <input type="text" id="search-input" placeholder="Buscar rutas">
-        <button id="search-button">Buscar</button>
+          <input type="search" id="search-input" placeholder="Buscar rutas, empresa o destino">
+          <button id="search-button">Buscar</button>
+        </div>
       </div>
     </section>
 
-    <!-- rutas en forma de cards con su informacion visible, separado o divididos por empresa, como transmetro, colitoral, etc-->
-    <section id="rutas">
+    <!-- rutas en forma de cards(las cards se voltean) con su informacion visible, separado o divididos por empresa, como transmetro, colitoral, etc-->
+    <section id="rutas-directory">
       <h2>Rutas</h2>
-      <div>
-        <span class="card">
-          <h3>nombre ruta</h3>
-          <h4>tiempo estimado</h4>
-          <p>informacion de ruta</p>
-          <p>recorrido</p>
-          <p>cambios</p>
-          <p>costo</p>
-          <p>novedades</p>
-        </span>
+      <div class="directory-container">
+        <!-- rutas de empresa 1 -->
+        <div class="company-section">
+          <span class="company-name">Empresa 1</span>
+        </div>
+        <!-- cards de empresa 1 -->
+
+        <div class="route-grid">
+          <article class="route-card">
+            <div class="card-inner">
+              <!--front of card-->
+              <div class="card-front">
+                <div class="topcard">
+                  <span class="buscode">B1</span>
+                  <span class="busstatus">Activo</span>
+                </div>
+                <div class="cardmain">
+                  <span class="company-name">Empresa1</span>
+                  <span class="origen">LugarA</span>
+                  <span class="icon">→</span>
+                  <span class="destino">LugarB</span>
+                </div>
+                <div class="cardbottom">
+                  <span class="precio">$3.000</span>
+                  <span class="tiempo">10 minutos</span>
+                  <button type="button" class="favorite-btn" aria-label="Agregar a favoritos">★</button>
+                </div>
+                <button>Ver Recorrido</button>
+              </div>
+              <!--Back of card card-->
+              <div class="card-back">
+                <div class="Busstops">
+                  <div class="stop">
+                    <span class="Origen">Lugar Salida</span>
+                  </div>
+                  <div class="stop">
+                    <span class="parada">parada 1</span>
+                  </div>
+                  <div class="stop">
+                    <span class="parada">parada 2</span>
+                  </div>
+                  <div class="stop">
+                    <span class="Destino">Lugar Destino</span>
+                  </div>
+                </div>
+                <div class="cardbottom">
+                  <span class="precio"><strong>Horario:</strong> 08:00 - 10:00</span>
+                  <span class="tiempo">10 minutos</span>
+                </div>
+                <button class="map-btn">Ver Ruta completa</button>
+              </div>
+            </div>
+          </article>
+        </div>
       </div>
-      <div></div>
-      <div></div>
-      <div></div>
     </section>
 
   </main>

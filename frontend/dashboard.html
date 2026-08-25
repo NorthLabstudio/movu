@@ -4,29 +4,191 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>MOVU Dashboard</title>
+  <link rel="stylesheet" href="dashboard.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Allerta+Stencil&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="icon" href="assets/img/logomovu.png" type="image/x-icon">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Allerta+Stencil&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+    rel="stylesheet">
 </head>
 
 <body>
   <header>
     <nav></nav>
   </header>
-  <main>
+  <main class="dashboard">
     <section id="stats">
-      <span>
-        <span>nombre de dato</span>
-        <span>
-          Porcentaje
-        </span>
-      </span>
-      <span><span>nombre de dato</span>
-        <span>porcentaje</span></span>
-      <span><span>nombre de dato</span><span>porcentaje</span></span>
-    </section>
-    <section id="rutas-tomadas"></section>
-    <sectio id="recomendaciones">
+
+      <header class="dashboard-header">
+        <p>Buenos dias, <span class="username">Nombre de usuario</span></p>
+        <h1>¿A donde vas hoy?</h1>
+      </header>
+      <section class="busseeach">
+        <div>
+          <label for="search-input">Buscar una ruta o destino</label>
+          <div class="searchbox">
+            <input type="search" id="bus-input" name="bus-input"
+              placeholder="Busca una universidad, ruta, parada o destino...">
+            <button>Buscar</button>
+          </div>
+        </div>
       </section>
-      <section id="novedades"></section>
+      <section class="dashboard-stats">
+        <article class="stat-item">
+
+          <span class="stat-label">Rutas favoritas</span>
+          <span class="stat-value"> Porcentaje </span>
+          <span class="stat-description">rutas guardadas</span>
+        </article>
+        <article class="stat-item">
+          <span class="stat-label">Consultas recientes</span>
+          <span class="stat-value"> 12 </span>
+          <span class="stat-description">Rutas consultadas</span>
+        </article>
+        <article class="stat-item">
+          <span class="stat-label">Lugares frecuentes</span>
+          <span class="stat-value"> 12 </span>
+          <span class="stat-description">Destinos guardados</span>
+        </article>
+      </section>
+      <section id="rutas-favoritas">
+        <div class="section-header">
+          <div>
+            <span class="stat-label">Rutas favoritas</span>
+            <h2>Rutas favoritas</h2>
+          </div>
+          <a href="#">Ver todas</a>
+        </div>
+        <div class="card-routegrid">
+          <article class="route-card">
+            <div class="card-inner">
+              <!--front of card-->
+              <div class="card-front">
+                <div class="topcard">
+                  <span class="buscode">B1</span>
+                  <span class="busstatus">Activo</span>
+                </div>
+                <div class="cardmain">
+                  <span class="company-name">Empresa1</span>
+                  <span class="origen">LugarA</span>
+                  <span class="icon">→</span>
+                  <span class="destino">LugarB</span>
+                </div>
+                <div class="cardbottom">
+                  <span class="precio">$3.000</span>
+                  <span class="tiempo">10 minutos</span>
+                  <button type="button" class="favorite-btn" aria-label="Agregar a favoritos">★</button>
+                </div>
+                <button>Ver Recorrido</button>
+              </div>
+              <!--Back of card card-->
+              <div class="card-back">
+                <div class="Busstops">
+                  <div class="stop">
+                    <span class="Origen">Lugar Salida</span>
+                  </div>
+                  <div class="stop">
+                    <span class="parada">parada 1</span>
+                  </div>
+                  <div class="stop">
+                    <span class="parada">parada 2</span>
+                  </div>
+                  <div class="stop">
+                    <span class="Destino">Lugar Destino</span>
+                  </div>
+                </div>
+                <div class="cardbottom">
+                  <span class="precio"><strong>Horario:</strong> 08:00 - 10:00</span>
+                  <span class="tiempo">10 minutos</span>
+                </div>
+                <button class="map-btn">Ver Ruta completa</button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+      <section class="recientes">
+        <div class="section-header">
+          <div>
+            <span class="section-title">Yu Actividad</span>
+            <h2>Consultas recientes</h2>
+          </div>
+          <a href="#">Ver historial</a>
+        </div>
+        <div class="recentlist">
+          <article class="recentbus">
+            <div class="recent-item">
+              <div class="card-inner">
+                <!--front of card-->
+                <div class="card-front">
+                  <div class="topcard">
+                    <span class="buscode">B1</span>
+                    <span class="busstatus">Activo</span>
+                  </div>
+                  <div class="cardmain">
+                    <span class="company-name">Empresa1</span>
+                    <span class="origen">LugarA</span>
+                    <span class="icon">→</span>
+                    <span class="destino">LugarB</span>
+                  </div>
+                  <div class="cardbottom">
+                    <span class="precio">$3.000</span>
+                    <span class="tiempo">10 minutos</span>
+                    <button type="button" class="favorite-btn" aria-label="Agregar a favoritos">★</button>
+                  </div>
+                  <button>Ver Recorrido</button>
+                </div>
+                <!--Back of card card-->
+                <div class="card-back">
+                  <div class="Busstops">
+                    <div class="stop">
+                      <span class="Origen">Lugar Salida</span>
+                    </div>
+                    <div class="stop">
+                      <span class="parada">parada 1</span>
+                    </div>
+                    <div class="stop">
+                      <span class="parada">parada 2</span>
+                    </div>
+                    <div class="stop">
+                      <span class="Destino">Lugar Destino</span>
+                    </div>
+                  </div>
+                  <div class="cardbottom">
+                    <span class="precio"><strong>Horario:</strong> 08:00 - 10:00</span>
+                    <span class="tiempo">10 minutos</span>
+                  </div>
+                  <button class="map-btn">Ver Ruta completa</button>
+                </div>
+              </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Novedades -->
+      <section id="novedades">
+        <div class="section-header">
+          <div>
+            <span class="section-title">Novedades</span>
+          </div>
+          <a href="#">Ver todas</a>
+        </div>
+        <div class="newslist">
+          <article class="newslist">
+            <div class="news-item">
+              <span class="news-title">Novedad 1</span>
+              <span class="news-type">tipo de la novedad 1</span>
+              <span class="news-date">2023-08-01</span>
+              <span class="news-description">Descripción de la novedad 1</span>
+            </div>
+          </article>
+        </div>
+      </section>
   </main>
   <footer></footer>
 </body>
