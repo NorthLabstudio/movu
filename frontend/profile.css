@@ -1,0 +1,383 @@
+:root {
+  --background-color: #F0F2FA;
+  --primary-color: #000B58;
+  --primary-text-color: #FFF;
+  --secondary-color: #4A2C86;
+  --secondary-text-color: #000;
+  --tertiary-color: #006A67;
+  --acent-color: #065084;
+  --main-font: 'Allerta Stencil', sans-serif;
+  --secondary-font: 'Nunito', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+body {
+  display: flex;
+  padding: 80px 120px;
+  max-width: 1440px;
+  margin: 0 auto;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 60px;
+  background-color: var(--background-color);
+}
+
+main {
+  width: 100%;
+}
+
+
+h1 {
+  font-family: var(--main-font);
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 400;
+}
+
+h2 {
+  font-family: var(--main-font);
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 400;
+}
+
+h3 {
+  font-family: var(--secondary-font);
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+}
+
+h4 {
+  font-family: var(--secondary-font);
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+}
+
+h5 {
+  font-family: var(--secondary-font);
+}
+
+p {
+  font-family: var(--secondary-font);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+}
+
+span {
+  font-family: var(--secondary-font);
+}
+
+@media (max-width:1250px) {
+  body {
+    padding: 80px;
+  }
+}
+
+@media (max-width:1024px) {
+  body {
+    padding: 60px;
+    max-width: 1250px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width:780px) {
+  body {
+    max-width: 780px;
+    padding: 20px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    font-size: 40px;
+  }
+
+  h2 {
+    font-size: 32px;
+  }
+
+  h3 {
+    font-size: 26px;
+  }
+
+  p {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width:435px) {
+  body {
+    max-width: 425px;
+    padding: 20px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  h1 {
+    font-size: 32px;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  h3 {
+    font-size: 20px;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+}
+
+#profile-main {
+  width: 100%;
+  margin: 0 auto;
+  padding: 40px 0 80px;
+}
+
+#profile-header {
+  width: 100%;
+  margin: 0 auto;
+  padding: 40px 0 80px;
+  border: 1px solid var(--secondary-color);
+  border-radius: 18px;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 20px;
+}
+
+#profile-headerimg {
+  width: 100px;
+  height: 100px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+#profile-headerimg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+#profile-header-right {
+  flex: 1;
+}
+
+#profile-header-right h1 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+#profile-header-right p {
+  font-size: 0.9rem;
+  margin-bottom: 6px;
+}
+
+#profileedit button {
+  border: 1px solid var(--secondary-color);
+  border-radius: 18px;
+  padding: 12px 24px;
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: var(--secondary-color);
+  background-color: transparent;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+#profileedit button:hover {
+  background-color: var(--secondary-color);
+  color: var(--primary-text-color);
+}
+
+
+#universidad {
+  position: relative;
+  margin-top: 20px;
+}
+
+#universidad button {
+  margin-top: 16px;
+
+  border: none;
+  background-color: var(--primary-color);
+
+  color: var(--primary-text-color);
+
+  padding: 10px 16px;
+
+  border-radius: 10px;
+
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 0.82rem;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+#universidad button:hover {
+  background-color: var(--primary-color);
+  color: var(--primary-text-color);
+}
+
+#rutas-favoritas {
+  min-height: 200px;
+}
+
+#rutas-favoritas::after {
+  content: "Tus rutas favoritas aparecerán aquí.";
+
+  display: block;
+
+  padding: 30px 0;
+
+  color: var(--secondary-text-color);
+  font-size: 0.9rem;
+
+  border-top: 1px solid var(--secondary-color);
+}
+
+#historial-rutas {
+  min-height: 180px;
+}
+
+#historial-rutas::after {
+  content: "Tu historial de rutas aparecerá aquí.";
+
+  display: block;
+
+  padding: 30px 0;
+
+  color: var(--secondary-text-color);
+  font-size: 0.9rem;
+
+  border-top: 1px solid var(--secondary-color);
+}
+
+#configuracion {
+  padding-bottom: 12px !important;
+}
+
+#configuracion>button {
+  border: none;
+  background: none;
+  color: var(--primary-text-color);
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 0.82rem;
+  cursor: pointer;
+}
+
+settingitem {
+  min-height: 62px;
+
+  display: flex;
+  align-items: center;
+
+  padding: 0 8px;
+
+  border-top: 1px solid var(--secondary-color);
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+settingitem:hover {
+  background-color: var(--secondary-color);
+}
+
+.settingitem::after {
+  content: "→";
+
+  margin-left: auto;
+
+  color: var(--secondary-text-color);
+
+  font-size: 1rem;
+
+  transition: 0.2s ease;
+}
+
+.settingitem:hover::after {
+  color: var(--primary-text-color);
+  transform: translateX(4px);
+}
+
+@media (max-width: 768px) {
+
+  #profile-main {
+    width: min(100% - 30px, 1100px);
+    padding-top: 24px;
+  }
+
+
+  /* Profile header */
+
+  #profile-header {
+    flex-wrap: wrap;
+    padding: 24px;
+  }
+
+  #profile-header-right {
+    min-width: 0;
+  }
+
+  #profile-header-right h1 {
+    font-size: 1.5rem;
+  }
+
+  #profileedit {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  #profileedit button {
+    width: 100%;
+  }
+
+
+  /* Sections */
+
+  #profile-main section {
+    padding: 22px;
+  }
+
+}
+
+
+@media (max-width: 480px) {
+
+  #profile-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  #profile-headerimg {
+    width: 80px;
+    height: 80px;
+  }
+
+  #profile-header-right {
+    width: 100%;
+  }
+
+}
