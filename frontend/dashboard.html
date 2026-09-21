@@ -1,46 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+3
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MOVU Dashboard</title>
-  <link rel="stylesheet" href="dashboard.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Allerta+Stencil&display=swap" rel="stylesheet">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/nav.css">
+  <link rel="stylesheet" href="css/cards.css">
   <link rel="icon" href="assets/img/logomovu.png" type="image/x-icon">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Allerta+Stencil&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
-    rel="stylesheet">
 </head>
 
 <body>
+  <!--Navegacion de la pagina-->
   <header>
-    <nav></nav>
+    <nav>
+      <div id="logo-container" src="dashboard.html" class="link">
+        <div id="logo-image">
+          <img id="logo" src="assets/img/logomovu.png" alt="Movu">
+        </div>
+        <h2>Movu</h2>
+      </div>
+      <a href="catalogo.html" class="link">Directorio</a>
+      <div>
+        <a href="profile.html" class="link">Perfil</a>
+        <button>Cerrar sesión</button>
+      </div>
+    </nav>
   </header>
+
   <main class="dashboard">
     <section id="stats">
-
-      <header class="dashboard-header">
+      <!--saludo e interraccion con el ussuario-->
+      <section class="dashboard-header">
         <p>Buenos dias, <span class="username">Nombre de usuario</span></p>
         <h1>¿A donde vas hoy?</h1>
-      </header>
+      </section>
+      <!--buscador de rutas-->
       <section class="busseeach">
         <div>
           <label for="search-input">Buscar una ruta o destino</label>
           <div class="searchbox">
             <input type="search" id="bus-input" name="bus-input"
               placeholder="Busca una universidad, ruta, parada o destino...">
-            <button>Buscar</button>
+            <button type="submit" class="search-btn">Buscar</button>
           </div>
         </div>
       </section>
+      <!--estadisticas o resumen del uso de la plataforma como frecuercia, consultas, rutas favoritas y lugares-->
       <section class="dashboard-stats">
         <article class="stat-item">
-
           <span class="stat-label">Rutas favoritas</span>
           <span class="stat-value"> Porcentaje </span>
           <span class="stat-description">rutas guardadas</span>
@@ -62,7 +73,7 @@
             <span class="stat-label">Rutas favoritas</span>
             <h2>Rutas favoritas</h2>
           </div>
-          <a href="#">Ver todas</a>
+          <a href="#">Ver todas →</a>
         </div>
         <div class="card-routegrid">
           <article class="route-card">
@@ -118,7 +129,7 @@
             <span class="section-title">Yu Actividad</span>
             <h2>Consultas recientes</h2>
           </div>
-          <a href="#">Ver historial</a>
+          <a href="#">Ver historial →</a>
         </div>
         <div class="recentlist">
           <article class="recentbus">
@@ -176,7 +187,7 @@
           <div>
             <span class="section-title">Novedades</span>
           </div>
-          <a href="#">Ver todas</a>
+          <a href="#">Ver todas →</a>
         </div>
         <div class="newslist">
           <article class="newslist">
@@ -191,6 +202,7 @@
       </section>
   </main>
   <footer></footer>
+  <script src="js/dashboard.js"></script>
 </body>
 
 </html>

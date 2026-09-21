@@ -1,0 +1,196 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Allerta+Stencil&display=swap');
+
+:root {
+  /* ----------  colors ---------- */
+  --background: #F0F2FA;
+  --color-primary: #000B58;
+  --color-secondary: #065084;
+  --color-accent: #006A67;
+  --color-smart: #4A2C86;
+  /* ---------- UI colors ---------- */
+  --white: #FFFFFF;
+  --text: #161616;
+  --text-muted: #666666;
+  --border: #D9DCE7;
+  /* ---------- Typography ---------- */
+
+  --logo-font: 'Allerta Stencil', sans-serif;
+  --primary-font: 'Nunito', sans-serif;
+  /* ---------- Border radius ---------- */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+  --radius-pill: 999px;
+  /* ---------- Shadows ---------- */
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 6px 20px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 12px 35px rgba(0, 0, 0, 0.12);
+  /* ---------- Spacing ---------- */
+
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+body {
+  padding: 80px 120px;
+  margin: 0 auto;
+  color: var(--text);
+  font-family: var(--primary-font);
+  background-color: var(--background);
+}
+
+main {
+  width: 100%;
+}
+
+button,
+input,
+select,
+textarea,
+span {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+}
+
+
+h1 {
+  font-family: var(--primary-font);
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 400;
+}
+
+h2 {
+  font-family: var(--primary-font);
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 400;
+}
+
+h3 {
+  font-family: var(--primary-font);
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+}
+
+h4 {
+  font-family: var(--primary-font);
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+}
+
+h5 {
+  font-family: var(--primary-font);
+}
+
+p {
+  font-family: var(--primary-font);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+}
+
+span {
+  font-family: var(--primary-font);
+}
+
+@media (max-width:1250px) {
+  body {
+    padding: 80px;
+  }
+}
+
+@media (max-width:1024px) {
+  body {
+    padding: 60px;
+    max-width: 1250px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width:780px) {
+  body {
+    max-width: 780px;
+    padding: 20px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    font-size: 40px;
+  }
+
+  h2 {
+    font-size: 32px;
+  }
+
+  h3 {
+    font-size: 26px;
+  }
+
+  p {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width:435px) {
+  body {
+    max-width: 425px;
+    padding: 20px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  h1 {
+    font-size: 32px;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  h3 {
+    font-size: 20px;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+}
+
+button {
+  font-family: var(--primary-font);
+  color: var(--white);
+  background-color: var(--color-primary);
+  border-radius: var(--radius-xl);
+  padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: var(--color-accent);
+}

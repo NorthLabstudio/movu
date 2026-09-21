@@ -1,0 +1,574 @@
+.card {
+  background-color: var(--white);
+
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+
+  box-shadow: var(--shadow-sm);
+}
+
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+.status {
+  display: inline-flex;
+  align-items: center;
+
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.status::before {
+  content: "";
+
+  width: 7px;
+  height: 7px;
+
+  margin-right: 6px;
+
+  border-radius: 50%;
+}
+
+.status-active {
+  color: var(--movu-teal);
+}
+
+.status-active::before {
+  background-color: var(--movu-teal);
+}
+
+.status-info {
+  color: var(--movu-blue);
+}
+
+.status-info::before {
+  background-color: var(--movu-blue);
+}
+
+.status-smart {
+  color: var(--movu-purple);
+}
+
+.status-smart::before {
+  background-color: var(--movu-purple);
+}
+
+
+/* =========================================================
+   FORM ELEMENTS
+========================================================= */
+
+input,
+select,
+textarea {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+
+  background-color: var(--white);
+  color: var(--text);
+
+  outline: none;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--movu-blue);
+
+  box-shadow:
+    0 0 0 3px rgba(6, 80, 132, 0.12);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #888888;
+}
+
+
+/* =========================================================
+   RESPONSIVE TYPOGRAPHY
+========================================================= */
+
+@media (max-width: 700px) {
+
+  h1 {
+    font-size: 32px;
+  }
+
+  h2 {
+    font-size: 26px;
+  }
+
+  h3 {
+    font-size: 20px;
+  }
+
+  p {
+    font-size: 15px;
+  }
+}
+
+
+@media (max-width: 450px) {
+
+  h1 {
+    font-size: 28px;
+  }
+
+  h2 {
+    font-size: 23px;
+  }
+
+  h3 {
+    font-size: 19px;
+  }
+
+  p {
+    font-size: 15px;
+  }
+}
+
+
+.dashboard {
+  width: min(100% - 48px, 1200px);
+  margin: 0 auto;
+  padding: 48px 0 80px;
+}
+
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  gap: var(--space-lg);
+
+  margin-bottom: var(--space-2xl);
+}
+
+.dashboard-header .username {
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+.bussearch {
+  width: 100%;
+  margin-bottom: var(--space-3xl);
+}
+
+.bussearch label {
+  display: block;
+  margin-bottom: var(--space-sm);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.searchbox {
+  display: flex;
+  align-items: center;
+  margin-top: var(--space-sm);
+  width: 100%;
+  background-color: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.searchbox:focus-within {
+  border-color: var(--color-secondary);
+  box-shadow: var(--shadow-md);
+}
+
+.searchbox input {
+  flex: 1;
+  height: 50px;
+  padding: 0 18px;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 16px;
+}
+
+.search-btn {
+  height: 44px;
+  margin: 6px;
+  padding: 0 22px;
+  border: none;
+  background-color: var(--color-primary);
+  color: var(--white);
+  font-size: 14px;
+  font-weight: 700;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+/* Dashboard Stats */
+
+.dashboard-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+  width: 100%;
+  margin-top: var(--space-lg);
+}
+
+.stat-item {
+  min-height: 120px;
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-sm);
+  background-color: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.stat-label {
+  font-size: 14px;
+  font-weight: 600;
+
+  color: var(--text-muted);
+}
+
+.stat-value {
+  font-size: 30px;
+  line-height: 1;
+
+  font-weight: 800;
+
+  color: var(--movu-navy);
+}
+
+.stat-item.active .stat-value {
+  color: var(--movu-teal);
+}
+
+.stat-item.smart .stat-value {
+  color: var(--movu-purple);
+}
+
+.stat-description {
+  font-size: 13px;
+
+  color: var(--text-muted);
+}
+
+
+/* =========================================================
+   SECTION HEADER
+========================================================= */
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  align-items: center;
+  margin: var(--space-lg);
+}
+
+.section-header h2 {
+  font-size: 26px;
+}
+
+.section-header a {
+  color: var(--movu-blue);
+
+  font-size: 14px;
+  font-weight: 700;
+
+  text-decoration: none;
+
+  transition: color 0.2s ease;
+}
+
+.section-header a:hover {
+  color: var(--movu-navy);
+}
+
+
+/* =========================================================
+   FAVORITE ROUTES
+========================================================= */
+
+#rutas-favoritas {
+  margin-bottom: var(--space-3xl);
+}
+
+.card-routegrid {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: var(--space-lg);
+}
+
+/* =========================================================
+   RECENT ROUTES
+========================================================= */
+
+.recientes {
+  margin-bottom: var(--space-3xl);
+}
+
+.recentlist {
+  display: flex;
+  flex-direction: column;
+
+  gap: var(--space-sm);
+}
+
+.recentbus,
+.recent-item {
+  width: 100%;
+}
+
+.recent-item .card-inner {
+  min-height: 190px;
+}
+
+.recent-item .card-front,
+.recent-item .card-back {
+  min-height: 190px;
+  height: auto;
+
+  padding: 20px;
+}
+
+.recent-item .top-card {
+  margin-bottom: 14px;
+}
+
+.recent-item .cardmain {
+  flex-direction: row;
+  align-items: center;
+
+  gap: 10px;
+}
+
+.recent-item .company-name {
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.recent-item .origen,
+.recent-item .destino {
+  font-size: 14px;
+}
+
+.recent-item .icon {
+  margin: 0;
+}
+
+.recent-item .card-front>button {
+  width: auto;
+
+  padding: 10px 20px;
+}
+
+
+/* =========================================================
+   NEWS / NOVELTIES
+========================================================= */
+
+#novedades {
+  margin-bottom: var(--space-3xl);
+}
+
+.newslist {
+  display: grid;
+
+  grid-template-columns: 1fr auto;
+
+  gap: 6px var(--space-lg);
+
+  padding: var(--space-lg);
+
+  background-color: var(--white);
+
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+
+  box-shadow: var(--shadow-sm);
+}
+
+.news-title {
+  font-size: 15px;
+  font-weight: 800;
+
+  color: var(--text);
+}
+
+.news-type {
+  font-size: 12px;
+  font-weight: 700;
+
+  color: var(--movu-blue);
+}
+
+.news-date {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+
+  align-self: center;
+
+  font-size: 12px;
+
+  color: var(--text-muted);
+}
+
+.news-description {
+  font-size: 13px;
+
+  color: var(--text-muted);
+}
+
+
+/* =========================================================
+   RESPONSIVE — TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+
+  .dashboard {
+    width: min(100% - 40px, 900px);
+  }
+
+  .card-routegrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .dashboard-stats {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+
+/* =========================================================
+   RESPONSIVE — MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+  .dashboard {
+    width: min(100% - 32px, 600px);
+
+    padding: 32px 0 60px;
+  }
+
+  .dashboard-header {
+    align-items: flex-start;
+    flex-direction: column;
+
+    margin-bottom: var(--space-xl);
+  }
+
+  .dashboard-header h1 {
+    font-size: 30px;
+  }
+
+  .searchbox {
+    flex-direction: column;
+    align-items: stretch;
+
+    padding: 6px;
+  }
+
+  .searchbox input {
+    height: 48px;
+  }
+
+  .searchbox button {
+    width: 100%;
+
+    margin: 0;
+
+    height: 44px;
+  }
+
+  .dashboard-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-item {
+    min-height: 100px;
+  }
+
+  .card-routegrid {
+    grid-template-columns: 1fr;
+  }
+
+  .route-card {
+    height: 300px;
+  }
+
+  .section-header {
+    align-items: center;
+  }
+
+  .section-header h2 {
+    font-size: 22px;
+  }
+
+  .newslist {
+    grid-template-columns: 1fr;
+  }
+
+  .news-date {
+    grid-column: auto;
+    grid-row: auto;
+
+    margin-top: 4px;
+  }
+}
+
+
+/* =========================================================
+   RESPONSIVE — SMALL MOBILE
+========================================================= */
+
+@media (max-width: 450px) {
+
+  .dashboard {
+    width: calc(100% - 24px);
+  }
+
+  .dashboard-header h1 {
+    font-size: 27px;
+  }
+
+  .card-front,
+  .card-back {
+    padding: 20px;
+  }
+
+  .route-card {
+    height: 290px;
+  }
+
+  .section-header {
+    gap: 10px;
+  }
+
+  .section-header h2 {
+    font-size: 20px;
+  }
+}

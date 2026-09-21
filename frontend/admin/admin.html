@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>MOVU | ADMIN</title>
+
+  <link rel="stylesheet" href="admin.css">
+</head>
+
+<body>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <div class="sidebar-header">
+      <a href="#" class="logo">MOVU</a>
+      <span class="admin-label">ADMIN</span>
+    </div>
+
+    <nav class="sidebar-nav">
+
+      <p class="nav-title">GENERAL</p>
+
+      <a href="#" class="nav-link active">
+        <span>⌂</span>
+        Dashboard
+      </a>
+
+
+      <p class="nav-title">TRANSPORTE</p>
+
+      <a href="#" class="nav-link">
+        <span>◉</span>
+        Empresas
+      </a>
+
+      <a href="#" class="nav-link">
+        <span>↔</span>
+        Rutas
+      </a>
+
+      <a href="#" class="nav-link">
+        <span>⌖</span>
+        Paradas
+      </a>
+
+
+      <p class="nav-title">CONTENIDO</p>
+
+      <a href="#" class="nav-link">
+        <span>▣</span>
+        Universidades
+      </a>
+
+      <a href="#" class="nav-link">
+        <span>!</span>
+        Novedades
+      </a>
+
+
+      <p class="nav-title">USUARIOS</p>
+
+      <a href="#" class="nav-link">
+        <span>♙</span>
+        Usuarios
+      </a>
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+
+      <a href="#" class="nav-link">
+        <span>⚙</span>
+        Configuración
+      </a>
+
+      <a href="#" class="nav-link logout">
+        <span>↪</span>
+        Cerrar sesión
+      </a>
+
+    </div>
+
+  </aside>
+
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content">
+
+    <!-- TOPBAR -->
+    <header class="topbar">
+
+      <div>
+        <p class="breadcrumb">ADMIN / DASHBOARD</p>
+        <h1>Dashboard</h1>
+      </div>
+
+      <div class="admin-profile">
+
+        <div class="admin-avatar">
+          A
+        </div>
+
+        <div class="admin-info">
+          <strong>Administrador</strong>
+          <span>Admin</span>
+        </div>
+
+      </div>
+
+    </header>
+
+
+    <!-- DASHBOARD -->
+    <section class="dashboard">
+
+
+      <!-- STATISTICS -->
+      <section class="stats-grid">
+
+        <div class="stat-card">
+
+          <div class="stat-top">
+            <span class="stat-label">EMPRESAS</span>
+            <span class="stat-icon">◉</span>
+          </div>
+
+          <strong class="stat-number">12</strong>
+
+          <p>Operadores registrados</p>
+
+        </div>
+
+
+        <div class="stat-card">
+
+          <div class="stat-top">
+            <span class="stat-label">RUTAS</span>
+            <span class="stat-icon">↔</span>
+          </div>
+
+          <strong class="stat-number">47</strong>
+
+          <p>Rutas disponibles</p>
+
+        </div>
+
+
+        <div class="stat-card">
+
+          <div class="stat-top">
+            <span class="stat-label">PARADAS</span>
+            <span class="stat-icon">⌖</span>
+          </div>
+
+          <strong class="stat-number">386</strong>
+
+          <p>Paradas registradas</p>
+
+        </div>
+
+
+        <div class="stat-card">
+
+          <div class="stat-top">
+            <span class="stat-label">USUARIOS</span>
+            <span class="stat-icon">♙</span>
+          </div>
+
+          <strong class="stat-number">128</strong>
+
+          <p>Usuarios registrados</p>
+
+        </div>
+
+      </section>
+
+
+
+      <!-- QUICK ACTIONS -->
+      <section class="section">
+
+        <div class="section-header">
+
+          <div>
+            <span class="section-kicker">ACCIONES</span>
+            <h2>Acciones rápidas</h2>
+          </div>
+
+        </div>
+
+
+        <div class="quick-actions">
+
+          <button class="action-card">
+
+            <span class="action-icon">+</span>
+
+            <div>
+              <strong>Agregar empresa</strong>
+              <p>Registrar un nuevo operador</p>
+            </div>
+
+          </button>
+
+
+          <button class="action-card">
+
+            <span class="action-icon">+</span>
+
+            <div>
+              <strong>Agregar ruta</strong>
+              <p>Crear una nueva ruta</p>
+            </div>
+
+          </button>
+
+
+          <button class="action-card">
+
+            <span class="action-icon">+</span>
+
+            <div>
+              <strong>Agregar parada</strong>
+              <p>Registrar una nueva parada</p>
+            </div>
+
+          </button>
+
+
+          <button class="action-card">
+
+            <span class="action-icon">+</span>
+
+            <div>
+              <strong>Nueva novedad</strong>
+              <p>Publicar información para usuarios</p>
+            </div>
+
+          </button>
+
+        </div>
+
+      </section>
+
+
+
+      <!-- RECENT UPDATES -->
+      <section class="section">
+
+        <div class="section-header">
+
+          <div>
+            <span class="section-kicker">ACTIVIDAD</span>
+            <h2>Últimas actualizaciones</h2>
+          </div>
+
+          <a href="#" class="view-all">
+            Ver todo →
+          </a>
+
+        </div>
+
+
+        <div class="updates-list">
+
+
+          <div class="update-item">
+
+            <div class="update-icon route">
+              ↔
+            </div>
+
+            <div class="update-content">
+
+              <strong>Ruta C1 actualizada</strong>
+
+              <p>
+                Se modificó la información de la ruta
+                de Coolitoral.
+              </p>
+
+            </div>
+
+            <span class="update-date">
+              Hoy, 10:32
+            </span>
+
+          </div>
+
+
+          <div class="update-item">
+
+            <div class="update-icon news">
+              !
+            </div>
+
+            <div class="update-content">
+
+              <strong>Nueva novedad publicada</strong>
+
+              <p>
+                Cambio temporal en la ruta C1.
+              </p>
+
+            </div>
+
+            <span class="update-date">
+              Ayer, 16:45
+            </span>
+
+          </div>
+
+
+          <div class="update-item">
+
+            <div class="update-icon stop">
+              ⌖
+            </div>
+
+            <div class="update-content">
+
+              <strong>Nueva parada agregada</strong>
+
+              <p>
+                Universidad del Norte.
+              </p>
+
+            </div>
+
+            <span class="update-date">
+              12 Sep, 09:20
+            </span>
+
+          </div>
+
+
+          <div class="update-item">
+
+            <div class="update-icon company">
+              ◉
+            </div>
+
+            <div class="update-content">
+
+              <strong>Nueva empresa registrada</strong>
+
+              <p>
+                Operador agregado al directorio.
+              </p>
+
+            </div>
+
+            <span class="update-date">
+              10 Sep, 14:18
+            </span>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+
+      <!-- NOVELTIES -->
+      <section class="section">
+
+        <div class="section-header">
+
+          <div>
+            <span class="section-kicker">CONTENIDO</span>
+            <h2>Novedades activas</h2>
+          </div>
+
+          <a href="#" class="view-all">
+            Administrar →
+          </a>
+
+        </div>
+
+
+        <div class="novelties-grid">
+
+
+          <article class="novelty-card">
+
+            <div class="novelty-header">
+
+              <span class="novelty-status">
+                ACTIVA
+              </span>
+
+              <span class="novelty-date">
+                14 SEP 2026
+              </span>
+
+            </div>
+
+            <h3>
+              Cambio temporal de ruta C1
+            </h3>
+
+            <p>
+              La ruta presenta una modificación temporal
+              debido a obras en el sector.
+            </p>
+
+            <span class="novelty-route">
+              C1 · Coolitoral
+            </span>
+
+          </article>
+
+
+
+          <article class="novelty-card">
+
+            <div class="novelty-header">
+
+              <span class="novelty-status">
+                ACTIVA
+              </span>
+
+              <span class="novelty-date">
+                12 SEP 2026
+              </span>
+
+            </div>
+
+            <h3>
+              Parada temporalmente cerrada
+            </h3>
+
+            <p>
+              La parada permanecerá fuera de servicio
+              durante los próximos días.
+            </p>
+
+            <span class="novelty-route">
+              Universidad del Norte
+            </span>
+
+          </article>
+
+
+        </div>
+
+      </section>
+
+
+
+      <!-- FOOTER -->
+      <footer class="admin-footer">
+
+        <span>
+          MOVU Admin
+        </span>
+
+        <span>
+          Panel de administración · 2026
+        </span>
+
+      </footer>
+
+
+    </section>
+
+  </main>
+  <script src="admin.js"></script>
+</body>
+
+</html>

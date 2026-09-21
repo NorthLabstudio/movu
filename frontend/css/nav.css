@@ -1,0 +1,37 @@
+nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+
+#logo {
+  gap: var(--space-sm);
+  width: 44px;
+  height: 66px;
+  aspect-ratio: 2/3;
+  position: relative;
+  border-radius: 12.5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#logo-image {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  align-items: center;
+  justify-items: center;
+  display: flex;
+}
+
+#logo-container {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+#logo-container h2 {
+  font-family: var(--logo-font);
+}

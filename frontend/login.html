@@ -4,69 +4,176 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MovuLogin</title>
-  <link rel="stylesheet" href="login.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Allerta+Stencil&display=swap" rel="stylesheet">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="icon" href="assets/img/logomovu.png" type="image/x-icon">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Allerta+Stencil&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
-    rel="stylesheet">
+
+  <title>MOVU | Login</title>
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/login.css">
+  <link rel="icon" href="assets/img/logomovu.png" type="image/png">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 
-<body>
-  <div class="container" id="container">
-    <section class="form-container login">
-      <form action="">
-        <h1>Iniciar Sesion</h1>
-        <div class="Social-icons">
-          <i class="fab fa-facebook-f"></i>
-          <i class="fab fa-twitter"></i>
-          <i class="fab fa-google-plus-g"></i>
-        </div>
-        <p>o</p>
-        <input type="text" placeholder="Ingrese su correo">
-        <input type="password" placeholder="Ingrese su contraseña">
-        <a href="#">Forgot your password?</a>
 
-        <button type="submit">Iniciar Sesion</button>
+<body>
+
+  <div class="container" id="container">
+
+
+    <!-- =========================
+             LOGIN
+        ========================== -->
+
+    <section class="form-container login">
+
+      <form id="login-form">
+
+        <h1>Iniciar Sesión</h1>
+
+
+        <div class="social-icons">
+
+          <a href="#" aria-label="Facebook">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+
+          <a href="#" aria-label="Twitter">
+            <i class="fab fa-twitter"></i>
+          </a>
+
+          <a href="#" aria-label="Google">
+            <i class="fab fa-google"></i>
+          </a>
+
+        </div>
+
+
+        <p>o</p>
+
+
+        <input type="email" id="login-email" placeholder="Ingrese su correo" required>
+
+
+        <input type="password" id="login-password" placeholder="Ingrese su contraseña" required>
+
+
+        <a href="#" id="forgot-password">
+          ¿Olvidaste tu contraseña?
+        </a>
+
+
+        <button type="submit">
+          Iniciar Sesión
+        </button>
 
       </form>
-    </section>
-  </div>
-  <section class="form-container signup">
-    <form action="">
-      <h1>Crear Cuenta</h1>
-      <div class="Social-icons">
-        <i class="fab fa-facebook-f"></i>
-        <i class="fab fa-twitter"></i>
-        <i class="fab fa-google-plus-g"></i>
-      </div>
-      <p>o</p>
-      <input type="text" placeholder="Ingrese su correo">
-      <input type="password" placeholder="Ingrese su contraseña">
-      <button type="submit">Crear Cuenta</button>
-    </form>
 
-  </section>
-  <div class="toggle-container">
-    <div class="toggle">
-      <div class="toggle-panel toggle-left">
-        <h1>¿Tienes una cuenta?</h1>
-        <p>Inicia Sesion en tu cuenta.</p>
-        <button id="login" class="hidden">Iniciar Sesion</button>
+    </section>
+
+
+
+    <!-- =========================
+             SIGN UP
+        ========================== -->
+
+    <section class="form-container signup">
+
+      <form id="signup-form">
+
+        <h1>Crear Cuenta</h1>
+
+
+        <div class="social-icons">
+
+          <a href="#" aria-label="Facebook">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+
+          <a href="#" aria-label="Twitter">
+            <i class="fab fa-twitter"></i>
+          </a>
+
+          <a href="#" aria-label="Google">
+            <i class="fab fa-google"></i>
+          </a>
+
+        </div>
+
+
+        <p>o</p>
+
+
+        <input type="email" id="signup-email" placeholder="Ingrese su correo" required>
+
+
+        <input type="password" id="signup-password" placeholder="Ingrese su contraseña" required>
+
+
+        <button type="submit">
+          Crear Cuenta
+        </button>
+
+      </form>
+
+    </section>
+
+
+
+    <!-- =========================
+             TOGGLE
+        ========================== -->
+
+    <div class="toggle-container">
+
+      <div class="toggle">
+
+
+        <!-- LOGIN PANEL -->
+
+        <div class="toggle-panel toggle-left">
+
+          <h1>¿Tienes una cuenta?</h1>
+
+          <p>
+            Inicia sesión en tu cuenta.
+          </p>
+
+          <button id="login" class="hidden" type="button">
+            Iniciar Sesión
+          </button>
+
+        </div>
+
+
+
+        <!-- SIGN UP PANEL -->
+
+        <div class="toggle-panel toggle-right">
+
+          <h1>¿No tienes una cuenta?</h1>
+
+          <p>
+            Crea una cuenta.
+          </p>
+
+          <button id="signup" class="hidden" type="button">
+            Crear Cuenta
+          </button>
+
+        </div>
+
+
       </div>
-      <div class="toggle-panel toggle-right">
-        <h1>¿No tienes una cuenta?</h1>
-        <p>Crear cuenta.</p>
-        <button id="signup" class="hidden">Crear Cuenta</button>
-      </div>
+
     </div>
+
+
   </div>
-  </div>
+
+
+  <!-- JavaScript -->
+
+  <script src="js/login.js"></script>
 
 </body>
 

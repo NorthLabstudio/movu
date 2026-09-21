@@ -7,7 +7,7 @@
   --tertiary-color: #006A67;
   --acent-color: #065084;
   --main-font: 'Allerta Stencil', sans-serif;
-  --secondary-font: 'Nunito', sans-serif;
+  --primary-font: 'Nunito', sans-serif;
 }
 
 * {
@@ -48,32 +48,32 @@ h2 {
 }
 
 h3 {
-  font-family: var(--secondary-font);
+  font-family: var(--primary-font);
   font-size: 24px;
   font-style: normal;
   font-weight: 400;
 }
 
 h4 {
-  font-family: var(--secondary-font);
+  font-family: var(--primary-font);
   font-size: 20px;
   font-style: normal;
   font-weight: 400;
 }
 
 h5 {
-  font-family: var(--secondary-font);
+  font-family: var(--primary-font);
 }
 
 p {
-  font-family: var(--secondary-font);
+  font-family: var(--primary-font);
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
 }
 
 span {
-  font-family: var(--secondary-font);
+  font-family: var(--primary-font);
 }
 
 @media (max-width:1250px) {
