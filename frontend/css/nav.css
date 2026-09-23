@@ -2,6 +2,13 @@ nav {
   display: flex;
   align-items: center;
   gap: var(--space-md);
+  background-color: var(--color-primary);
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  color: var(--white);
+  justify-content: space-between;
+  width: 100%;
 }
 
 
@@ -34,4 +41,14 @@ nav {
 
 #logo-container h2 {
   font-family: var(--logo-font);
+}
+
+a {
+  text-decoration: none;
+}
+
+.close-btn {
+  color: var(--white);
+  background-color: transparent;
+  cursor: pointer;
 }

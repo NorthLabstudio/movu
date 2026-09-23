@@ -1,76 +1,60 @@
 .card {
   background-color: var(--white);
-
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-
   box-shadow: var(--shadow-sm);
 }
 
-
-/* =========================================================
-   STATUS
-========================================================= */
+/*Stats */
 
 .status {
   display: inline-flex;
   align-items: center;
-
   font-size: 13px;
   font-weight: 800;
 }
 
 .status::before {
   content: "";
-
   width: 7px;
   height: 7px;
-
   margin-right: 6px;
-
   border-radius: 50%;
 }
 
 .status-active {
-  color: var(--movu-teal);
+  color: var(--color-secondary);
 }
 
 .status-active::before {
-  background-color: var(--movu-teal);
+  background-color: var(--color-secondary);
 }
 
 .status-info {
-  color: var(--movu-blue);
+  color: var(--color-primary);
 }
 
 .status-info::before {
-  background-color: var(--movu-blue);
+  background-color: var(--color-primary);
 }
 
 .status-smart {
-  color: var(--movu-purple);
+  color: var(--color-smart);
 }
 
 .status-smart::before {
-  background-color: var(--movu-purple);
+  background-color: var(--color-smart);
 }
 
-
-/* =========================================================
-   FORM ELEMENTS
-========================================================= */
 
 input,
 select,
 textarea {
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
-
   background-color: var(--white);
   color: var(--text);
-
   outline: none;
-
   transition:
     border-color 0.2s ease,
     box-shadow 0.2s ease;
@@ -79,21 +63,15 @@ textarea {
 input:focus,
 select:focus,
 textarea:focus {
-  border-color: var(--movu-blue);
-
-  box-shadow:
-    0 0 0 3px rgba(6, 80, 132, 0.12);
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-sm);
 }
 
 input::placeholder,
 textarea::placeholder {
-  color: #888888;
+  color: var(--text-muted);
 }
 
-
-/* =========================================================
-   RESPONSIVE TYPOGRAPHY
-========================================================= */
 
 @media (max-width: 700px) {
 
@@ -146,9 +124,7 @@ textarea::placeholder {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   gap: var(--space-lg);
-
   margin-bottom: var(--space-2xl);
 }
 
@@ -158,9 +134,7 @@ textarea::placeholder {
 }
 
 
-/* =========================================================
-   SEARCH
-========================================================= */
+/*Search*/
 
 .bussearch {
   width: 100%;
@@ -226,7 +200,6 @@ textarea::placeholder {
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-md);
   width: 100%;
-  margin-top: var(--space-lg);
 }
 
 .stat-item {
@@ -245,44 +218,36 @@ textarea::placeholder {
 .stat-label {
   font-size: 14px;
   font-weight: 600;
-
   color: var(--text-muted);
 }
 
 .stat-value {
   font-size: 30px;
   line-height: 1;
-
   font-weight: 800;
-
-  color: var(--movu-navy);
+  color: var(--color-primary);
 }
 
 .stat-item.active .stat-value {
-  color: var(--movu-teal);
+  color: var(--color-secondary);
 }
 
 .stat-item.smart .stat-value {
-  color: var(--movu-purple);
+  color: var(--color-smart);
 }
 
 .stat-description {
   font-size: 13px;
-
   color: var(--text-muted);
 }
 
-
-/* =========================================================
-   SECTION HEADER
-========================================================= */
 
 .section-header {
   display: flex;
   justify-content: space-between;
   gap: var(--space-sm);
   align-items: center;
-  margin: var(--space-lg);
+  margin: var(--space-md);
 }
 
 .section-header h2 {
@@ -290,24 +255,19 @@ textarea::placeholder {
 }
 
 .section-header a {
-  color: var(--movu-blue);
-
+  color: var(--color-primary);
   font-size: 14px;
   font-weight: 700;
-
   text-decoration: none;
-
   transition: color 0.2s ease;
 }
 
 .section-header a:hover {
-  color: var(--movu-navy);
+  color: var(--color-secondary);
 }
 
 
-/* =========================================================
-   FAVORITE ROUTES
-========================================================= */
+/* Favorite routes */
 
 #rutas-favoritas {
   margin-bottom: var(--space-3xl);
@@ -315,15 +275,11 @@ textarea::placeholder {
 
 .card-routegrid {
   display: grid;
-
   grid-template-columns: repeat(3, 1fr);
-
   gap: var(--space-lg);
 }
 
-/* =========================================================
-   RECENT ROUTES
-========================================================= */
+/* Recent routes*/
 
 .recientes {
   margin-bottom: var(--space-3xl);
@@ -332,7 +288,6 @@ textarea::placeholder {
 .recentlist {
   display: flex;
   flex-direction: column;
-
   gap: var(--space-sm);
 }
 
@@ -349,7 +304,6 @@ textarea::placeholder {
 .recent-item .card-back {
   min-height: 190px;
   height: auto;
-
   padding: 20px;
 }
 
@@ -360,8 +314,7 @@ textarea::placeholder {
 .recent-item .cardmain {
   flex-direction: row;
   align-items: center;
-
-  gap: 10px;
+  gap: var(--space-sm);
 }
 
 .recent-item .company-name {
@@ -380,14 +333,11 @@ textarea::placeholder {
 
 .recent-item .card-front>button {
   width: auto;
-
   padding: 10px 20px;
 }
 
 
-/* =========================================================
-   NEWS / NOVELTIES
-========================================================= */
+/* News o novedades*/
 
 #novedades {
   margin-bottom: var(--space-3xl);
@@ -395,56 +345,40 @@ textarea::placeholder {
 
 .newslist {
   display: grid;
-
   grid-template-columns: 1fr auto;
-
   gap: 6px var(--space-lg);
-
   padding: var(--space-lg);
-
   background-color: var(--white);
-
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-
   box-shadow: var(--shadow-sm);
 }
 
 .news-title {
   font-size: 15px;
   font-weight: 800;
-
   color: var(--text);
 }
 
 .news-type {
   font-size: 12px;
   font-weight: 700;
-
-  color: var(--movu-blue);
+  color: var(--color-primary);
 }
 
 .news-date {
   grid-column: 2;
   grid-row: 1 / span 2;
-
   align-self: center;
-
   font-size: 12px;
-
   color: var(--text-muted);
 }
 
 .news-description {
   font-size: 13px;
-
   color: var(--text-muted);
 }
 
-
-/* =========================================================
-   RESPONSIVE — TABLET
-========================================================= */
 
 @media (max-width: 1000px) {
 
@@ -461,16 +395,10 @@ textarea::placeholder {
   }
 }
 
-
-/* =========================================================
-   RESPONSIVE — MOBILE
-========================================================= */
-
 @media (max-width: 700px) {
 
   .dashboard {
     width: min(100% - 32px, 600px);
-
     padding: 32px 0 60px;
   }
 
@@ -488,7 +416,6 @@ textarea::placeholder {
   .searchbox {
     flex-direction: column;
     align-items: stretch;
-
     padding: 6px;
   }
 
@@ -498,9 +425,7 @@ textarea::placeholder {
 
   .searchbox button {
     width: 100%;
-
     margin: 0;
-
     height: 44px;
   }
 
@@ -535,15 +460,9 @@ textarea::placeholder {
   .news-date {
     grid-column: auto;
     grid-row: auto;
-
     margin-top: 4px;
   }
 }
-
-
-/* =========================================================
-   RESPONSIVE — SMALL MOBILE
-========================================================= */
 
 @media (max-width: 450px) {
 
