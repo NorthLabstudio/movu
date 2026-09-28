@@ -126,9 +126,11 @@
   gap: 7px;
 }
 
-.filter>button {
+select {
   padding: 0;
-  border: none;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  height: 52px;
   background: transparent;
   text-align: left;
   font-family: var(--primary-font);
@@ -168,7 +170,7 @@
   color: var(--text);
 }
 
-.directory-container {
+.company-container {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;

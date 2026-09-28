@@ -32,27 +32,23 @@
         <div class="search-box">
           <input type="text" id="origen" placeholder="Origen">
           <input type="text" id="destino" placeholder="Destino">
-          <input type="datetime-local" id="fecha" placeholder="Fecha y hora de salida">
+          <input type="datetime-local" id="fechaHora" placeholder="Fecha y hora de salida">
           <div class="filter">
-            <button>Empresa</button>
-            <select class="category-select">
+            <select class="empresaSelect" id="empresaSelect">
+              <option value="all">Todas categorías</option>
+              <option value="1">Coolitoral</option>
+              <option value="2">Categoría 2</option>
+              <option value="3">Categoría 3</option>
+            </select>
+          </div>
+          <div class="filter">
+            <select class="UniversidadSelect" id="UniversidadSelect">
               <option value="all">Todas categorías</option>
               <option value="1">Categoría 1</option>
               <option value="2">Categoría 2</option>
               <option value="3">Categoría 3</option>
             </select>
           </div>
-          <div class="filter">
-            <button>Destino</button>
-            <select class="category-select">
-              <option value="all">Todas categorías</option>
-              <option value="1">Categoría 1</option>
-              <option value="2">Categoría 2</option>
-              <option value="3">Categoría 3</option>
-            </select>
-          </div>
-
-
           <input type="search" id="search-input" placeholder="Buscar rutas, empresa o destino">
           <button id="search-button">Buscar</button>
         </div>
@@ -62,19 +58,18 @@
     <!-- rutas en forma de cards(las cards se voltean) con su informacion visible, separado o divididos por empresa, como transmetro, colitoral, etc-->
     <section id="rutas-directory">
       <h2>Rutas</h2>
-      <div class="directory-container">
+      <div class="company-container">
         <!-- rutas de empresa 1 -->
         <div class="company-section">
           <span class="company-name">Empresa 1</span>
         </div>
         <!-- cards de empresa 1 -->
-
         <div class="route-grid">
           <article class="route-card">
             <div class="card-inner">
               <!--front of card-->
               <div class="card-front">
-                <div class="topcard">
+                <div class="top-card">
                   <span class="buscode">B1</span>
                   <span class="busstatus">Activo</span>
                 </div>
@@ -93,7 +88,7 @@
               </div>
               <!--Back of card card-->
               <div class="card-back">
-                <div class="Busstops">
+                <div class="busstops">
                   <div class="stop">
                     <span class="Origen">Lugar Salida</span>
                   </div>
@@ -123,3 +118,7 @@
   <footer>
     <p>&copy; 2023 Movu. Todos los derechos reservados.</p>
   </footer>
+  <script src="js/catalogo.js"></script>
+</body>
+
+</html>
