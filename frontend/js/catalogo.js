@@ -1,244 +1,111 @@
-/* =========================================================
-   ELEMENTOS DE FILTROS
-========================================================= */
 
-// Select de empresa
-const empresaSelect = document.getElementById("empresaSelect");
-
-// Inputs de origen y destino
 const origenInput = document.getElementById("origen");
 const destinoInput = document.getElementById("destino");
+const cards = document.querySelectorAll(".route-card");
+const searchBtn = document.getElementById("search-button");
 
-// Select de universidad
+// Empresa y universidad
+const empresaSelect = document.getElementById("empresaSelect");
 const universidadSelect = document.getElementById("UniversidadSelect");
+const seccionesEmpresa = document.querySelectorAll(".company-container");
 
-// Fecha y hora
-const fechaHora = document.getElementById("fechaHora");
-
-// Buscador
 const searchInput = document.getElementById("search-input");
-const searchButton = document.getElementById("search-button");
 
+searchBtn.addEventListener("click", function () {
 
-/* =========================================================
-   CARDS DE RUTAS
-========================================================= */
+  const origenBuscado = origenInput.value.trim().toLowerCase();
+  const destinoBuscado = destinoInput.value.trim().toLowerCase();
 
-// Seleccionamos todas las cards
-const routeCards = document.querySelectorAll(".route-card");
+  const textoBuscado = searchInput.value.trim().toLowerCase();
 
-// Contenedor de las cards
-const routeGrid = document.querySelector(".route-grid");
+  const empresaBuscada = empresaSelect.value === "all"
+    ? ""
+    : empresaSelect.value.trim().toLowerCase();
 
+  const universidadBuscada = universidadSelect.value === "all"
+    ? ""
+    : universidadSelect.value.trim().toLowerCase();
 
-/* =========================================================
-   FILTRAR RUTAS
-========================================================= */
+  // Recorremos cada sección de empresa
+  seccionesEmpresa.forEach(function (seccion) {
 
-function filtrarRutas() {
-
-  const empresaSeleccionada = empresaSelect.value;
-
-  const origenBuscado = origenInput.value
-    .toLowerCase()
-    .trim();
-
-  const destinoBuscado = destinoInput.value
-    .toLowerCase()
-    .trim();
-
-  const universidadSeleccionada = universidadSelect.value;
-
-  const textoBuscado = searchInput.value
-    .toLowerCase()
-    .trim();
-
-
-  // Revisamos cada card
-  routeCards.forEach(function (card) {
-
-    const empresa = card
-      .querySelector(".company-name")
-      .textContent
-      .toLowerCase()
-      .trim();
-
-    const origen = card
-      .querySelector(".origen")
-      .textContent
-      .toLowerCase()
-      .trim();
-
-    const destino = card
-      .querySelector(".destino")
-      .textContent
-      .toLowerCase()
-      .trim();
-
-
-    /* -----------------------------------------
-       COINCIDENCIA EMPRESA
-    ----------------------------------------- */
+    const nombreEmpresa = seccion
+      .querySelector(".company-section .company-name")
+      .textContent.trim().toLowerCase();
 
     const coincideEmpresa =
-      empresaSeleccionada === "all" ||
-      empresa.includes(empresaSeleccionada.toLowerCase());
+      empresaBuscada === "" ||
+      nombreEmpresa.includes(empresaBuscada);
 
+    // Filtramos únicamente las tarjetas de esta sección
+    const tarjetas = seccion.querySelectorAll(".route-card");
+    let hayTarjetasVisibles = false;
 
-    /* -----------------------------------------
-       COINCIDENCIA ORIGEN
-    ----------------------------------------- */
+    tarjetas.forEach(function (card) {
 
-    const coincideOrigen =
-      origenBuscado === "" ||
-      origen.includes(origenBuscado);
+      const cardOrigen = card.querySelector(".cardmain .origen");
+      const cardDestino = card.querySelector(".cardmain .destino");
+      const paradas = card.querySelector(".busstops");
 
+      const origenRuta = cardOrigen.textContent.trim().toLowerCase();
+      const destinoRuta = cardDestino.textContent.trim().toLowerCase();
+      const universidadesRuta = paradas.textContent.toLowerCase();
 
-    /* -----------------------------------------
-       COINCIDENCIA DESTINO
-    ----------------------------------------- */
+      const coincideOrigen = origenRuta.includes(origenBuscado);
+      const coincideDestino = destinoRuta.includes(destinoBuscado);
 
-    const coincideDestino =
-      destinoBuscado === "" ||
-      destino.includes(destinoBuscado);
+      const codigoRuta = card.querySelector(".buscode");
+      const empresaTarjeta = card.querySelector(".cardmain .company-name");
 
+      const codigo = codigoRuta
+        ? codigoRuta.textContent.trim().toLowerCase()
+        : "";
 
-    /* -----------------------------------------
-       COINCIDENCIA BÚSQUEDA GENERAL
-    ----------------------------------------- */
+      const empresa = empresaTarjeta
+        ? empresaTarjeta.textContent.trim().toLowerCase()
+        : "";
 
-    const coincideBusqueda =
-      textoBuscado === "" ||
-      card.textContent.toLowerCase().includes(textoBuscado);
+      const textoOrigen = cardOrigen.textContent.trim().toLowerCase();
+      const textoDestino = cardDestino.textContent.trim().toLowerCase();
 
+      const textoParadas = paradas
+        ? paradas.textContent.trim().toLowerCase()
+        : "";
 
-    /* -----------------------------------------
-       UNIVERSIDAD
-       
-       Todavía no tenemos universidad asociada
-       a cada card, por eso por ahora solo
-       comprobamos "all".
-    ----------------------------------------- */
+      const coincideBusqueda =
+        textoBuscado === "" ||
+        codigo.includes(textoBuscado) ||
+        empresa.includes(textoBuscado) ||
+        textoOrigen.includes(textoBuscado) ||
+        textoDestino.includes(textoBuscado) ||
+        textoParadas.includes(textoBuscado);
 
-    const coincideUniversidad =
-      universidadSeleccionada === "all";
+      const coincideUniversidad =
+        universidadBuscada === "" ||
+        universidadesRuta.includes(universidadBuscada);
 
+      const mostrarTarjeta =
+        coincideOrigen &&
+        coincideDestino &&
+        coincideUniversidad
+        &&
+        coincideBusqueda;
 
-    /* -----------------------------------------
-       RESULTADO FINAL
-    ----------------------------------------- */
+      card.style.display = mostrarTarjeta ? "" : "none";
 
-    const mostrar =
-      coincideEmpresa &&
-      coincideOrigen &&
-      coincideDestino &&
-      coincideBusqueda &&
-      coincideUniversidad;
+      if (mostrarTarjeta) {
+        hayTarjetasVisibles = true;
+      }
 
+    });
 
-    if (mostrar) {
-      card.style.display = "";
+    // Mostramos la sección solo si coincide la empresa
+    // y tiene al menos una tarjeta que cumple los filtros
+    if (coincideEmpresa && hayTarjetasVisibles) {
+      seccion.style.display = "";
     } else {
-      card.style.display = "none";
+      seccion.style.display = "none";
     }
-
-  });
-
-}
-
-
-/* =========================================================
-   EVENTOS DE FILTROS
-========================================================= */
-
-empresaSelect.addEventListener("change", filtrarRutas);
-
-origenInput.addEventListener("input", filtrarRutas);
-
-destinoInput.addEventListener("input", filtrarRutas);
-
-universidadSelect.addEventListener("change", filtrarRutas);
-
-fechaHora.addEventListener("change", filtrarRutas);
-
-searchInput.addEventListener("input", filtrarRutas);
-
-searchButton.addEventListener("click", filtrarRutas);
-
-
-/* =========================================================
-   GIRAR CARDS
-========================================================= */
-
-// Recorremos todas las cards
-routeCards.forEach((card) => {
-
-  card.addEventListener("click", (event) => {
-
-    /*
-      Si hacemos clic en un botón,
-      dejamos que ese botón maneje
-      su propio comportamiento.
-    */
-
-    if (event.target.closest("button")) {
-      return;
-    }
-
-
-    // Giramos la card
-    card.classList.toggle("is-flipped");
-
-  });
-
-});
-
-
-/* =========================================================
-   BOTÓN "VER RECORRIDO"
-========================================================= */
-
-const recorridoButtons =
-  document.querySelectorAll(".card-front > button");
-
-
-recorridoButtons.forEach((button) => {
-
-  button.addEventListener("click", (event) => {
-
-    // Evitamos que el clic llegue a la card
-    event.stopPropagation();
-
-
-    // Buscamos la card correspondiente
-    const card = button.closest(".route-card");
-
-
-    // Giramos la card
-    card.classList.toggle("is-flipped");
-
-  });
-
-});
-
-
-/* =========================================================
-   BOTÓN "VER RUTA COMPLETA"
-========================================================= */
-
-const mapButtons =
-  document.querySelectorAll(".map-btn");
-
-
-mapButtons.forEach((button) => {
-
-  button.addEventListener("click", (event) => {
-
-    // Evitamos que la card vuelva a girar
-    event.stopPropagation();
-
-
-    console.log("Abrir mapa de la ruta");
 
   });
 

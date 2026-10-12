@@ -32,21 +32,20 @@
         <div class="search-box">
           <input type="text" id="origen" placeholder="Origen">
           <input type="text" id="destino" placeholder="Destino">
-          <input type="datetime-local" id="fechaHora" placeholder="Fecha y hora de salida">
           <div class="filter">
             <select class="empresaSelect" id="empresaSelect">
               <option value="all">Todas categorías</option>
-              <option value="1">Coolitoral</option>
-              <option value="2">Categoría 2</option>
-              <option value="3">Categoría 3</option>
+              <option value="Coolitoral">Coolitoral</option>
+              <option value="Empresa 2">Empresa 2</option>
+              <option value="Empresa 1">Empresa 1</option>
             </select>
           </div>
           <div class="filter">
             <select class="UniversidadSelect" id="UniversidadSelect">
               <option value="all">Todas categorías</option>
-              <option value="1">Categoría 1</option>
-              <option value="2">Categoría 2</option>
-              <option value="3">Categoría 3</option>
+              <option value="Universidad Del Norte">Universidad Del Norte</option>
+              <option value="Universidad Atlantico">Universidad Atlantico</option>
+              <option value="Universidad Metropolitana">Universidad Metropolitana</option>
             </select>
           </div>
           <input type="search" id="search-input" placeholder="Buscar rutas, empresa o destino">
@@ -75,9 +74,9 @@
                 </div>
                 <div class="cardmain">
                   <span class="company-name">Empresa1</span>
-                  <span class="origen">LugarA</span>
+                  <span class="origen">Lugard</span>
                   <span class="icon">→</span>
-                  <span class="destino">LugarB</span>
+                  <span class="destino">Lugarj</span>
                 </div>
                 <div class="cardbottom">
                   <span class="precio">$3.000</span>
@@ -93,10 +92,10 @@
                     <span class="Origen">Lugar Salida</span>
                   </div>
                   <div class="stop">
-                    <span class="parada">parada 1</span>
+                    <span class="parada">Universidad del Norte</span>
                   </div>
                   <div class="stop">
-                    <span class="parada">parada 2</span>
+                    <span class="parada">Universidad Atlantico</span>
                   </div>
                   <div class="stop">
                     <span class="Destino">Lugar Destino</span>
@@ -110,6 +109,7 @@
               </div>
             </div>
           </article>
+
         </div>
       </div>
     </section>
@@ -118,6 +118,8 @@
   <footer>
     <p>&copy; 2023 Movu. Todos los derechos reservados.</p>
   </footer>
+  <script src="js/cards.js"></script>
+
   <script src="js/catalogo.js"></script>
 </body>
 

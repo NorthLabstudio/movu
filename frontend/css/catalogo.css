@@ -170,12 +170,6 @@ select {
   color: var(--text);
 }
 
-.company-container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
 .company-section {
   display: flex;
   align-items: center;
@@ -190,4 +184,10 @@ select {
   font-size: 1.3rem;
   font-weight: 400;
   color: var(--text);
+}
+
+.company-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 }

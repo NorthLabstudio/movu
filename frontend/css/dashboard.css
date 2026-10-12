@@ -128,7 +128,7 @@ textarea::placeholder {
   margin-bottom: var(--space-2xl);
 }
 
-.dashboard-header .username {
+.dashboard-header #username {
   color: var(--color-primary);
   font-weight: 700;
 }
