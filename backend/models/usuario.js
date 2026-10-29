@@ -17,9 +17,20 @@ const usuarioEsquema = new mongoose.Schema({
     unique: true
   },
 
-  contrasena: {
+  contraseña: {
     type: String,
     required: [true, 'La contraseña es obligatoria']
+  },
+  universidad: {
+    type: String,
+    trim: true,
+    default: ''
+  },
+
+  ciudad: {
+    type: String,
+    trim: true,
+    default: ''
   },
 
   rol: {
@@ -39,3 +50,4 @@ const usuarioEsquema = new mongoose.Schema({
 }, { timestamps: true });
 
 module.exports = mongoose.model('Usuario', usuarioEsquema);
+

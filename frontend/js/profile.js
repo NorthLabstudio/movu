@@ -1,0 +1,226 @@
+
+document.addEventListener("DOMContentLoaded", () => {
+  const token = sessionStorage.getItem("movuToken");
+  const usuarioGuardado = sessionStorage.getItem("movuUsuario");
+
+  // Si no hay una sesión iniciada, volver al inicio de sesión.
+  if (!token || !usuarioGuardado) {
+    window.location.href = "index.html";
+    return;
+  }
+
+  try {
+    const usuario = JSON.parse(usuarioGuardado);
+
+    const nombre = document.getElementById("profile-username");
+    const email = document.getElementById("profile-email");
+    const universidad = document.getElementById("nombreUniversidad");
+    const ciudad = document.getElementById("ubicacionUniversidad");
+
+    if (universidad) {
+      universidad.textContent = usuario.universidad || "Sin universidad";
+    }
+
+    if (ciudad) {
+      ciudad.textContent = usuario.ciudad || "";
+    }
+
+    if (nombre) {
+      nombre.textContent = usuario.nombre || "Sin nombre";
+    }
+
+    if (email) {
+      email.textContent = usuario.email || "Sin correo";
+    }
+  } catch (error) {
+    console.error("Error al cargar el perfil:", error);
+
+    sessionStorage.removeItem("movuToken");
+    sessionStorage.removeItem("movuUsuario");
+
+    window.location.href = "index.html";
+    return;
+  }
+
+  // Cerrar sesión.
+  const botonCerrarSesion = document.querySelector(".close-btn");
+
+  if (botonCerrarSesion) {
+    botonCerrarSesion.addEventListener("click", () => {
+      sessionStorage.removeItem("movuToken");
+      sessionStorage.removeItem("movuUsuario");
+
+      window.location.href = "index.html";
+    });
+  }
+});
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const modal = document.getElementById("modal-editar-perfil");
+  const botonEditar = document.getElementById("btn-editar-perfil");
+  const botonCerrar = document.getElementById("btn-cerrar-modal");
+  const botonCancelar = document.getElementById("btn-cancelar-modal");
+  const formulario = document.getElementById("form-editar-perfil");
+
+  const campoNombre = document.getElementById("editar-nombre");
+  const campoEmail = document.getElementById("editar-email");
+  const campoUniversidad = document.getElementById("editar-universidad");
+  const campoCiudad = document.getElementById("editar-ciudad");
+  const mensaje = document.getElementById("mensaje-perfil");
+
+  const usuarioGuardado = sessionStorage.getItem("movuUsuario");
+
+  if (!modal || !botonEditar || !formulario || !usuarioGuardado) {
+    return;
+  }
+
+  let usuario;
+
+  try {
+    usuario = JSON.parse(usuarioGuardado);
+  } catch (error) {
+    console.error("No se pudieron leer los datos del usuario.");
+    return;
+  }
+
+
+  function abrirModal() {
+    campoNombre.value = usuario.nombre || "";
+    campoEmail.value = usuario.email || "";
+    campoUniversidad.value = usuario.universidad || "";
+    campoCiudad.value = usuario.ciudad || "";
+    mensaje.textContent = "";
+
+    modal.classList.add("abierto");
+    modal.setAttribute("aria-hidden", "false");
+    campoNombre.focus();
+  }
+
+  function cerrarModal() {
+    // Quitar el foco del elemento que está dentro del modal.
+    if (modal.contains(document.activeElement)) {
+      document.activeElement.blur();
+    }
+
+    modal.classList.remove("abierto");
+    modal.setAttribute("aria-hidden", "true");
+
+    // Devolver el foco al botón que abrió el modal.
+    botonEditar.focus();
+  }
+
+  botonEditar.addEventListener("click", abrirModal);
+  botonCerrar.addEventListener("click", cerrarModal);
+  botonCancelar.addEventListener("click", cerrarModal);
+
+  modal.addEventListener("click", (event) => {
+    if (event.target === modal) {
+      cerrarModal();
+    }
+  });
+
+
+  formulario.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const nombreNuevo = campoNombre.value.trim();
+    const emailNuevo = campoEmail.value.trim();
+
+    if (nombreNuevo.length < 2) {
+      mensaje.textContent = "El nombre debe tener al menos 2 caracteres.";
+      return;
+    }
+
+    if (!campoEmail.checkValidity()) {
+      mensaje.textContent = "Escribe un correo electrónico válido.";
+      return;
+    }
+
+    usuario.nombre = nombreNuevo;
+    usuario.email = emailNuevo;
+    usuario.universidad = campoUniversidad.value.trim();
+    usuario.ciudad = campoCiudad.value.trim();
+
+
+    // Obtener el token de la sesión actual.
+    const tokenActual = sessionStorage.getItem("movuToken");
+
+    if (!tokenActual) {
+      mensaje.textContent = "Tu sesión expiró. Inicia sesión nuevamente.";
+      return;
+    }
+
+    try {
+      // Enviar los cambios al backend.
+      const respuesta = await fetch("http://localhost:3000/api/auth/perfil", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${tokenActual}`
+        },
+        body: JSON.stringify({
+          nombre: nombreNuevo,
+          email: emailNuevo,
+          universidad: campoUniversidad.value.trim(),
+          ciudad: campoCiudad.value.trim()
+        })
+      });
+
+      const datos = await respuesta.json().catch(() => ({}));
+
+      // Si el backend rechaza los cambios, mostrarlos sin cerrar el modal.
+
+      if (!respuesta.ok) {
+        if (respuesta.status === 409) {
+          mensaje.textContent = "⚠️ Este correo ya está registrado. Prueba con otro.";
+        } else {
+          mensaje.textContent =
+            datos.mensaje || `No se pudieron guardar los cambios (${respuesta.status}).`;
+        }
+
+        return;
+      }
+
+
+
+      // Actualizar la sesión solamente después de confirmar el guardado.
+      usuario = datos.usuario;
+      sessionStorage.setItem("movuUsuario", JSON.stringify(usuario));
+
+      // Actualizar los datos visibles del perfil.
+      const elementoNombre = document.getElementById("profile-username");
+      const elementoEmail = document.getElementById("profile-email");
+      const elementoUniversidad = document.getElementById("nombreUniversidad");
+      const elementoCiudad = document.getElementById("ubicacionUniversidad");
+
+      if (elementoNombre) {
+        elementoNombre.textContent = usuario.nombre || "Sin nombre";
+      }
+
+      if (elementoEmail) {
+        elementoEmail.textContent = usuario.email || "Sin correo";
+      }
+
+      if (elementoUniversidad) {
+        elementoUniversidad.textContent = usuario.universidad || "";
+      }
+
+      if (elementoCiudad) {
+        elementoCiudad.textContent = usuario.ciudad || "";
+      }
+
+      mensaje.textContent = "Perfil actualizado correctamente.";
+      cerrarModal();
+
+    } catch (error) {
+      console.error("Error al guardar el perfil:", error);
+      mensaje.textContent =
+        "No se pudo conectar con el servidor. Revisa la conexión e inténtalo nuevamente.";
+    }
+
+
+    mensaje.textContent = "Cambios actualizados correctamente.";
+    cerrarModal();
+  });
+});

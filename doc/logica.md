@@ -7,6 +7,13 @@ Inicialmente enfocada en Barranquilla, Colombia, la plataforma reúne informaci�
 
 Además, Movu incorpora un asistente inteligente que ayuda a resolver dudas sobre rutas y alternativas de transporte, buscando reducir la incertidumbre y mejorar la experiencia de movilidad urbana.
 
+
+# checklist
+- admin
+- rutas
+- guardado
+- actu dashboard
+
 ## Flujo Principal: 
 1. El usuario ingresa a la plataforma.
 2. El usuario consulta rutas de buses.

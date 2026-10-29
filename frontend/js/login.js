@@ -36,15 +36,15 @@ document.addEventListener("DOMContentLoaded", () => {
   // LOGIN
   // =========================
 
+
   if (loginForm) {
-    loginForm.addEventListener("submit", (event) => {
+    loginForm.addEventListener("submit", async (event) => {
 
       event.preventDefault();
 
       const email = document.getElementById("login-email").value.trim();
       const password = document.getElementById("login-password").value.trim();
 
-
       // Basic validation
 
       if (email === "" || password === "") {
@@ -57,46 +57,62 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-
-      // Temporary login
-
-      console.log("Login:", {
-        email: email,
-        password: password
-      });
-
-      alert("Inicio de sesión correcto.");
-
-      /*
-        SUPABASE WILL GO HERE LATER.
-
-        Example:
-
-        const { data, error } = await supabase.auth.signInWithPassword({
-          email: email,
-          password: password
+      // Conexión con el backend
+      try {
+        const respuesta = await fetch("http://localhost:3000/api/auth/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            email: email,
+            contraseña: password
+          })
         });
-      */
+
+        const datos = await respuesta.json();
+
+        if (!respuesta.ok) {
+          alert(datos.mensaje || "No se pudo iniciar sesión.");
+          return;
+        }
+
+        // Guardar la sesión del usuario
+        sessionStorage.setItem("movuToken", datos.token);
+        sessionStorage.setItem("movuUsuario", JSON.stringify(datos.usuario));
+
+        // Ir al dashboard
+        if (datos.usuario.rol === "admin") {
+          window.location.href = "admin/admin.html";
+        } else {
+          window.location.href = "dashboard.html";
+        }
+
+      } catch (error) {
+        console.error("Error al iniciar sesión:", error);
+        alert("No se pudo conectar con el servidor.");
+      }
+
     });
   }
+
+
 
 
   // =========================
   // SIGN UP
   // =========================
 
-  if (signupForm) {
-    signupForm.addEventListener("submit", (event) => {
 
+  if (signupForm) {
+    signupForm.addEventListener("submit", async (event) => {
       event.preventDefault();
 
+      const nombre = document.getElementById("name").value.trim();
       const email = document.getElementById("signup-email").value.trim();
-      const password = document.getElementById("signup-password").value.trim();
+      const contraseña = document.getElementById("signup-password").value;
 
-
-      // Basic validation
-
-      if (email === "" || password === "") {
+      if (!nombre || !email || !contraseña) {
         alert("Por favor, completa todos los campos.");
         return;
       }
@@ -106,62 +122,45 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      if (password.length < 6) {
-        alert("La contraseña debe tener al menos 6 caracteres.");
+      if (contraseña.length < 8) {
+        alert("La contraseña debe tener al menos 8 caracteres.");
         return;
       }
 
+      try {
+        const respuesta = await fetch("http://localhost:3000/api/auth/registro", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            nombre: nombre,
+            email: email,
+            contraseña: contraseña
+          })
+        });
 
-      // Temporary account creation
+        const datos = await respuesta.json();
 
-      console.log("Sign up:", {
-        email: email,
-        password: password
-      });
+        if (!respuesta.ok) {
+          alert(datos.mensaje || "No se pudo crear la cuenta.");
+          return;
+        }
 
-      alert("Cuenta creada correctamente.");
+        // Guardar la sesión del usuario
+        sessionStorage.setItem("movuToken", datos.token);
+        sessionStorage.setItem("movuUsuario", JSON.stringify(datos.usuario));
 
-      // Return to login
+        // Ir al dashboard
+        window.location.href = "dashboard.html";
 
-      container.classList.remove("active");
-
-      signupForm.reset();
+      } catch (error) {
+        console.error("Error al registrar:", error);
+        alert("No se pudo conectar con el servidor. Verifica que el backend esté funcionando.");
+      }
     });
   }
 
-
-  // =========================
-  // FORGOT PASSWORD
-  // =========================
-
-  if (forgotPassword) {
-    forgotPassword.addEventListener("click", (event) => {
-
-      event.preventDefault();
-
-      const email = document.getElementById("login-email").value.trim();
-
-      if (email === "") {
-        alert("Ingresa tu correo primero.");
-        return;
-      }
-
-      if (!isValidEmail(email)) {
-        alert("Por favor, ingresa un correo válido.");
-        return;
-      }
-
-      alert(`Te enviaremos un enlace para recuperar tu contraseña a ${email}.`);
-
-      /*
-        SUPABASE PASSWORD RESET WILL GO HERE LATER.
-
-        Example:
-
-        await supabase.auth.resetPasswordForEmail(email);
-      */
-    });
-  }
 
 
   // =========================

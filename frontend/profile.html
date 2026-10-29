@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <meta charset="UTF-8">
@@ -23,6 +23,7 @@
         </div>
         <h2>Movu</h2>
       </div>
+      <a href="dashboard.html" class="link">Dashboard</a>
       <a href="catalogo.html" class="link">Directorio</a>
       <div>
         <a href="profile.html" class="link">Perfil</a>
@@ -32,25 +33,61 @@
   </header>
   <main id="profile-main">
     <section id="profile-header">
-      <div id="profile-headerimg">
-        <img src="https://example.com/avatar.jpg" alt="Avatar">
-      </div>
       <div id="profile-header-right">
         <h1>Mi Cuenta</h1>
-        <p>Nombre de Usuario: usuario123</p>
-        <p>Email: usuario@example.com</p>
+        <p>Nombre de usuario: <span id="profile-username">Cargando...</span></p>
+        <p>Email: <span id="profile-email">Cargando...</span></p>
       </div>
       <div id="profileedit">
-        <button>Editar Perfil</button>
+        <button type="button" id="btn-editar-perfil">Editar perfil</button>
       </div>
+
+      <!-- Modal para editar el perfil -->
+      <div id="modal-editar-perfil" class="modal" aria-hidden="true">
+        <div class="modal-contenido" role="dialog" aria-modal="true" aria-labelledby="titulo-modal">
+          <button type="button" id="btn-cerrar-modal" class="modal-cerrar" aria-label="Cerrar">
+            &times;
+          </button>
+
+          <h2 id="titulo-modal">Editar perfil</h2>
+          <p>Actualiza tu información personal y académica.</p>
+
+          <form id="form-editar-perfil">
+            <label for="editar-nombre">Nombre completo</label>
+            <input type="text" id="editar-nombre" name="nombre" minlength="2" required>
+
+            <label for="editar-email">Correo electrónico</label>
+            <input type="email" id="editar-email" name="email" required>
+
+            <hr>
+
+            <h3>Información académica</h3>
+
+            <label for="editar-universidad">Universidad o institución</label>
+            <input type="text" id="editar-universidad" name="universidad" placeholder="Ej. Universidad del Norte">
+
+            <label for="editar-ciudad">Ciudad</label>
+            <input type="text" id="editar-ciudad" name="ciudad" placeholder="Ej. Barranquilla">
+
+
+
+            <p id="mensaje-perfil" role="status" aria-live="polite"></p>
+
+            <div class="modal-acciones">
+              <button type="button" id="btn-cancelar-modal">Cancelar</button>
+              <button type="submit" id="btn-guardar-perfil">Guardar cambios</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
     </section>
     <section id="universidad">
       <h2>Mi Universidad</h2>
-      <p>Nombre de la Universidad</p>
-      <p>Localización de la Universidad</p>
-      <button>Editar Universidad</button>
+      <p id="nombreUniversidad">Nombre de la Universidad</p>
+      <p id="ubicacionUniversidad">Localización de la Universidad</p>
     </section>
-    <section id="rutas favoritas">
+    <section id="rutasFavoritas">
       <h2>Rutas Favoritas</h2>
     </section>
     <section id="historial-rutas">
@@ -70,6 +107,7 @@
     </section>
   </main>
   <footer></footer>
+  <script src="js/profile.js"></script>
 
 </body>
 

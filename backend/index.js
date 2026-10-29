@@ -1,9 +1,13 @@
 
 const express = require('express');
 const mongoose = require('mongoose');
-const Usuario = require('./models/usuario');
+const cors = require('cors');
 
 const app = express();
+
+app.use(cors({
+  origin: 'http://127.0.0.1:3000'
+}));
 
 app.use(express.json());
 
@@ -33,6 +37,16 @@ app.get('/api/rutas', async (req, res) => {
       mensaje: 'Error al consultar las rutas'
     });
   }
+});
+app.use('/api/auth', require('./routes/auth'));
+
+const verificarAdmin = require('./middleware/verificarAdmin');
+
+app.get('/api/admin/prueba', verificarAdmin, (req, res) => {
+  res.json({
+    mensaje: 'Acceso de administrador autorizado',
+    usuario: req.usuario.nombre
+  });
 });
 
 app.listen(3000, () => {
