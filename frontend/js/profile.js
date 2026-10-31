@@ -32,6 +32,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if (email) {
       email.textContent = usuario.email || "Sin correo";
     }
+    // Cargar las rutas guardadas en fav
+    cargarFav();
+    // Cargar las rutas guardadas en fav
   } catch (error) {
     console.error("Error al cargar el perfil:", error);
 
@@ -41,6 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
     window.location.href = "index.html";
     return;
   }
+
 
   // Cerrar sesión.
   const botonCerrarSesion = document.querySelector(".close-btn");
@@ -224,3 +228,59 @@ document.addEventListener("DOMContentLoaded", () => {
     cerrarModal();
   });
 });
+/* =========================================================
+   CARGAR RUTAS FAVORITAS DEL USUARIO
+========================================================= */
+
+async function cargarFav() {
+  const contenedor = document.getElementById("fav-container");
+  const token = sessionStorage.getItem("movuToken");
+
+  if (!contenedor) return;
+
+  try {
+    const respuesta = await fetch("http://localhost:3000/api/fav", {
+      method: "GET",
+      headers: {
+        "Authorization": `Bearer ${token}`
+      }
+    });
+
+    const datos = await respuesta.json();
+
+    if (!respuesta.ok) {
+      throw new Error(datos.mensaje || "No se pudieron cargar las rutas.");
+    }
+
+    if (!Array.isArray(datos)) {
+      throw new Error("La API no devolvió una lista de rutas.");
+    }
+
+    if (datos.length === 0) {
+      contenedor.innerHTML = `
+        <p>Aún no tienes rutas guardadas en fav.</p>
+        <a href="catalogo.html">Explorar rutas</a>
+      `;
+      return;
+    }
+
+    // Generar las tarjetas
+    contenedor.innerHTML = datos
+      .map(ruta => crearTarjetaRuta(ruta))
+      .join("");
+
+    // Activar las estrellas de las rutas guardadas
+    contenedor.querySelectorAll(".favorite-btn").forEach(boton => {
+      boton.classList.add("active");
+      boton.setAttribute("aria-pressed", "true");
+      boton.setAttribute("aria-label", "Quitar de fav");
+    });
+
+  } catch (error) {
+    console.error("Error al cargar fav:", error);
+
+    contenedor.innerHTML = `
+      <p>No fue posible cargar tus rutas guardadas.</p>
+    `;
+  }
+}

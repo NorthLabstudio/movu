@@ -6,7 +6,7 @@ const cors = require('cors');
 const app = express();
 
 app.use(cors({
-  origin: 'http://127.0.0.1:3000'
+  origin: 'http://127.0.0.1:3001'
 }));
 
 app.use(express.json());
@@ -40,6 +40,11 @@ app.get('/api/rutas', async (req, res) => {
 });
 app.use('/api/auth', require('./routes/auth'));
 
+app.use('/api/fav', require('./routes/fav'));
+app.get('/api/fav/prueba', (req, res) => {
+  res.json({ mensaje: 'La ruta de fav está funcionando' });
+});
+
 const verificarAdmin = require('./middleware/verificarAdmin');
 
 app.get('/api/admin/prueba', verificarAdmin, (req, res) => {
@@ -47,6 +52,9 @@ app.get('/api/admin/prueba', verificarAdmin, (req, res) => {
     mensaje: 'Acceso de administrador autorizado',
     usuario: req.usuario.nombre
   });
+});
+app.get('/prueba-servidor', (req, res) => {
+  res.send('Este es el servidor correcto');
 });
 
 app.listen(3000, () => {

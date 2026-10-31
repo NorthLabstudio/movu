@@ -45,7 +45,13 @@ const usuarioEsquema = new mongoose.Schema({
   activo: {
     type: Boolean,
     default: true
-  }
+  },
+
+  fav: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Ruta'
+  }]
+
 
 }, { timestamps: true });
 

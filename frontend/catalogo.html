@@ -16,6 +16,22 @@
 <body>
 
   <main>
+    <header>
+      <nav>
+        <div id="logo-container" src="dashboard.html" class="link">
+          <div id="logo-image">
+            <img id="logo" src="assets/img/logomovu.png" alt="Movu">
+          </div>
+          <h2>Movu</h2>
+        </div>
+        <a href="dashboard.html" class="link">Dashboard</a>
+        <a href="catalogo.html" class="link">Directorio</a>
+        <div>
+          <a href="profile.html" class="link">Perfil</a>
+          <button class="close-btn">Cerrar sesión</button>
+        </div>
+      </nav>
+    </header>
     <!--intro-->
     <section class="intro">
       <div class="intro-content">
@@ -32,22 +48,20 @@
         <div class="search-box">
           <input type="text" id="origen" placeholder="Origen">
           <input type="text" id="destino" placeholder="Destino">
+
           <div class="filter">
             <select class="empresaSelect" id="empresaSelect">
-              <option value="all">Todas categorías</option>
-              <option value="Coolitoral">Coolitoral</option>
-              <option value="Empresa 2">Empresa 2</option>
-              <option value="Empresa 1">Empresa 1</option>
+              <option value="all">Todas las empresas</option>
             </select>
           </div>
+
+
           <div class="filter">
             <select class="UniversidadSelect" id="UniversidadSelect">
-              <option value="all">Todas categorías</option>
-              <option value="Universidad Del Norte">Universidad Del Norte</option>
-              <option value="Universidad Atlantico">Universidad Atlantico</option>
-              <option value="Universidad Metropolitana">Universidad Metropolitana</option>
+              <option value="all">Todas las universidades</option>
             </select>
           </div>
+
           <input type="search" id="search-input" placeholder="Buscar rutas, empresa o destino">
           <button id="search-button">Buscar</button>
         </div>
@@ -55,64 +69,14 @@
     </section>
 
     <!-- rutas en forma de cards(las cards se voltean) con su informacion visible, separado o divididos por empresa, como transmetro, colitoral, etc-->
+
     <section id="rutas-directory">
       <h2>Rutas</h2>
-      <div class="company-container">
-        <!-- rutas de empresa 1 -->
-        <div class="company-section">
-          <span class="company-name">Empresa 1</span>
-        </div>
-        <!-- cards de empresa 1 -->
-        <div class="route-grid">
-          <article class="route-card">
-            <div class="card-inner">
-              <!--front of card-->
-              <div class="card-front">
-                <div class="top-card">
-                  <span class="buscode">B1</span>
-                  <span class="busstatus">Activo</span>
-                </div>
-                <div class="cardmain">
-                  <span class="company-name">Empresa1</span>
-                  <span class="origen">Lugard</span>
-                  <span class="icon">→</span>
-                  <span class="destino">Lugarj</span>
-                </div>
-                <div class="cardbottom">
-                  <span class="precio">$3.000</span>
-                  <span class="tiempo">10 minutos</span>
-                  <button type="button" class="favorite-btn" aria-label="Agregar a favoritos">★</button>
-                </div>
-                <button>Ver Recorrido</button>
-              </div>
-              <!--Back of card card-->
-              <div class="card-back">
-                <div class="busstops">
-                  <div class="stop">
-                    <span class="Origen">Lugar Salida</span>
-                  </div>
-                  <div class="stop">
-                    <span class="parada">Universidad del Norte</span>
-                  </div>
-                  <div class="stop">
-                    <span class="parada">Universidad Atlantico</span>
-                  </div>
-                  <div class="stop">
-                    <span class="Destino">Lugar Destino</span>
-                  </div>
-                </div>
-                <div class="cardbottom">
-                  <span class="precio" id="horario"><strong>Horario:</strong> 08:00 - 10:00</span>
-                  <span class="tiempo">10 minutos</span>
-                </div>
-                <button class="map-btn">Ver Ruta completa</button>
-              </div>
-            </div>
-          </article>
-
-        </div>
+      <div id="routes-container">
+        <!-- Las tarjetas se generarán con los datos de MongoDB -->
       </div>
     </section>
+
 
   </main>
   <footer>

@@ -10,9 +10,8 @@ Además, Movu incorpora un asistente inteligente que ayuda a resolver dudas sobr
 
 # checklist
 - admin
-- rutas
-- guardado
-- actu dashboard
+- estilo
+- react
 
 ## Flujo Principal: 
 1. El usuario ingresa a la plataforma.

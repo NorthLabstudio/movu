@@ -7,6 +7,7 @@
   <title>MOVU | MI PERFIL</title>
   <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/nav.css">
+  <link rel="stylesheet" href="css/cards.css">
   <link rel="stylesheet" href="css/profile.css">
   <link rel="icon" href="assets/img/logomovu.png" type="image/x-icon">
   <link
@@ -89,6 +90,10 @@
     </section>
     <section id="rutasFavoritas">
       <h2>Rutas Favoritas</h2>
+
+      <div id="fav-container" class="route-grid">
+        <!-- Las rutas guardadas se cargarán desde MongoDB -->
+      </div>
     </section>
     <section id="historial-rutas">
       <h2>Historial de Rutas</h2>
@@ -107,8 +112,8 @@
     </section>
   </main>
   <footer></footer>
+  <script src="js/cards.js"></script>
   <script src="js/profile.js"></script>
-
 </body>
 
 </html>
