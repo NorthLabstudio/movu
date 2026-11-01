@@ -52,18 +52,20 @@
     <section class="dashboard-stats">
       <article class="stat-item">
         <span class="stat-label">Rutas favoritas</span>
-        <span class="stat-value"> Porcentaje </span>
-        <span class="stat-description">rutas guardadas</span>
+        <span class="stat-value" id="fav-count">0</span>
+        <span class="stat-description">Rutas guardadas</span>
       </article>
+
       <article class="stat-item">
         <span class="stat-label">Consultas recientes</span>
-        <span class="stat-value"> 12 </span>
+        <span class="stat-value" id="history-count">0</span>
         <span class="stat-description">Rutas consultadas</span>
       </article>
+
       <article class="stat-item">
-        <span class="stat-label">Lugares frecuentes</span>
-        <span class="stat-value"> 12 </span>
-        <span class="stat-description">Destinos guardados</span>
+        <span class="stat-label">Destino frecuente</span>
+        <span class="stat-value" id="frequent-destination">--</span>
+        <span class="stat-description">Destino más consultado</span>
       </article>
     </section>
     <section id="rutas-favoritas">
@@ -75,65 +77,21 @@
         <a href="catalogo.html">Ver todas →</a>
       </div>
 
-      <div id="fav-container" class="card-routegrid">
+      <div id="fav-container" class="route-grid">
         <!-- Las rutas favoritas se cargarán desde MongoDB -->
       </div>
     </section>
-    <section class="recientes">
+    <section class="recientes" id="historial">
       <div class="section-header">
         <div>
-          <span class="section-title">Tu Actividad</span>
+          <span class="section-title">Tu actividad</span>
           <h2>Consultas recientes</h2>
         </div>
-        <a href="#">Ver historial →</a>
+        <a href="profile.html#historial">Ver historial →</a>
       </div>
-      <div class="recentlist">
-        <article class="recentbus">
-          <div class="recent-item">
-            <div class="card-inner">
-              <!--front of card-->
-              <div class="card-front">
-                <div class="topcard">
-                  <span class="buscode">B1</span>
-                  <span class="busstatus">Activo</span>
-                </div>
-                <div class="cardmain">
-                  <span class="company-name">Empresa1</span>
-                  <span class="origen">LugarA</span>
-                  <span class="icon">→</span>
-                  <span class="destino">LugarB</span>
-                </div>
-                <div class="cardbottom">
-                  <span class="precio">$3.000</span>
-                  <span class="tiempo">10 minutos</span>
-                  <button type="button" class="favorite-btn" aria-label="Agregar a fav">★</button>
-                </div>
-                <button>Ver Recorrido</button>
-              </div>
-              <!--Back of card card-->
-              <div class="card-back">
-                <div class="Busstops">
-                  <div class="stop">
-                    <span class="Origen">Lugar Salida</span>
-                  </div>
-                  <div class="stop">
-                    <span class="parada">parada 1</span>
-                  </div>
-                  <div class="stop">
-                    <span class="parada">parada 2</span>
-                  </div>
-                  <div class="stop">
-                    <span class="Destino">Lugar Destino</span>
-                  </div>
-                </div>
-                <div class="cardbottom">
-                  <span class="precio"><strong>Horario:</strong> 08:00 - 10:00</span>
-                  <span class="tiempo">10 minutos</span>
-                </div>
-                <button class="map-btn">Ver Ruta completa</button>
-              </div>
-            </div>
-        </article>
+
+      <div id="historial-container" class="route-grid">
+        <!-- Las consultas recientes se cargarán desde MongoDB -->
       </div>
     </section>
 

@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     // Cargar las rutas guardadas en fav
     cargarFav();
-    // Cargar las rutas guardadas en fav
+    cargarHistorial();
   } catch (error) {
     console.error("Error al cargar el perfil:", error);
 
@@ -223,9 +223,6 @@ document.addEventListener("DOMContentLoaded", () => {
         "No se pudo conectar con el servidor. Revisa la conexión e inténtalo nuevamente.";
     }
 
-
-    mensaje.textContent = "Cambios actualizados correctamente.";
-    cerrarModal();
   });
 });
 /* =========================================================
@@ -284,3 +281,193 @@ async function cargarFav() {
     `;
   }
 }
+
+/* =========================================================
+   CARGAR HISTORIAL DE CONSULTAS
+========================================================= */
+
+async function cargarHistorial() {
+  const contenedor = document.getElementById("historial-container");
+  const token = sessionStorage.getItem("movuToken");
+
+  if (!contenedor) return;
+
+  try {
+    const respuesta = await fetch("http://localhost:3000/api/historial", {
+      method: "GET",
+      headers: {
+        "Authorization": `Bearer ${token}`
+      }
+    });
+
+    const datos = await respuesta.json();
+
+    if (!respuesta.ok) {
+      throw new Error(datos.mensaje || "No se pudo cargar el historial.");
+    }
+
+    const historial = Array.isArray(datos)
+      ? datos
+      : datos.historial;
+
+    if (!Array.isArray(historial)) {
+      throw new Error("La API no devolvió una lista de consultas.");
+    }
+
+    if (historial.length === 0) {
+      contenedor.innerHTML = `
+        <p>Aún no has consultado ninguna ruta.</p>
+        <a href="catalogo.html">Explorar rutas</a>
+      `;
+      return;
+    }
+
+    // Mostrar cada consulta individualmente
+    contenedor.innerHTML = historial.map(consulta => {
+      const fecha = consulta.fecha
+        ? new Date(consulta.fecha).toLocaleString("es-CO", {
+          dateStyle: "medium",
+          timeStyle: "short"
+        })
+        : "Fecha no disponible";
+
+      if (!consulta.ruta) {
+        return `
+          <div class="history-entry">
+            <p>Esta ruta ya no está disponible.</p>
+            <button
+              type="button"
+              class="delete-history-btn"
+              data-history-id="${consulta._id}">
+              Eliminar consulta
+            </button>
+          </div>
+        `;
+      }
+
+      return `
+        <div class="history-entry">
+          <p class="history-date">
+            Consultada: ${fecha}
+          </p>
+
+          ${crearTarjetaRuta(consulta.ruta)}
+
+          <button
+            type="button"
+            class="delete-history-btn"
+            data-history-id="${consulta._id}">
+            Eliminar consulta
+          </button>
+        </div>
+      `;
+    }).join("");
+
+  } catch (error) {
+    console.error("Error al cargar el historial:", error);
+
+    contenedor.innerHTML = `
+      <p>No fue posible cargar tu historial.</p>
+    `;
+  }
+}
+
+
+/* =========================================================
+   ELIMINAR UNA CONSULTA
+========================================================= */
+
+async function eliminarConsulta(id) {
+  const token = sessionStorage.getItem("movuToken");
+
+  if (!confirm("¿Quieres eliminar esta consulta del historial?")) {
+    return;
+  }
+
+  try {
+    const respuesta = await fetch(
+      `http://localhost:3000/api/historial/${id}`,
+      {
+        method: "DELETE",
+        headers: {
+          "Authorization": `Bearer ${token}`
+        }
+      }
+    );
+
+    const datos = await respuesta.json().catch(() => ({}));
+
+    if (!respuesta.ok) {
+      throw new Error(datos.mensaje || "No se pudo eliminar la consulta.");
+    }
+
+    await cargarHistorial();
+
+  } catch (error) {
+    console.error("Error al eliminar la consulta:", error);
+    alert("No fue posible eliminar la consulta.");
+  }
+}
+
+
+/* =========================================================
+   LIMPIAR TODO EL HISTORIAL
+========================================================= */
+
+async function limpiarHistorial() {
+  const token = sessionStorage.getItem("movuToken");
+
+  if (!confirm("¿Estás seguro de que quieres eliminar todo tu historial?")) {
+    return;
+  }
+
+  try {
+    const respuesta = await fetch(
+      "http://localhost:3000/api/historial",
+      {
+        method: "DELETE",
+        headers: {
+          "Authorization": `Bearer ${token}`
+        }
+      }
+    );
+
+    const datos = await respuesta.json().catch(() => ({}));
+
+    if (!respuesta.ok) {
+      throw new Error(datos.mensaje || "No se pudo limpiar el historial.");
+    }
+
+    await cargarHistorial();
+
+  } catch (error) {
+    console.error("Error al limpiar el historial:", error);
+    alert("No fue posible limpiar el historial.");
+  }
+}
+
+
+/* =========================================================
+   EVENTOS DE LOS BOTONES DEL HISTORIAL
+========================================================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+  const contenedor = document.getElementById("historial-container");
+  const botonLimpiar = document.getElementById("limpiar-historial");
+
+  // Eliminar una consulta individual
+  if (contenedor) {
+    contenedor.addEventListener("click", event => {
+      const boton = event.target.closest(".delete-history-btn");
+
+      if (boton) {
+        eliminarConsulta(boton.dataset.historyId);
+      }
+    });
+  }
+
+  // Eliminar todas las consultas
+  if (botonLimpiar) {
+    botonLimpiar.addEventListener("click", limpiarHistorial);
+  }
+});

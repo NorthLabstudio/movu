@@ -127,6 +127,41 @@
   border-top: 1px solid var(--color-primary);
 }
 
+/* Historial de consultas */
+
+.history-entry {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.history-date {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.delete-history-btn,
+.clear-history-btn {
+  padding: 8px 14px;
+  border: 1px solid #c0392b;
+  border-radius: 6px;
+  background: transparent;
+  color: #c0392b;
+  cursor: pointer;
+  font-family: inherit;
+  transition: 0.2s ease;
+}
+
+.delete-history-btn {
+  align-self: flex-start;
+}
+
+.delete-history-btn:hover,
+.clear-history-btn:hover {
+  background: #c0392b;
+  color: white;
+}
+
 #configuracion>button {
   border: none;
   background: none;

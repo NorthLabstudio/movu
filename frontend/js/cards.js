@@ -37,7 +37,7 @@ function crearTarjetaRuta(ruta) {
   `).join('');
 
   return `
-    <article class="route-card">
+    <article class="route-card" data-ruta-id="${escaparHTML(rutaId)}">
       <div class="card-inner">
 
         <div class="card-front">
@@ -129,6 +129,7 @@ document.addEventListener('click', event => {
 
     if (boton.classList.contains('recorrido-btn')) {
       tarjeta.classList.toggle('is-flipped');
+      registrarConsulta(tarjeta.dataset.rutaId);
     }
 
     if (boton.classList.contains('favorite-btn')) {
@@ -143,6 +144,7 @@ document.addEventListener('click', event => {
   }
 
   tarjeta.classList.toggle('is-flipped');
+
 
 });
 async function manejarFav(boton) {
@@ -179,5 +181,42 @@ async function manejarFav(boton) {
   } catch (error) {
     console.error('Error al actualizar fav:', error);
     alert(error.message);
+  }
+}
+/* =========================================================
+   REGISTRAR CONSULTAS EN EL HISTORIAL
+========================================================= */
+
+async function registrarConsulta(rutaId) {
+  const token = sessionStorage.getItem('movuToken');
+
+  if (!token) {
+    console.error('No hay una sesión iniciada.');
+    return;
+  }
+
+  try {
+    const respuesta = await fetch(
+      `http://localhost:3000/api/historial/${rutaId}`,
+      {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      }
+    );
+
+    const datos = await respuesta.json();
+
+    if (!respuesta.ok) {
+      throw new Error(
+        datos.mensaje || 'No se pudo registrar la consulta.'
+      );
+    }
+
+    console.log('Consulta registrada en el historial.');
+
+  } catch (error) {
+    console.error('Error al registrar la consulta:', error);
   }
 }

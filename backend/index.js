@@ -41,6 +41,8 @@ app.get('/api/rutas', async (req, res) => {
 app.use('/api/auth', require('./routes/auth'));
 
 app.use('/api/fav', require('./routes/fav'));
+app.use('/api/historial', require('./routes/historial'));
+
 app.get('/api/fav/prueba', (req, res) => {
   res.json({ mensaje: 'La ruta de fav está funcionando' });
 });
