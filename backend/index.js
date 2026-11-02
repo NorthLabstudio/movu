@@ -54,7 +54,11 @@ app.get('/api/admin/prueba', verificarAdmin, (req, res) => {
     mensaje: 'Acceso de administrador autorizado',
     usuario: req.usuario.nombre
   });
+
 });
+app.use('/api/admin', require('./routes/admin'));
+app.use('/api/novedades', require('./routes/novedades'));
+
 app.get('/prueba-servidor', (req, res) => {
   res.send('Este es el servidor correcto');
 });

@@ -8,25 +8,29 @@
    ========================= */
 
 :root {
-  --background: #f2f0e6;
-  --surface: #f2ffff;
-  --white: #ffffff;
+  /* Colores principales */
+  --background: #F0F2FA;
+  --surface: #FFFFFF;
+  --white: #FFFFFF;
 
+  /* Textos */
   --text: #070707;
-  --text-secondary: #5f625f;
-  --text-light: #8b7d6b;
+  --text-secondary: #626779;
+  --text-light: #85899A;
 
-  --green: #2f4538;
-  --green-light: #e2ebe5;
+  /* Colores de marca */
+  --green: #006A67;
+  --green-light: #DCEFED;
 
-  --teal: #024e63;
-  --teal-light: #dceff1;
+  --teal: #065084;
+  --teal-light: #E0EDF5;
 
-  --accent: #c1eff0;
+  --accent: #4A2C86;
+  --accent-light: #ECE6F5;
 
-  --line: #d5d5ce;
-
-  --danger: #9b3d3d;
+  /* Otros */
+  --line: #E0E3EC;
+  --danger: #B83E4B;
 
   --sidebar-width: 250px;
 
@@ -35,7 +39,6 @@
 
   --transition: 0.2s ease;
 }
-
 
 /* =========================
    RESET
@@ -54,7 +57,7 @@ html {
 
 
 body {
-  font-family: "Montserrat", Arial, sans-serif;
+  font-family: "Nunito", Arial, sans-serif;
   background: var(--background);
   color: var(--text);
   min-height: 100vh;
@@ -178,6 +181,7 @@ a {
 }
 
 
+
 .nav-link span {
   width: 18px;
 
@@ -199,7 +203,6 @@ a {
   background: var(--surface);
   color: var(--green);
 }
-
 
 .sidebar-bottom {
   border-top: 1px solid rgba(242, 255, 255, 0.12);
@@ -905,4 +908,268 @@ a {
     gap: 8px;
   }
 
+}
+
+/* MODAL DE NOVEDADES */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(7, 7, 7, 0.55);
+  backdrop-filter: blur(4px);
+}
+
+.modal-overlay[hidden] {
+  display: none;
+}
+
+.modal-content {
+  width: 100%;
+  max-width: 760px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 32px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+  animation: modalEntrada 0.2s ease;
+}
+
+@keyframes modalEntrada {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  margin-bottom: 28px;
+}
+
+.modal-header h2 {
+  margin: 8px 0 5px;
+  color: var(--text);
+  font-family: 'Satoshi', sans-serif;
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.modal-header p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.modal-close {
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 8px;
+  background: var(--background);
+  color: var(--text-secondary);
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.modal-close:hover {
+  background: var(--green-light);
+  color: var(--green);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+.form-group label {
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  outline: none;
+  background: var(--white);
+  color: var(--text);
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px;
+  transition: var(--transition);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--green);
+  box-shadow: 0 0 0 3px var(--green-light);
+}
+
+.form-group textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+
+.modal-actions button {
+  padding: 11px 20px;
+  border-radius: 8px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-secondary {
+  border: 1px solid var(--line);
+  background: var(--white);
+  color: var(--text-secondary);
+}
+
+.btn-secondary:hover {
+  background: var(--background);
+}
+
+.btn-primary {
+  border: 1px solid var(--green);
+  background: var(--green);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #005653;
+}
+
+@media (max-width: 600px) {
+  .modal-overlay {
+    padding: 12px;
+  }
+
+  .modal-content {
+    padding: 22px 18px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-group.full-width {
+    grid-column: auto;
+  }
+
+  .modal-actions {
+    flex-direction: column-reverse;
+  }
+
+  .modal-actions button {
+    width: 100%;
+  }
+}
+
+/* ACCIONES DE LAS TARJETAS DE NOVEDADES */
+
+.novelty-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+
+.novelty-actions button {
+  padding: 8px 14px;
+  border-radius: 7px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-editar-novedad {
+  border: 1px solid var(--green);
+  background: var(--green-light);
+  color: var(--green);
+}
+
+.btn-editar-novedad:hover {
+  background: var(--green);
+  color: white;
+}
+
+.btn-eliminar-novedad {
+  border: 1px solid #E8C8CC;
+  background: #F9EDEF;
+  color: var(--danger);
+}
+
+.btn-eliminar-novedad:hover {
+  background: var(--danger);
+  color: white;
+}
+
+/* Detalles de las rutas */
+.route-details {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px 20px;
+}
+
+.route-details p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.route-details strong {
+  color: var(--text);
+}
+
+@media (max-width: 600px) {
+  .route-details {
+    grid-template-columns: 1fr;
+  }
 }

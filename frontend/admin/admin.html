@@ -6,7 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>MOVU | ADMIN</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
+  <link
+    href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap"
+    rel="stylesheet">
+
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,600,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="admin.css">
 </head>
 
@@ -24,27 +31,14 @@
 
       <p class="nav-title">GENERAL</p>
 
-      <a href="#" class="nav-link active">
+      <a href="#" class="nav-link active" id="enlace-dashboard">
         <span>⌂</span>
         Dashboard
       </a>
 
-
-      <p class="nav-title">TRANSPORTE</p>
-
-      <a href="#" class="nav-link">
-        <span>◉</span>
-        Empresas
-      </a>
-
-      <a href="#" class="nav-link">
+      <a href="#" class="nav-link" id="enlace-rutas">
         <span>↔</span>
         Rutas
-      </a>
-
-      <a href="#" class="nav-link">
-        <span>⌖</span>
-        Paradas
       </a>
 
 
@@ -55,8 +49,7 @@
         Universidades
       </a>
 
-      <a href="#" class="nav-link">
-        <span>!</span>
+      <a href="#" class="nav-link" id="enlace-novedades"> <span>!</span>
         Novedades
       </a>
 
@@ -116,8 +109,7 @@
 
 
     <!-- DASHBOARD -->
-    <section class="dashboard">
-
+    <section class="dashboard" id="vista-dashboard">
 
       <!-- STATISTICS -->
       <section class="stats-grid">
@@ -125,13 +117,12 @@
         <div class="stat-card">
 
           <div class="stat-top">
-            <span class="stat-label">EMPRESAS</span>
+            <span class="stat-label">Novedades activas</span>
             <span class="stat-icon">◉</span>
           </div>
 
-          <strong class="stat-number">12</strong>
-
-          <p>Operadores registrados</p>
+          <strong class="stat-number" id="total-novedades">0</strong>
+          <p>Novedades registradas</p>
 
         </div>
 
@@ -143,8 +134,7 @@
             <span class="stat-icon">↔</span>
           </div>
 
-          <strong class="stat-number">47</strong>
-
+          <strong class="stat-number" id="total-rutas">0</strong>
           <p>Rutas disponibles</p>
 
         </div>
@@ -153,13 +143,12 @@
         <div class="stat-card">
 
           <div class="stat-top">
-            <span class="stat-label">PARADAS</span>
+            <span class="stat-label">Consultas</span>
             <span class="stat-icon">⌖</span>
           </div>
 
-          <strong class="stat-number">386</strong>
-
-          <p>Paradas registradas</p>
+          <strong class="stat-number" id="total-consultas">0</strong>
+          <p>Consultas registradas</p>
 
         </div>
 
@@ -171,304 +160,431 @@
             <span class="stat-icon">♙</span>
           </div>
 
-          <strong class="stat-number">128</strong>
-
+          <strong class="stat-number" id="total-usuarios">0</strong>
           <p>Usuarios registrados</p>
 
         </div>
 
       </section>
 
+    </section>
 
 
-      <!-- QUICK ACTIONS -->
-      <section class="section">
+    <!-- QUICK ACTIONS -->
+    <section class="section">
 
-        <div class="section-header">
+      <div class="section-header">
+
+        <div>
+          <span class="section-kicker">ACCIONES</span>
+          <h2>Acciones rápidas</h2>
+        </div>
+
+      </div>
+
+
+      <div class="quick-actions">
+
+
+
+        <button class="action-card" id="btn-agregar-ruta">
+
+          <span class="action-icon">+</span>
 
           <div>
-            <span class="section-kicker">ACCIONES</span>
-            <h2>Acciones rápidas</h2>
+            <strong>Agregar ruta</strong>
+            <p>Crear una nueva ruta</p>
           </div>
 
-        </div>
+        </button>
 
 
-        <div class="quick-actions">
+        <button class="action-card" id="btn-nueva-novedad">
 
-          <button class="action-card">
-
-            <span class="action-icon">+</span>
-
-            <div>
-              <strong>Agregar empresa</strong>
-              <p>Registrar un nuevo operador</p>
-            </div>
-
-          </button>
-
-
-          <button class="action-card">
-
-            <span class="action-icon">+</span>
-
-            <div>
-              <strong>Agregar ruta</strong>
-              <p>Crear una nueva ruta</p>
-            </div>
-
-          </button>
-
-
-          <button class="action-card">
-
-            <span class="action-icon">+</span>
-
-            <div>
-              <strong>Agregar parada</strong>
-              <p>Registrar una nueva parada</p>
-            </div>
-
-          </button>
-
-
-          <button class="action-card">
-
-            <span class="action-icon">+</span>
-
-            <div>
-              <strong>Nueva novedad</strong>
-              <p>Publicar información para usuarios</p>
-            </div>
-
-          </button>
-
-        </div>
-
-      </section>
-
-
-
-      <!-- RECENT UPDATES -->
-      <section class="section">
-
-        <div class="section-header">
+          <span class="action-icon">+</span>
 
           <div>
-            <span class="section-kicker">ACTIVIDAD</span>
-            <h2>Últimas actualizaciones</h2>
+            <strong>Nueva novedad</strong>
+            <p>Publicar información para usuarios</p>
           </div>
 
-          <a href="#" class="view-all">
-            Ver todo →
-          </a>
+        </button>
 
+      </div>
+
+    </section>
+
+
+
+    <!-- RECENT UPDATES -->
+    <section class="section">
+
+      <div class="section-header">
+
+        <div>
+          <span class="section-kicker">ACTIVIDAD</span>
+          <h2>Últimas actualizaciones</h2>
         </div>
 
+        <a href="#" class="view-all">
+          Ver todo →
+        </a>
 
-        <div class="updates-list">
+      </div>
 
 
-          <div class="update-item">
+      <div class="updates-list">
 
-            <div class="update-icon route">
-              ↔
-            </div>
 
-            <div class="update-content">
+        <div class="update-item">
 
-              <strong>Ruta C1 actualizada</strong>
-
-              <p>
-                Se modificó la información de la ruta
-                de Coolitoral.
-              </p>
-
-            </div>
-
-            <span class="update-date">
-              Hoy, 10:32
-            </span>
-
+          <div class="update-icon route">
+            ↔
           </div>
 
+          <div class="update-content">
 
-          <div class="update-item">
-
-            <div class="update-icon news">
-              !
-            </div>
-
-            <div class="update-content">
-
-              <strong>Nueva novedad publicada</strong>
-
-              <p>
-                Cambio temporal en la ruta C1.
-              </p>
-
-            </div>
-
-            <span class="update-date">
-              Ayer, 16:45
-            </span>
-
-          </div>
-
-
-          <div class="update-item">
-
-            <div class="update-icon stop">
-              ⌖
-            </div>
-
-            <div class="update-content">
-
-              <strong>Nueva parada agregada</strong>
-
-              <p>
-                Universidad del Norte.
-              </p>
-
-            </div>
-
-            <span class="update-date">
-              12 Sep, 09:20
-            </span>
-
-          </div>
-
-
-          <div class="update-item">
-
-            <div class="update-icon company">
-              ◉
-            </div>
-
-            <div class="update-content">
-
-              <strong>Nueva empresa registrada</strong>
-
-              <p>
-                Operador agregado al directorio.
-              </p>
-
-            </div>
-
-            <span class="update-date">
-              10 Sep, 14:18
-            </span>
-
-          </div>
-
-        </div>
-
-      </section>
-
-
-
-      <!-- NOVELTIES -->
-      <section class="section">
-
-        <div class="section-header">
-
-          <div>
-            <span class="section-kicker">CONTENIDO</span>
-            <h2>Novedades activas</h2>
-          </div>
-
-          <a href="#" class="view-all">
-            Administrar →
-          </a>
-
-        </div>
-
-
-        <div class="novelties-grid">
-
-
-          <article class="novelty-card">
-
-            <div class="novelty-header">
-
-              <span class="novelty-status">
-                ACTIVA
-              </span>
-
-              <span class="novelty-date">
-                14 SEP 2026
-              </span>
-
-            </div>
-
-            <h3>
-              Cambio temporal de ruta C1
-            </h3>
+            <strong>Ruta C1 actualizada</strong>
 
             <p>
-              La ruta presenta una modificación temporal
-              debido a obras en el sector.
+              Se modificó la información de la ruta
+              de Coolitoral.
             </p>
 
-            <span class="novelty-route">
-              C1 · Coolitoral
-            </span>
+          </div>
 
-          </article>
-
-
-
-          <article class="novelty-card">
-
-            <div class="novelty-header">
-
-              <span class="novelty-status">
-                ACTIVA
-              </span>
-
-              <span class="novelty-date">
-                12 SEP 2026
-              </span>
-
-            </div>
-
-            <h3>
-              Parada temporalmente cerrada
-            </h3>
-
-            <p>
-              La parada permanecerá fuera de servicio
-              durante los próximos días.
-            </p>
-
-            <span class="novelty-route">
-              Universidad del Norte
-            </span>
-
-          </article>
-
+          <span class="update-date">
+            Hoy, 10:32
+          </span>
 
         </div>
 
-      </section>
+
+        <div class="update-item">
+
+          <div class="update-icon news">
+            !
+          </div>
+
+          <div class="update-content">
+
+            <strong>Nueva novedad publicada</strong>
+
+            <p>
+              Cambio temporal en la ruta C1.
+            </p>
+
+          </div>
+
+          <span class="update-date">
+            Ayer, 16:45
+          </span>
+
+        </div>
 
 
+        <div class="update-item">
 
-      <!-- FOOTER -->
-      <footer class="admin-footer">
+          <div class="update-icon stop">
+            ⌖
+          </div>
 
-        <span>
-          MOVU Admin
-        </span>
+          <div class="update-content">
 
-        <span>
-          Panel de administración · 2026
-        </span>
+            <strong>Nueva parada agregada</strong>
 
-      </footer>
+            <p>
+              Universidad del Norte.
+            </p>
+
+          </div>
+
+          <span class="update-date">
+            12 Sep, 09:20
+          </span>
+
+        </div>
+
+
+        <div class="update-item">
+
+          <div class="update-icon company">
+            ◉
+          </div>
+
+          <div class="update-content">
+
+            <strong>Nueva empresa registrada</strong>
+
+            <p>
+              Operador agregado al directorio.
+            </p>
+
+          </div>
+
+          <span class="update-date">
+            10 Sep, 14:18
+          </span>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- VISTA DE RUTAS -->
+    <section class="section" id="vista-rutas" hidden>
+
+      <div class="section-header">
+        <div>
+          <span class="section-kicker">GESTIÓN DE TRANSPORTE</span>
+          <h2>Administrar rutas</h2>
+          <p>Consulta y gestiona las rutas disponibles en Movu.</p>
+        </div>
+      </div>
+
+      <div id="lista-rutas">
+        <p>Próximamente: listado de rutas.</p>
+      </div>
+      <!-- MODAL PARA CREAR Y EDITAR RUTAS -->
+      <div id="formulario-ruta" class="modal-overlay" hidden>
+
+        <div class="modal-content">
+
+          <div class="modal-header">
+            <div>
+              <span class="section-kicker">GESTIÓN DE TRANSPORTE</span>
+              <h2>Agregar ruta</h2>
+              <p>Registra la información de una ruta de transporte.</p>
+            </div>
+
+            <button type="button" id="cerrar-modal-ruta" class="modal-close" aria-label="Cerrar">×</button>
+          </div>
+
+          <form id="form-ruta">
+
+            <div class="form-grid">
+
+              <div class="form-group">
+                <label for="routeId">Identificador *</label>
+                <input type="text" id="routeId" required placeholder="Ej. R001">
+              </div>
+
+              <div class="form-group">
+                <label for="empresa-ruta">Empresa *</label>
+                <input type="text" id="empresa-ruta" required placeholder="Ej. Coolitoral">
+              </div>
+
+              <div class="form-group">
+                <label for="codigo-ruta">Código de ruta *</label>
+                <input type="text" id="codigo-ruta" required placeholder="Ej. C1">
+              </div>
+
+              <div class="form-group">
+                <label for="origen-ruta">Origen *</label>
+                <input type="text" id="origen-ruta" required>
+              </div>
+
+              <div class="form-group">
+                <label for="destino-ruta">Destino *</label>
+                <input type="text" id="destino-ruta" required>
+              </div>
+
+              <div class="form-group full-width">
+                <label for="paradas-ruta">Recorrido y paradas</label>
+                <textarea id="paradas-ruta" placeholder="Ej. Centro → Calle 72 → Universidad del Norte"></textarea>
+              </div>
+
+              <div class="form-group">
+                <label for="precio-ruta">Precio</label>
+                <input type="text" id="precio-ruta" placeholder="Ej. $3.000">
+              </div>
+
+              <div class="form-group">
+                <label for="tiempo-ruta">Tiempo estimado</label>
+                <input type="text" id="tiempo-ruta" placeholder="Ej. 45 minutos">
+              </div>
+
+              <div class="form-group">
+                <label for="horario-ruta">Horario</label>
+                <input type="text" id="horario-ruta" placeholder="Ej. 5:00 a. m. - 9:00 p. m.">
+              </div>
+
+              <div class="form-group">
+                <label for="tipo-ruta">Tipo</label>
+                <input type="text" id="tipo-ruta" placeholder="Tipo de servicio">
+              </div>
+
+              <div class="form-group">
+                <label for="estado-ruta">Estado</label>
+                <select id="estado-ruta">
+                  <option value="Activa">Activa</option>
+                  <option value="Inactiva">Inactiva</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="fuente-ruta">Fuente</label>
+                <input type="text" id="fuente-ruta" placeholder="Fuente de información">
+              </div>
+
+              <div class="form-group full-width">
+                <label for="universidades-ruta">Universidades asociadas</label>
+                <input type="text" id="universidades-ruta"
+                  placeholder="Ej. Universidad del Norte, Universidad Simón Bolívar">
+              </div>
+
+            </div>
+
+            <div class="modal-actions">
+              <button type="button" id="cancelar-ruta" class="btn-secondary">
+                Cancelar
+              </button>
+
+              <button type="submit" id="guardar-ruta" class="btn-primary">
+                Guardar ruta
+              </button>
+            </div>
+
+          </form>
+
+        </div>
+      </div>
+
+    </section>
+
+    <!--novedades-->
+
+    <section class="section" id="vista-novedades" hidden>
+
+      <div class="section-header">
+        <div>
+          <span class="section-kicker">GESTIÓN DE CONTENIDO</span>
+          <h2>Administrar novedades</h2>
+          <p>Consulta y gestiona la información que reciben los usuarios.</p>
+        </div>
+
+      </div>
+
+      <div id="lista-novedades" class="novelties-grid">
+        <p>Cargando novedades...</p>
+      </div>
+
+      <!-- FORMULARIO PARA CREAR NOVEDADES -->
+
+      <!-- MODAL PARA CREAR NOVEDADES -->
+      <div id="formulario-novedad" class="modal-overlay" hidden>
+
+        <div class="modal-content">
+
+          <div class="modal-header">
+            <div>
+              <span class="section-kicker">GESTIÓN DE CONTENIDO</span>
+              <h2>Crear novedad</h2>
+              <p>Registra información importante para los usuarios de Movu.</p>
+            </div>
+
+            <button type="button" id="cerrar-modal" class="modal-close" aria-label="Cerrar">×</button>
+          </div>
+
+          <form id="form-novedad">
+
+            <div class="form-grid">
+
+              <div class="form-group">
+                <label for="titulo-novedad">Título *</label>
+                <input type="text" id="titulo-novedad" required placeholder="Ej. Cierre temporal de vía">
+              </div>
+
+              <div class="form-group">
+                <label for="tipo-novedad">Tipo de novedad *</label>
+                <select id="tipo-novedad" required>
+                  <option value="">Selecciona un tipo</option>
+                  <option value="Via cerrada">Vía cerrada</option>
+                  <option value="Desvio">Desvío</option>
+                  <option value="Parada suspendida">Parada suspendida</option>
+                  <option value="Cambio de horario">Cambio de horario</option>
+                  <option value="Restablecimiento">Restablecimiento</option>
+                  <option value="Informacion general">Información general</option>
+                </select>
+              </div>
+
+              <div class="form-group full-width">
+                <label for="descripcion-novedad">Descripción *</label>
+                <textarea id="descripcion-novedad" required placeholder="Describe lo que está sucediendo..."></textarea>
+              </div>
+
+              <div class="form-group">
+                <label for="ubicacion-novedad">Ubicación</label>
+                <input type="text" id="ubicacion-novedad" placeholder="Ej. Calle 72 con carrera 46">
+              </div>
+
+              <div class="form-group">
+                <label for="empresa-novedad">Empresa</label>
+                <input type="text" id="empresa-novedad" placeholder="Ej. Transmetro">
+              </div>
+
+              <div class="form-group">
+                <label for="ruta-novedad">Ruta</label>
+                <input type="text" id="ruta-novedad" placeholder="Ej. B1">
+              </div>
+
+              <div class="form-group">
+                <label for="estado-novedad">Estado *</label>
+                <select id="estado-novedad" required>
+                  <option value="Borrador">Borrador</option>
+                  <option value="Publicada">Publicada</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="inicio-novedad">Fecha y hora de inicio *</label>
+                <input type="datetime-local" id="inicio-novedad" required>
+              </div>
+
+              <div class="form-group">
+                <label for="fin-novedad">Fecha y hora de finalización</label>
+                <input type="datetime-local" id="fin-novedad">
+              </div>
+
+            </div>
+
+            <div class="modal-actions">
+              <button type="button" id="cancelar-novedad" class="btn-secondary">
+                Cancelar
+              </button>
+
+              <button type="submit" id="guardar-novedad" class="btn-primary">
+                Guardar novedad
+              </button>
+            </div>
+
+          </form>
+
+        </div>
+      </div>
 
 
     </section>
+
+
+
+
+    <!-- FOOTER -->
+    <footer class="admin-footer">
+
+      <span>
+        MOVU Admin
+      </span>
+
+      <span>
+        Panel de administración · 2026
+      </span>
+
+    </footer>
+
+
+
 
   </main>
   <script src="admin.js"></script>
