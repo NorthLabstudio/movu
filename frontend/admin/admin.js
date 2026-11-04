@@ -1,4 +1,6 @@
 
+let todosLosUsuarios = [];
+
 document.addEventListener("DOMContentLoaded", async () => {
   const token = sessionStorage.getItem("movuToken");
 
@@ -54,16 +56,19 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     // Cargar estadísticas
     await cargarEstadisticas();
+    cargarActualizaciones();
 
     // Configurar navegación
     configurarNavegacion();
+
+
 
   } catch (error) {
     console.error("Error al verificar el acceso:", error);
     alert("No se pudo verificar tu sesión. Comprueba que el servidor esté funcionando.");
   }
 });
-
+let todasLasActividades = [];
 
 // Cargar estadísticas del dashboard
 async function cargarEstadisticas() {
@@ -95,17 +100,81 @@ async function cargarEstadisticas() {
     console.error("Error al cargar estadísticas:", error);
   }
 }
+// Cargar las últimas cinco actividades
+async function cargarActualizaciones() {
+  const contenedor = document.getElementById('lista-actualizaciones');
 
+  if (!contenedor) return;
+
+  const token = sessionStorage.getItem('movuToken');
+
+  try {
+    const respuesta = await fetch('http://localhost:3000/api/admin/actividad', {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    if (!respuesta.ok) {
+      throw new Error('No se pudieron cargar las actividades.');
+    }
+
+    const actividades = await respuesta.json();
+
+    if (actividades.length === 0) {
+      contenedor.innerHTML = '<p>No hay actualizaciones registradas todavía.</p>';
+      return;
+    }
+
+    contenedor.innerHTML = actividades.map(actividad => {
+      const esRuta = actividad.tipo === 'ruta';
+
+      const acciones = {
+        creada: 'creada',
+        actualizada: 'actualizada',
+        eliminada: 'eliminada'
+      };
+
+      const fecha = new Date(actividad.fecha).toLocaleString('es-CO', {
+        dateStyle: 'short',
+        timeStyle: 'short'
+      });
+
+      return `
+        <div class="update-item">
+          <div class="update-icon ${esRuta ? 'route' : 'news'}">
+            ${esRuta ? '↔' : '!'}
+          </div>
+
+          <div class="update-content">
+            <strong>${esRuta ? 'Ruta' : 'Novedad'} ${acciones[actividad.accion] || actividad.accion}</strong>
+            <p>${actividad.titulo}</p>
+            <small>${actividad.descripcion || ''}</small>
+          </div>
+
+          <span class="update-date">${fecha}</span>
+        </div>
+      `;
+    }).join('');
+
+  } catch (error) {
+    console.error('Error al cargar actualizaciones:', error);
+    contenedor.innerHTML = '<p>No fue posible cargar las actualizaciones.</p>';
+  }
+}
 
 // Cambiar entre las vistas del panel
 function configurarNavegacion() {
   const enlaceDashboard = document.getElementById("enlace-dashboard");
   const enlaceRutas = document.getElementById("enlace-rutas");
   const enlaceNovedades = document.getElementById("enlace-novedades");
-
+  const enlaceActualizaciones = document.getElementById('enlace-actualizaciones');
   const vistaDashboard = document.getElementById("vista-dashboard");
   const vistaRutas = document.getElementById("vista-rutas");
   const vistaNovedades = document.getElementById("vista-novedades");
+  const vistaActualizaciones = document.getElementById("vista-actualizaciones");
+  const enlaceUsuarios = document.getElementById('enlace-usuarios');
+  const vistaUsuarios = document.getElementById('vista-usuarios');
 
   if (
     !enlaceDashboard ||
@@ -118,6 +187,13 @@ function configurarNavegacion() {
     console.error("No se encontraron los elementos de navegación.");
     return;
   }
+  if (enlaceActualizaciones) {
+    enlaceActualizaciones.addEventListener('click', (evento) => {
+      evento.preventDefault();
+      mostrarVista('actualizaciones');
+      cargarHistorialActualizaciones();
+    });
+  }
 
   enlaceDashboard.addEventListener("click", (evento) => {
     evento.preventDefault();
@@ -128,12 +204,26 @@ function configurarNavegacion() {
     mostrarVista("rutas");
     cargarRutas();
   });
-
+  if (enlaceUsuarios) {
+    enlaceUsuarios.addEventListener('click', evento => {
+      evento.preventDefault();
+      mostrarVista('usuarios');
+    });
+  }
+  if (enlaceUsuarios) {
+    enlaceUsuarios.addEventListener('click', evento => {
+      evento.preventDefault();
+      mostrarVista('usuarios');
+      cargarUsuarios();
+    });
+  }
   enlaceNovedades.addEventListener("click", (evento) => {
     evento.preventDefault();
     mostrarVista("novedades");
     cargarNovedades();
   });
+  // Cargar el historial completo de actividades
+
   // Abrir el formulario para agregar una ruta
   const botonAgregarRuta = document.getElementById("btn-agregar-ruta");
   const modalRuta = document.getElementById("formulario-ruta");
@@ -310,10 +400,13 @@ function configurarNavegacion() {
     vistaDashboard.hidden = vista !== "dashboard";
     vistaRutas.hidden = vista !== "rutas";
     vistaNovedades.hidden = vista !== "novedades";
-
+    vistaActualizaciones.hidden = vista !== "actualizaciones";
+    vistaUsuarios.hidden = vista !== 'usuarios';
+    enlaceUsuarios.classList.toggle('active', vista === 'usuarios');
     enlaceDashboard.classList.toggle("active", vista === "dashboard");
     enlaceRutas.classList.toggle("active", vista === "rutas");
     enlaceNovedades.classList.toggle("active", vista === "novedades");
+    enlaceActualizaciones.classList.toggle("active", vista === "actualizaciones");
 
     const titulo = document.querySelector(".topbar h1");
     const breadcrumb = document.querySelector(".breadcrumb");
@@ -321,7 +414,9 @@ function configurarNavegacion() {
     const nombres = {
       dashboard: "Dashboard",
       rutas: "Rutas",
-      novedades: "Novedades"
+      novedades: "Novedades",
+      actualizaciones: "Actualizaciones",
+      usuarios: 'Usuarios'
     };
 
     if (titulo) {
@@ -332,6 +427,143 @@ function configurarNavegacion() {
       breadcrumb.textContent = `ADMIN / ${nombres[vista].toUpperCase()}`;
     }
   }
+  // Eventos de los filtros de usuarios
+  const buscadorUsuarios = document.getElementById('buscar-usuario');
+  const filtroRolUsuarios = document.getElementById('filtro-rol-usuario');
+
+  if (buscadorUsuarios) {
+    buscadorUsuarios.addEventListener('input', filtrarUsuarios);
+  }
+
+  if (filtroRolUsuarios) {
+    filtroRolUsuarios.addEventListener('change', filtrarUsuarios);
+  }
+}
+async function cargarHistorialActualizaciones() {
+  const contenedor = document.getElementById('historial-actualizaciones');
+
+  try {
+    const token = sessionStorage.getItem('movuToken');
+
+    const respuesta = await fetch(
+      'http://localhost:3000/api/admin/actividad?todas=true',
+      {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }
+    );
+
+    if (!respuesta.ok) {
+      throw new Error('No se pudo cargar el historial');
+    }
+
+    todasLasActividades = await respuesta.json();
+
+    filtrarActualizaciones();
+
+  } catch (error) {
+    console.error('Error al cargar el historial:', error);
+    contenedor.innerHTML = '<p>Error al cargar el historial de actualizaciones.</p>';
+  }
+
+  // Eventos de los filtros del historial
+  const buscadorActualizaciones = document.getElementById('buscar-actualizacion');
+  const fechaActualizaciones = document.getElementById('fecha-actualizacion');
+  const btnLimpiarFiltros = document.getElementById('limpiar-filtros');
+
+  if (buscadorActualizaciones) {
+    buscadorActualizaciones.addEventListener('input', filtrarActualizaciones);
+  }
+
+  if (fechaActualizaciones) {
+    fechaActualizaciones.addEventListener('change', filtrarActualizaciones);
+  }
+
+  if (btnLimpiarFiltros) {
+    btnLimpiarFiltros.addEventListener('click', () => {
+      buscadorActualizaciones.value = '';
+      fechaActualizaciones.value = '';
+
+      filtrarActualizaciones();
+    });
+  }
+}
+function filtrarActualizaciones() {
+  const contenedor = document.getElementById('historial-actualizaciones');
+  const buscador = document.getElementById('buscar-actualizacion');
+  const filtroFecha = document.getElementById('fecha-actualizacion');
+
+  const busqueda = buscador.value.trim().toLowerCase();
+  const fechaSeleccionada = filtroFecha.value;
+
+  const actividadesFiltradas = todasLasActividades.filter(actividad => {
+    // Buscar por título, descripción, tipo o acción
+    const textoActividad = `
+      ${actividad.titulo}
+      ${actividad.descripcion}
+      ${actividad.tipo}
+      ${actividad.accion}
+    `.toLowerCase();
+
+    const coincideBusqueda = textoActividad.includes(busqueda);
+
+    // Comparar la fecha de la actividad con la fecha seleccionada
+    const fechaActividad = new Date(actividad.fecha);
+
+    const fechaLocal = [
+      fechaActividad.getFullYear(),
+      String(fechaActividad.getMonth() + 1).padStart(2, '0'),
+      String(fechaActividad.getDate()).padStart(2, '0')
+    ].join('-');
+
+    const coincideFecha = !fechaSeleccionada ||
+      fechaLocal === fechaSeleccionada;
+
+    return coincideBusqueda && coincideFecha;
+  });
+
+  if (actividadesFiltradas.length === 0) {
+    contenedor.innerHTML = `
+      <p>No se encontraron actividades con esos filtros.</p>
+    `;
+    return;
+  }
+
+  contenedor.innerHTML = actividadesFiltradas.map(actividad => {
+    const fecha = new Date(actividad.fecha).toLocaleString('es-CO', {
+      day: '2-digit',
+      month: 'short',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
+    });
+
+    const icono = actividad.tipo === 'ruta' ? '🚌' : '📢';
+
+    return `
+      <div class="update-item">
+        <div class="update-icon ${actividad.tipo}">
+          ${icono}
+        </div>
+
+        <div class="update-content">
+          <strong>${escaparHTML(actividad.titulo)}</strong>
+          <p>${escaparHTML(actividad.descripcion)}</p>
+          <span class="update-date">${fecha}</span>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+function escaparHTML(texto) {
+  return String(texto ?? '').replace(/[&<>"']/g, caracter => ({
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#39;'
+  }[caracter]));
 }
 // Cargar las rutas registradas
 // Cargar las rutas registradas
@@ -521,6 +753,103 @@ document.getElementById("lista-rutas").addEventListener("click", async (evento) 
     alert(error.message);
   }
 });
+async function cargarUsuarios() {
+  const contenedor = document.getElementById('lista-usuarios');
+  const totalUsuarios = document.getElementById('total-usuarios-listado');
+
+  try {
+    const token = sessionStorage.getItem('movuToken');
+
+    const respuesta = await fetch(
+      'http://localhost:3000/api/admin/usuarios',
+      {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }
+    );
+
+    if (!respuesta.ok) {
+      throw new Error('No se pudieron cargar los usuarios');
+    }
+
+    const datos = await respuesta.json();
+
+    // Guardar todos los usuarios recibidos
+    todosLosUsuarios = datos.usuarios;
+
+    // Actualizar el contador
+    totalUsuarios.textContent = datos.total;
+
+    // Mostrar los usuarios aplicando los filtros
+    filtrarUsuarios();
+
+  } catch (error) {
+    console.error('Error al cargar usuarios:', error);
+    contenedor.innerHTML = '<p>Error al cargar los usuarios.</p>';
+  }
+}
+function filtrarUsuarios() {
+  const buscador = document.getElementById('buscar-usuario');
+  const filtroRol = document.getElementById('filtro-rol-usuario');
+  const contenedor = document.getElementById('lista-usuarios');
+
+  const busqueda = buscador.value.trim().toLowerCase();
+  const rolSeleccionado = filtroRol.value;
+
+  const usuariosFiltrados = todosLosUsuarios.filter(usuario => {
+    const coincideBusqueda =
+      usuario.nombre.toLowerCase().includes(busqueda) ||
+      usuario.email.toLowerCase().includes(busqueda);
+
+    const coincideRol =
+      !rolSeleccionado || usuario.rol === rolSeleccionado;
+
+    return coincideBusqueda && coincideRol;
+  });
+
+  if (usuariosFiltrados.length === 0) {
+    contenedor.innerHTML = '<p>No se encontraron usuarios.</p>';
+    return;
+  }
+
+  mostrarUsuarios(usuariosFiltrados);
+}
+function mostrarUsuarios(usuarios) {
+  const contenedor = document.getElementById('lista-usuarios');
+
+  contenedor.innerHTML = usuarios.map(usuario => {
+    const fecha = new Date(usuario.createdAt).toLocaleDateString('es-CO', {
+      day: '2-digit',
+      month: 'short',
+      year: 'numeric'
+    });
+
+    return `
+      <article class="usuario-item">
+        <div class="usuario-avatar">
+          ${escaparHTML(usuario.nombre.charAt(0).toUpperCase())}
+        </div>
+
+        <div class="usuario-info">
+          <strong>${escaparHTML(usuario.nombre)}</strong>
+          <span>${escaparHTML(usuario.email)}</span>
+          <span>${escaparHTML(usuario.universidad || 'Universidad no registrada')}</span>
+        </div>
+
+        <div class="usuario-detalles">
+          <span class="usuario-rol ${usuario.rol}">
+            ${usuario.rol === 'admin' ? 'Administrador' : 'Usuario'}
+          </span>
+          <span class="usuario-fecha">Registro: ${fecha}</span>
+          <span class="usuario-estado ${usuario.activo ? 'activo' : 'inactivo'}">
+            ${usuario.activo ? 'Activo' : 'Inactivo'}
+          </span>
+        </div>
+      </article>
+    `;
+  }).join('');
+}
 
 async function cargarNovedades() {
   const token = sessionStorage.getItem("movuToken");

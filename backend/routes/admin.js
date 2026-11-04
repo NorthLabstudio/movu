@@ -7,6 +7,7 @@ const Usuario = require('../models/usuario');
 const Ruta = require('../models/rutas');
 const Historial = require('../models/historial');
 const Novedad = require('../models/novedad');
+const Actividad = require('../models/actividad');
 const mongoose = require('mongoose');
 
 // Middleware de administrador
@@ -47,6 +48,49 @@ router.get('/estadisticas', verificarAdmin, async (req, res) => {
     });
   }
 });
+// Consultar usuarios registrados
+router.get('/usuarios', verificarAdmin, async (req, res) => {
+  try {
+    const usuarios = await Usuario.find()
+      .select('nombre email universidad ciudad rol activo createdAt')
+      .sort({ createdAt: -1 });
+
+    res.json({
+      total: usuarios.length,
+      usuarios
+    });
+
+  } catch (error) {
+    console.error('Error al consultar usuarios:', error);
+
+    res.status(500).json({
+      mensaje: 'Error al consultar los usuarios'
+    });
+  }
+});
+// Obtener las últimas actividades
+// Consultar actividades del panel administrativo
+router.get('/actividad', verificarAdmin, async (req, res) => {
+  try {
+    const consulta = Actividad.find().sort({ fecha: -1 });
+
+    // En el dashboard se muestran solo las cinco más recientes
+    if (req.query.todas !== 'true') {
+      consulta.limit(5);
+    }
+
+    const actividades = await consulta;
+
+    res.json(actividades);
+
+  } catch (error) {
+    console.error('Error al consultar actividades:', error);
+
+    res.status(500).json({
+      mensaje: 'Error al consultar las actividades'
+    });
+  }
+});
 
 // Consultar todas las novedades desde el panel administrativo
 router.get('/novedades', verificarAdmin, async (req, res) => {
@@ -73,6 +117,12 @@ router.post('/novedades', verificarAdmin, async (req, res) => {
     });
 
     await novedad.save();
+    await registrarActividad(
+      'novedad',
+      'creada',
+      novedad.titulo,
+      'Se creó una nueva novedad.'
+    );
 
     res.status(201).json({
       mensaje: 'Novedad creada correctamente',
@@ -111,6 +161,12 @@ router.put('/novedades/:id', verificarAdmin, async (req, res) => {
         mensaje: 'Novedad no encontrada'
       });
     }
+    await registrarActividad(
+      'novedad',
+      'actualizada',
+      novedad.titulo,
+      'Se actualizaron los datos de una novedad.'
+    );
 
     res.json({
       mensaje: 'Novedad actualizada correctamente',
@@ -143,6 +199,12 @@ router.delete('/novedades/:id', verificarAdmin, async (req, res) => {
         mensaje: 'Novedad no encontrada'
       });
     }
+    await registrarActividad(
+      'novedad',
+      'eliminada',
+      novedad.titulo,
+      'Se eliminó una novedad.'
+    );
 
     res.json({
       mensaje: 'Novedad eliminada correctamente'
@@ -156,6 +218,19 @@ router.delete('/novedades/:id', verificarAdmin, async (req, res) => {
     });
   }
 });
+// Registrar una actividad del panel administrativo
+async function registrarActividad(tipo, accion, titulo, descripcion = '') {
+  try {
+    await Actividad.create({
+      tipo,
+      accion,
+      titulo,
+      descripcion
+    });
+  } catch (error) {
+    console.error('Error al registrar actividad:', error);
+  }
+}
 // ==========================================
 // GESTIÓN DE RUTAS
 // ==========================================
@@ -227,6 +302,12 @@ router.post('/rutas', verificarAdmin, async (req, res) => {
     });
 
     await ruta.save();
+    await registrarActividad(
+      'ruta',
+      'creada',
+      `Ruta ${ruta.busCode}`,
+      `${ruta['company-name']}: ${ruta.origen} → ${ruta.destino}`
+    );
 
     res.status(201).json({
       mensaje: 'Ruta creada correctamente',
@@ -296,6 +377,12 @@ router.put('/rutas/:id', verificarAdmin, async (req, res) => {
         mensaje: 'Ruta no encontrada'
       });
     }
+    await registrarActividad(
+      'ruta',
+      'actualizada',
+      `Ruta ${ruta.busCode}`,
+      `${ruta['company-name']}: ${ruta.origen} → ${ruta.destino}`
+    );
 
     res.json({
       mensaje: 'Ruta actualizada correctamente',
@@ -343,6 +430,12 @@ router.delete('/rutas/:id', verificarAdmin, async (req, res) => {
 
     // Eliminar la ruta
     await Ruta.findByIdAndDelete(ruta._id);
+    await registrarActividad(
+      'ruta',
+      'eliminada',
+      `Ruta ${ruta.busCode}`,
+      `${ruta['company-name']}: ${ruta.origen} → ${ruta.destino}`
+    );
 
     res.json({
       mensaje: 'Ruta eliminada correctamente'

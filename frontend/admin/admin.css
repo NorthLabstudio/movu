@@ -1173,3 +1173,252 @@ a {
     grid-template-columns: 1fr;
   }
 }
+
+/* Filtros del historial de actualizaciones */
+.filtros-actualizaciones {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 24px 0 18px;
+  flex-wrap: wrap;
+}
+
+.filtros-actualizaciones input {
+  height: 42px;
+  padding: 0 13px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-small);
+  background: var(--surface);
+  color: var(--text);
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px;
+  outline: none;
+  transition: var(--transition);
+}
+
+#buscar-actualizacion {
+  flex: 1;
+  min-width: 220px;
+}
+
+#fecha-actualizacion {
+  width: 190px;
+  cursor: pointer;
+}
+
+.filtros-actualizaciones input:focus {
+  border-color: var(--green);
+  box-shadow: 0 0 0 3px var(--green-light);
+}
+
+#limpiar-filtros {
+  height: 42px;
+  padding: 0 17px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-small);
+  background: var(--surface);
+  color: var(--text-secondary);
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+#limpiar-filtros:hover {
+  background: var(--green-light);
+  color: var(--green);
+  border-color: var(--green);
+}
+
+@media (max-width: 600px) {
+  .filtros-actualizaciones {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  #buscar-actualizacion,
+  #fecha-actualizacion,
+  #limpiar-filtros {
+    width: 100%;
+  }
+}
+
+/* =========================================
+   USUARIOS — MOVU ADMIN
+   ========================================= */
+
+/* Resumen */
+.usuarios-resumen {
+  display: grid;
+  grid-template-columns: minmax(220px, 280px);
+  gap: 16px;
+  margin: 24px 0;
+}
+
+.usuarios-resumen .stat-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px;
+}
+
+/* Filtros */
+.filtros-usuarios {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.filtros-usuarios input,
+.filtros-usuarios select {
+  height: 42px;
+  padding: 0 13px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-small);
+  background: var(--surface);
+  color: var(--text);
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px;
+  outline: none;
+}
+
+#buscar-usuario {
+  flex: 1;
+  min-width: 220px;
+}
+
+#filtro-rol-usuario {
+  min-width: 190px;
+  cursor: pointer;
+}
+
+.filtros-usuarios input:focus,
+.filtros-usuarios select:focus {
+  border-color: var(--green);
+  box-shadow: 0 0 0 3px var(--green-light);
+}
+
+/* Tarjetas de usuarios */
+.usuario-item {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 20px;
+  margin-bottom: 12px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  transition: var(--transition);
+}
+
+.usuario-item:hover {
+  border-color: var(--green);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+}
+
+/* Avatar */
+.usuario-avatar {
+  width: 46px;
+  height: 46px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--green-light);
+  color: var(--green);
+  font-family: 'Satoshi', sans-serif;
+  font-size: 19px;
+  font-weight: 700;
+}
+
+/* Información */
+.usuario-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  min-width: 0;
+}
+
+.usuario-info strong {
+  color: var(--text);
+  font-size: 15px;
+}
+
+.usuario-info span {
+  color: var(--text-secondary);
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+
+/* Detalles */
+.usuario-detalles {
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  gap: 7px;
+  flex-shrink: 0;
+}
+
+.usuario-rol,
+.usuario-estado {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 5px 10px;
+  border-radius: 20px;
+}
+
+.usuario-rol.usuario {
+  background: var(--teal-light);
+  color: var(--teal);
+}
+
+.usuario-rol.admin {
+  background: var(--accent-light);
+  color: var(--accent);
+}
+
+.usuario-estado.activo {
+  background: var(--green-light);
+  color: var(--green);
+}
+
+.usuario-estado.inactivo {
+  background: #FBE8E9;
+  color: var(--danger);
+}
+
+.usuario-fecha {
+  color: var(--text-light);
+  font-size: 11px;
+}
+
+/* Adaptación a móviles */
+@media (max-width: 600px) {
+  .filtros-usuarios {
+    flex-direction: column;
+  }
+
+  #buscar-usuario,
+  #filtro-rol-usuario {
+    width: 100%;
+  }
+
+  .usuario-item {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .usuario-info {
+    flex-basis: calc(100% - 65px);
+  }
+
+  .usuario-detalles {
+    width: 100%;
+    align-items: flex-start;
+    padding-left: 64px;
+  }
+}

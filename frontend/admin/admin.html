@@ -44,9 +44,9 @@
 
       <p class="nav-title">CONTENIDO</p>
 
-      <a href="#" class="nav-link">
-        <span>▣</span>
-        Universidades
+      <a href="#" class="nav-link" id="enlace-actualizaciones">
+        <span>↻</span>
+        Actualizaciones
       </a>
 
       <a href="#" class="nav-link" id="enlace-novedades"> <span>!</span>
@@ -56,7 +56,7 @@
 
       <p class="nav-title">USUARIOS</p>
 
-      <a href="#" class="nav-link">
+      <a href="#" class="nav-link" id="enlace-usuarios">
         <span>♙</span>
         Usuarios
       </a>
@@ -166,6 +166,28 @@
         </div>
 
       </section>
+      <!-- RECENT UPDATES -->
+      <section class="section">
+
+        <div class="section-header">
+
+          <div>
+            <span class="section-kicker">ACTIVIDAD</span>
+            <h2>Últimas actualizaciones</h2>
+          </div>
+
+          <a href="#" class="view-all">
+            Ver todo →
+          </a>
+
+        </div>
+
+
+        <div class="updates-list" id="lista-actualizaciones">
+          <p>Cargando últimas actualizaciones...</p>
+        </div>
+
+      </section>
 
     </section>
 
@@ -209,124 +231,6 @@
           </div>
 
         </button>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- RECENT UPDATES -->
-    <section class="section">
-
-      <div class="section-header">
-
-        <div>
-          <span class="section-kicker">ACTIVIDAD</span>
-          <h2>Últimas actualizaciones</h2>
-        </div>
-
-        <a href="#" class="view-all">
-          Ver todo →
-        </a>
-
-      </div>
-
-
-      <div class="updates-list">
-
-
-        <div class="update-item">
-
-          <div class="update-icon route">
-            ↔
-          </div>
-
-          <div class="update-content">
-
-            <strong>Ruta C1 actualizada</strong>
-
-            <p>
-              Se modificó la información de la ruta
-              de Coolitoral.
-            </p>
-
-          </div>
-
-          <span class="update-date">
-            Hoy, 10:32
-          </span>
-
-        </div>
-
-
-        <div class="update-item">
-
-          <div class="update-icon news">
-            !
-          </div>
-
-          <div class="update-content">
-
-            <strong>Nueva novedad publicada</strong>
-
-            <p>
-              Cambio temporal en la ruta C1.
-            </p>
-
-          </div>
-
-          <span class="update-date">
-            Ayer, 16:45
-          </span>
-
-        </div>
-
-
-        <div class="update-item">
-
-          <div class="update-icon stop">
-            ⌖
-          </div>
-
-          <div class="update-content">
-
-            <strong>Nueva parada agregada</strong>
-
-            <p>
-              Universidad del Norte.
-            </p>
-
-          </div>
-
-          <span class="update-date">
-            12 Sep, 09:20
-          </span>
-
-        </div>
-
-
-        <div class="update-item">
-
-          <div class="update-icon company">
-            ◉
-          </div>
-
-          <div class="update-content">
-
-            <strong>Nueva empresa registrada</strong>
-
-            <p>
-              Operador agregado al directorio.
-            </p>
-
-          </div>
-
-          <span class="update-date">
-            10 Sep, 14:18
-          </span>
-
-        </div>
 
       </div>
 
@@ -567,8 +471,62 @@
 
     </section>
 
+    <!-- VISTA DE ACTUALIZACIONES -->
+    <section id="vista-actualizaciones" class="vista-admin" hidden>
 
+      <div class="section-header">
+        <div>
+          <h2>Historial de actualizaciones</h2>
+          <p>Consulta los cambios realizados en las rutas y novedades.</p>
+        </div>
+      </div>
 
+      <div class="filtros-actualizaciones">
+        <input type="search" id="buscar-actualizacion" placeholder="Buscar por ruta, novedad o descripción...">
+
+        <input type="date" id="fecha-actualizacion" aria-label="Filtrar por fecha">
+
+        <button type="button" id="limpiar-filtros">
+          Limpiar filtros
+        </button>
+      </div>
+
+      <div class="updates-list" id="historial-actualizaciones">
+        <p>Cargando historial...</p>
+      </div>
+
+    </section>
+    <section id="vista-usuarios" class="vista-admin" hidden>
+
+      <div class="section-header">
+        <div>
+          <h2>Usuarios</h2>
+          <p>Consulta y conoce a las personas registradas en Movu.</p>
+        </div>
+      </div>
+
+      <div class="usuarios-resumen">
+        <div class="stat-card">
+          <span>Total de usuarios</span>
+          <strong id="total-usuarios-listado">0</strong>
+        </div>
+      </div>
+
+      <div class="filtros-usuarios">
+        <input type="search" id="buscar-usuario" placeholder="Buscar por nombre o correo...">
+
+        <select id="filtro-rol-usuario">
+          <option value="">Todos los roles</option>
+          <option value="usuario">Usuarios</option>
+          <option value="admin">Administradores</option>
+        </select>
+      </div>
+
+      <div id="lista-usuarios">
+        <p>Cargando usuarios...</p>
+      </div>
+
+    </section>
 
     <!-- FOOTER -->
     <footer class="admin-footer">
