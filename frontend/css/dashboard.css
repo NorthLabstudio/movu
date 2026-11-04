@@ -349,43 +349,62 @@ textarea::placeholder {
 
 /* News o novedades*/
 
+/* Novedades */
+
 #novedades {
   margin-bottom: var(--space-3xl);
 }
 
 .newslist {
   display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 6px var(--space-lg);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-md);
+}
+
+.news-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
   padding: var(--space-lg);
   background-color: var(--white);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.news-item:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
 }
 
 .news-title {
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 800;
   color: var(--text);
 }
 
 .news-type {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: var(--radius-md);
+  background-color: var(--color-primary);
+  color: var(--white);
   font-size: 12px;
   font-weight: 700;
-  color: var(--color-primary);
 }
 
 .news-date {
-  grid-column: 2;
-  grid-row: 1 / span 2;
-  align-self: center;
   font-size: 12px;
   color: var(--text-muted);
 }
 
 .news-description {
-  font-size: 13px;
+  font-size: 14px;
+  line-height: 1.5;
   color: var(--text-muted);
 }
 
@@ -465,12 +484,6 @@ textarea::placeholder {
 
   .newslist {
     grid-template-columns: 1fr;
-  }
-
-  .news-date {
-    grid-column: auto;
-    grid-row: auto;
-    margin-top: 4px;
   }
 }
 

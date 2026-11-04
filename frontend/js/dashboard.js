@@ -29,6 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Cargar la información del dashboard
   cargarFav();
   cargarHistorial();
+  cargarNovedades();
 
   // Configurar el cierre de sesión
   const botonCerrarSesion = document.querySelector(".close-btn");
@@ -224,6 +225,57 @@ async function cargarHistorial() {
 
     contenedor.innerHTML = `
       <p>No fue posible cargar tus consultas recientes.</p>
+    `;
+  }
+}
+// CARGAR NOVEDADES PUBLICADAS
+async function cargarNovedades() {
+  const contenedor = document.getElementById("novedades-container");
+
+  if (!contenedor) return;
+
+  try {
+    const respuesta = await fetch("http://localhost:3000/api/novedades");
+
+    const datos = await respuesta.json();
+
+    if (!respuesta.ok) {
+      throw new Error(datos.mensaje || "No se pudieron cargar las novedades.");
+    }
+
+    if (!Array.isArray(datos)) {
+      throw new Error("La API no devolvió una lista de novedades.");
+    }
+
+    if (datos.length === 0) {
+      contenedor.innerHTML = `
+        <p>No hay novedades de transporte vigentes por el momento.</p>
+      `;
+      return;
+    }
+
+    contenedor.innerHTML = datos.map(novedad => {
+      const fecha = new Date(novedad.fechaInicio).toLocaleDateString("es-CO", {
+        day: "numeric",
+        month: "long",
+        year: "numeric"
+      });
+
+      return `
+        <article class="news-item">
+          <span class="news-title">${novedad.titulo}</span>
+          <span class="news-type">${novedad.tipo}</span>
+          <span class="news-date">Desde: ${fecha}</span>
+          <span class="news-description">${novedad.descripcion}</span>
+        </article>
+      `;
+    }).join("");
+
+  } catch (error) {
+    console.error("Error al cargar las novedades:", error);
+
+    contenedor.innerHTML = `
+      <p>No fue posible cargar las novedades.</p>
     `;
   }
 }
