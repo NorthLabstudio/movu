@@ -4,87 +4,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/nav.css">
   <link rel="stylesheet" href="css/cards.css">
   <link rel="stylesheet" href="css/catalogo.css">
 
   <link rel="icon" href="assets/img/logomovu.png" type="image/x-icon">
-  <title>Movu - Catalogo de rutas</title>
+
+  <title>Movu - Catálogo de rutas</title>
 </head>
 
 <body>
 
-  <main>
-    <header>
-      <nav>
-        <div id="logo-container" src="dashboard.html" class="link">
-          <div id="logo-image">
-            <img id="logo" src="assets/img/logomovu.png" alt="Movu">
-          </div>
-          <h2>Movu</h2>
-        </div>
-        <a href="dashboard.html" class="link">Dashboard</a>
-        <a href="catalogo.html" class="link">Directorio</a>
-        <div>
-          <a href="profile.html" class="link">Perfil</a>
-          <button class="close-btn">Cerrar sesión</button>
-        </div>
-      </nav>
-    </header>
-    <!--intro-->
-    <section class="intro">
-      <div class="intro-content">
-        <h1>Directorio de Rutas</h1>
-        <p>Explora las rutas de transporte público de Barranquilla,
-          conoce sus recorridos y encuentra información útil para
-          planificar mejor tu viaje.</p>
-      </div>
-    </section>
-    <!-- section para filtrar y buscar rutas -->
+  <div id="root"></div>
 
-    <section id="search">
-      <div id="search-container">
-        <div class="search-box">
-          <input type="text" id="origen" placeholder="Origen">
-          <input type="text" id="destino" placeholder="Destino">
+  <script type="module" src="/src/catalogo.jsx"></script>
 
-          <div class="filter">
-            <select class="empresaSelect" id="empresaSelect">
-              <option value="all">Todas las empresas</option>
-            </select>
-          </div>
-
-
-          <div class="filter">
-            <select class="UniversidadSelect" id="UniversidadSelect">
-              <option value="all">Todas las universidades</option>
-            </select>
-          </div>
-
-          <input type="search" id="search-input" placeholder="Buscar rutas, empresa o destino">
-          <button id="search-button">Buscar</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- rutas en forma de cards(las cards se voltean) con su informacion visible, separado o divididos por empresa, como transmetro, colitoral, etc-->
-
-    <section id="rutas-directory">
-      <h2>Rutas</h2>
-      <div id="routes-container">
-        <!-- Las tarjetas se generarán con los datos de MongoDB -->
-      </div>
-    </section>
-
-
-  </main>
-  <footer>
-    <p>&copy; 2023 Movu. Todos los derechos reservados.</p>
-  </footer>
-  <script src="js/cards.js"></script>
-
-  <script src="js/catalogo.js"></script>
 </body>
 
 </html>

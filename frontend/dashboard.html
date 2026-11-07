@@ -1,118 +1,25 @@
 <!DOCTYPE html>
 <html lang="es">
 
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>MOVU Dashboard</title>
+
   <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/dashboard.css">
-  <link rel="stylesheet" href="css/nav.css">
   <link rel="stylesheet" href="css/cards.css">
+
   <link rel="icon" href="assets/img/logomovu.png" type="image/x-icon">
 </head>
 
 <body>
-  <!--Navegacion de la pagina-->
-  <header>
-    <nav>
-      <div id="logo-container" src="dashboard.html" class="link">
-        <div id="logo-image">
-          <img id="logo" src="assets/img/logomovu.png" alt="Movu">
-        </div>
-        <h2>Movu</h2>
-      </div>
-      <a href="catalogo.html" class="link">Directorio</a>
-      <div>
-        <a href="profile.html" class="link">Perfil</a>
-        <button class="close-btn">Cerrar sesión</button>
-      </div>
-    </nav>
-  </header>
 
-  <main class="dashboard">
-    <!--saludo e interraccion con el ussuario-->
-    <section class="dashboard-header">
-      <p>Buenos dias, <span id="username">Nombre de usuario</span></p>
-      <h1>¿A donde vas hoy?</h1>
-    </section>
-    <!--buscador de rutas-->
-    <section class="bussearch">
-      <div>
-        <label for="search-input">Buscar una ruta o destino</label>
-        <div class="searchbox">
-          <input type="search" id="bus-input" name="bus-input"
-            placeholder="Busca una universidad, ruta, parada o destino...">
-          <button type="submit" class="search-btn">Buscar</button>
-        </div>
-      </div>
-    </section>
-    <!--estadisticas o resumen del uso de la plataforma como frecuercia, consultas, rutas favoritas y lugares-->
-    <section class="dashboard-stats">
-      <article class="stat-item">
-        <span class="stat-label">Rutas favoritas</span>
-        <span class="stat-value" id="fav-count">0</span>
-        <span class="stat-description">Rutas guardadas</span>
-      </article>
+  <div id="root"></div>
 
-      <article class="stat-item">
-        <span class="stat-label">Consultas recientes</span>
-        <span class="stat-value" id="history-count">0</span>
-        <span class="stat-description">Rutas consultadas</span>
-      </article>
+  <script type="module" src="/src/main.jsx"></script>
 
-      <article class="stat-item">
-        <span class="stat-label">Destino frecuente</span>
-        <span class="stat-value" id="frequent-destination">--</span>
-        <span class="stat-description">Destino más consultado</span>
-      </article>
-    </section>
-    <section id="rutas-favoritas">
-      <div class="section-header">
-        <div>
-          <span class="stat-label">Rutas favoritas</span>
-          <h2>Rutas favoritas</h2>
-        </div>
-        <a href="catalogo.html">Ver todas →</a>
-      </div>
-
-      <div id="fav-container" class="route-grid">
-        <!-- Las rutas favoritas se cargarán desde MongoDB -->
-      </div>
-    </section>
-    <section class="recientes" id="historial">
-      <div class="section-header">
-        <div>
-          <span class="section-title">Tu actividad</span>
-          <h2>Consultas recientes</h2>
-        </div>
-        <a href="profile.html#historial">Ver historial →</a>
-      </div>
-
-      <div id="historial-container" class="route-grid">
-        <!-- Las consultas recientes se cargarán desde MongoDB -->
-      </div>
-    </section>
-
-    <!-- Novedades -->
-    <!-- Novedades -->
-    <section id="novedades">
-      <div class="section-header">
-        <div>
-          <span class="section-title">Información del transporte</span>
-          <h2>Novedades</h2>
-        </div>
-      </div>
-
-      <div id="novedades-container" class="newslist">
-        <p>Cargando novedades...</p>
-      </div>
-    </section>
-  </main>
-  <footer></footer>
-  <script src="js/cards.js"></script>
-  <script src="js/dashboard.js"></script>
 </body>
 
 </html>
