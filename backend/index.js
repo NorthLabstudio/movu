@@ -6,13 +6,18 @@ const cors = require('cors');
 const app = express();
 
 app.use(cors({
-  origin: 'http://127.0.0.1:3001'
+  origin: [
+    'http://127.0.0.1:3001',
+    'http://localhost:5173',
+    'http://localhost:5175'
+  ]
 }));
 
 app.use(express.json());
 
-require('dotenv').config({ path: './backend/config/.env' });
-
+require('dotenv').config({
+  path: require('path').join(__dirname, 'config', '.env')
+});
 // Conexion a mongo
 mongoose.connect(process.env.MONGODB_URI)
   .then(() => console.log('Conectado a mongo'))
@@ -58,6 +63,7 @@ app.get('/api/admin/prueba', verificarAdmin, (req, res) => {
 });
 app.use('/api/admin', require('./routes/admin'));
 app.use('/api/novedades', require('./routes/novedades'));
+app.use('/api/chat', require('./routes/chat'));
 
 app.get('/prueba-servidor', (req, res) => {
   res.send('Este es el servidor correcto');

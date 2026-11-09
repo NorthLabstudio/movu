@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import Cards from '../componentes/Cards.jsx';
 import SearchBar from '../componentes/SearchBar.jsx';
 import NewsCards from '../componentes/NewsCards.jsx';
+import Chatbot from '../componentes/Chatbot.jsx';
 
 function Dashboard() {
   // Información del usuario
@@ -471,7 +472,8 @@ function Dashboard() {
 
         </div>
       </section>
-
+      {/* ASISTENTE MOVU AI */}
+      <Chatbot />
     </main>
   );
 }

@@ -1,0 +1,137 @@
+/* CONTENEDOR GENERAL */
+.chatbot-container {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  z-index: 1000;
+  font-family: 'Nunito', sans-serif;
+}
+
+/* BOTÓN FLOTANTE */
+.chatbot-toggle {
+  width: 60px;
+  height: 60px;
+  border: none;
+  border-radius: 50%;
+  background-color: var(--primary);
+  color: white;
+  font-size: 27px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease;
+}
+
+.chatbot-toggle:hover {
+  transform: scale(1.08);
+}
+
+/* VENTANA */
+.chatbot-ventana {
+  position: absolute;
+  bottom: 75px;
+  right: 0;
+  width: 350px;
+  height: 480px;
+  background-color: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* ENCABEZADO */
+.chatbot-header {
+  background-color: var(--primary);
+  color: white;
+  padding: 18px;
+}
+
+.chatbot-header h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.chatbot-header span {
+  font-size: 12px;
+  opacity: 0.85;
+}
+
+/* MENSAJES */
+.chatbot-mensajes {
+  flex: 1;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow-y: auto;
+  background-color: var(--bg);
+}
+
+.chatbot-mensaje {
+  max-width: 85%;
+  padding: 11px 14px;
+  border-radius: 14px;
+  font-size: 13px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.chatbot-mensaje.bot {
+  align-self: flex-start;
+  background-color: white;
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-bottom-left-radius: 4px;
+}
+
+.chatbot-mensaje.usuario {
+  align-self: flex-end;
+  background-color: var(--primary);
+  color: white;
+  border-bottom-right-radius: 4px;
+}
+
+/* FORMULARIO */
+.chatbot-form {
+  display: flex;
+  gap: 8px;
+  padding: 12px;
+  border-top: 1px solid var(--border);
+  background-color: white;
+}
+
+.chatbot-form input {
+  flex: 1;
+  min-width: 0;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  font-family: inherit;
+  font-size: 13px;
+}
+
+.chatbot-form button {
+  width: 38px;
+  height: 38px;
+  border: none;
+  border-radius: 50%;
+  background-color: var(--primary);
+  color: white;
+  cursor: pointer;
+  font-size: 17px;
+}
+
+/* ADAPTACIÓN A MÓVILES */
+@media (max-width: 480px) {
+  .chatbot-container {
+    right: 15px;
+    bottom: 15px;
+  }
+
+  .chatbot-ventana {
+    width: min(350px, calc(100vw - 30px));
+    height: min(480px, calc(100dvh - 110px));
+  }
+}
