@@ -11,6 +11,9 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'index.html'),
         login: resolve(__dirname, 'login.html'),
+        dashboard: resolve(__dirname, 'dashboard.html'),
+        catalogo: resolve(__dirname, 'catalogo.html'),
+        profile: resolve(__dirname, 'profile.html'),
         admin: resolve(__dirname, 'admin/admin.html')
       }
     }
