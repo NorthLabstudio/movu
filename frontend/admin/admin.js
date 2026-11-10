@@ -1,4 +1,4 @@
-import API_URL from '../src/config/api.js';
+import API_URL from "../config/api.js";
 let todosLosUsuarios = [];
 
 document.addEventListener("DOMContentLoaded", async () => {
