@@ -1,6 +1,6 @@
 import './Cards.css';
 import { useEffect, useState } from 'react';
-
+import API_URL from '../../config/api.js';
 function Cards({ ruta, esFavorita = false, onFavChange }) {
 
   // Estado para controlar el giro de la tarjeta.
@@ -51,7 +51,7 @@ function Cards({ ruta, esFavorita = false, onFavChange }) {
 
     try {
       const respuesta = await fetch(
-        `http://localhost:3000/api/historial/${rutaId}`,
+        `${API_URL}/api/historial/${rutaId}`,
         {
           method: 'POST',
           headers: {
@@ -94,7 +94,7 @@ function Cards({ ruta, esFavorita = false, onFavChange }) {
       setCargandoFav(true);
 
       const respuesta = await fetch(
-        `http://localhost:3000/api/fav/${rutaId}`,
+        `${API_URL}/api/fav/${rutaId}`,
         {
           method: yaEstaGuardada ? 'DELETE' : 'POST',
           headers: {

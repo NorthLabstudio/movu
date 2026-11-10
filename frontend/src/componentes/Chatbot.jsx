@@ -1,4 +1,4 @@
-
+import API_URL from '../../config/api.js';
 import { useState } from 'react';
 import './Chatbot.css';
 
@@ -37,7 +37,7 @@ function Chatbot() {
 
     try {
       // Consultar el endpoint del chatbot
-      const respuesta = await fetch('http://localhost:3000/api/chat', {
+      const respuesta = await fetch(`${API_URL}/api/chat`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

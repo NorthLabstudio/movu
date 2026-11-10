@@ -1,8 +1,7 @@
 import Filter from '../componentes/Filter.jsx';
 import Cards from '../componentes/Cards.jsx';
 import Nav from '../componentes/Nav.jsx';
-
-
+import API_URL from '../../config/api.js';
 import { useEffect, useState } from 'react';
 
 function Catalogo() {
@@ -21,8 +20,7 @@ function Catalogo() {
   useEffect(() => {
     async function cargarRutas() {
       try {
-        const respuesta = await fetch('http://localhost:3000/api/rutas');
-
+        const respuesta = await fetch(`${API_URL}/api/rutas`);
         if (!respuesta.ok) {
           throw new Error('No se pudieron consultar las rutas.');
         }

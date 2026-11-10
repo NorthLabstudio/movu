@@ -4,6 +4,7 @@ import Cards from '../componentes/Cards.jsx';
 import SearchBar from '../componentes/SearchBar.jsx';
 import NewsCards from '../componentes/NewsCards.jsx';
 import Chatbot from '../componentes/Chatbot.jsx';
+import API_URL from '../../config/api.js';
 
 function Dashboard() {
   // Información del usuario
@@ -38,8 +39,7 @@ function Dashboard() {
       setCargandoRutas(true);
       setErrorBusqueda('');
 
-      const respuesta = await fetch('http://localhost:3000/api/rutas');
-
+      const respuesta = await fetch(`${API_URL}/api/rutas`);
       const datos = await respuesta.json();
 
       if (!respuesta.ok) {
@@ -138,7 +138,7 @@ function Dashboard() {
   // CARGAR RUTAS FAVORITAS
   async function cargarFav(token) {
     try {
-      const respuesta = await fetch('http://localhost:3000/api/fav', {
+      const respuesta = await fetch(`${API_URL}/api/fav`, {
         method: 'GET',
         headers: {
           Authorization: `Bearer ${token}`
@@ -168,7 +168,7 @@ function Dashboard() {
   // CARGAR HISTORIAL DE CONSULTAS
   async function cargarHistorial(token) {
     try {
-      const respuesta = await fetch('http://localhost:3000/api/historial', {
+      const respuesta = await fetch(`${API_URL}/api/historial`, {
         method: 'GET',
         headers: {
           Authorization: `Bearer ${token}`
@@ -228,8 +228,7 @@ function Dashboard() {
   // CARGAR NOVEDADES PUBLICADAS
   async function cargarNovedades() {
     try {
-      const respuesta = await fetch('http://localhost:3000/api/novedades');
-
+      const respuesta = await fetch(`${API_URL}/api/novedades`);
       const datos = await respuesta.json();
 
       if (!respuesta.ok) {

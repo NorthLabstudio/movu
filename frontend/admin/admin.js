@@ -1,4 +1,4 @@
-
+import API_URL from '../src/config/api.js';
 let todosLosUsuarios = [];
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -12,8 +12,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   try {
     // Verificar permisos de administrador
-    const respuesta = await fetch(
-      "http://localhost:3000/api/admin/prueba",
+    const respuesta = await fetch(`${API_URL}/api/admin/prueba`,
       {
         method: "GET",
         headers: {
@@ -76,7 +75,7 @@ async function cargarEstadisticas() {
 
   try {
     const respuesta = await fetch(
-      "http://localhost:3000/api/admin/estadisticas",
+      `${API_URL}/api/admin/estadisticas`,
       {
         method: "GET",
         headers: {
@@ -109,7 +108,7 @@ async function cargarActualizaciones() {
   const token = sessionStorage.getItem('movuToken');
 
   try {
-    const respuesta = await fetch('http://localhost:3000/api/admin/actividad', {
+    const respuesta = await fetch(`${API_URL}/api/admin/actividad`, {
       headers: {
         Authorization: `Bearer ${token}`
       }
@@ -326,7 +325,7 @@ function configurarNavegacion() {
     try {
       // Consultar las novedades registradas
       const respuesta = await fetch(
-        "http://localhost:3000/api/admin/novedades",
+        `${API_URL}/api/admin/novedades`,
         {
           method: "GET",
           headers: {
@@ -446,7 +445,7 @@ async function cargarHistorialActualizaciones() {
     const token = sessionStorage.getItem('movuToken');
 
     const respuesta = await fetch(
-      'http://localhost:3000/api/admin/actividad?todas=true',
+      `${API_URL}/api/admin/actividad?todas=true`,
       {
         headers: {
           Authorization: `Bearer ${token}`
@@ -577,7 +576,7 @@ async function cargarRutas() {
 
   try {
     const respuesta = await fetch(
-      "http://localhost:3000/api/admin/rutas",
+      `${API_URL}/api/admin/rutas`,
       {
         method: "GET",
         headers: {
@@ -700,7 +699,7 @@ document.getElementById("lista-rutas").addEventListener("click", async (evento) 
   try {
     // Consultar las rutas registradas
     const respuesta = await fetch(
-      "http://localhost:3000/api/admin/rutas",
+      `${API_URL}/api/admin/rutas`,
       {
         method: "GET",
         headers: {
@@ -761,7 +760,7 @@ async function cargarUsuarios() {
     const token = sessionStorage.getItem('movuToken');
 
     const respuesta = await fetch(
-      'http://localhost:3000/api/admin/usuarios',
+      `${API_URL}/api/admin/usuarios`,
       {
         headers: {
           Authorization: `Bearer ${token}`
@@ -861,7 +860,7 @@ async function cargarNovedades() {
 
   try {
     const respuesta = await fetch(
-      "http://localhost:3000/api/admin/novedades",
+      `${API_URL}/api/admin/novedades`,
       {
         method: "GET",
         headers: {
@@ -952,8 +951,8 @@ formularioNovedad.addEventListener("submit", async (evento) => {
 
   try {
     const url = novedadEditando
-      ? `http://localhost:3000/api/admin/novedades/${novedadEditando}`
-      : "http://localhost:3000/api/admin/novedades";
+      ? `${API_URL}/api/admin/novedades/${novedadEditando}`
+      : `${API_URL}/api/admin/novedades`;
 
     const metodo = novedadEditando ? "PUT" : "POST";
 
@@ -1013,7 +1012,7 @@ document.addEventListener("click", async (evento) => {
 
   try {
     const respuesta = await fetch(
-      `http://localhost:3000/api/admin/novedades/${id}`,
+      `${API_URL}/api/admin/novedades/${id}`,
       {
         method: "DELETE",
         headers: {
@@ -1057,7 +1056,7 @@ document.addEventListener("click", async (evento) => {
 
   try {
     const respuesta = await fetch(
-      `http://localhost:3000/api/admin/rutas/${id}`,
+      `${API_URL}/api/admin/rutas/${id}`,
       {
         method: "DELETE",
         headers: {
@@ -1126,9 +1125,8 @@ if (formularioRuta) {
 
     try {
       const url = rutaEditando
-        ? `http://localhost:3000/api/admin/rutas/${rutaEditando}`
-        : "http://localhost:3000/api/admin/rutas";
-
+        ? `${API_URL}/api/admin/rutas/${rutaEditando}`
+        : `${API_URL}/api/admin/rutas`;
       const metodo = rutaEditando ? "PUT" : "POST";
 
       const respuesta = await fetch(url, {

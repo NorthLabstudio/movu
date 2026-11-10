@@ -1,3 +1,5 @@
+import API_URL from '../config/api.js';
+
 document.addEventListener("DOMContentLoaded", () => {
 
   // =========================
@@ -59,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Conexión con el backend
       try {
-        const respuesta = await fetch("http://localhost:3000/api/auth/login", {
+        const respuesta = await fetch(`${API_URL}/api/auth/login`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json"
@@ -128,7 +130,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       try {
-        const respuesta = await fetch("http://localhost:3000/api/auth/registro", {
+        const respuesta = await fetch(`${API_URL}/api/auth/registro`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json"
