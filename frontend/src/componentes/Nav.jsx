@@ -26,7 +26,7 @@ function Nav() {
 
           {/* Navegación principal */}
           <div className="nav-links">
-            <a href="/" className="link">
+            <a href="/dashboard" className="link">
               Dashboard
             </a>
 

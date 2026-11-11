@@ -1,86 +1,38 @@
-@media (max-width:1250px) {
-  body {
-    padding: 80px;
-  }
+/* =========================================
+   MOVU — CATÁLOGO / DIRECTORIO
+   Hybrid · Editorial · Barranquilla Tech
+   ========================================= */
+
+/* CONTENEDORES GENERALES */
+
+#search,
+#rutas-directory {
+  width: 100%;
+  box-sizing: border-box;
 }
-
-@media (max-width:1024px) {
-  body {
-    padding: 60px;
-    max-width: 1250px;
-    margin: 0 auto;
-  }
-}
-
-@media (max-width:780px) {
-  body {
-    max-width: 780px;
-    padding: 20px;
-    margin: 0 auto;
-  }
-
-  h1 {
-    font-size: 40px;
-  }
-
-  h2 {
-    font-size: 32px;
-  }
-
-  h3 {
-    font-size: 26px;
-  }
-
-  p {
-    font-size: 1.6rem;
-  }
-}
-
-@media (max-width:435px) {
-  body {
-    max-width: 425px;
-    padding: 20px;
-    margin: 0 auto;
-    width: 100%;
-  }
-
-  h1 {
-    font-size: 32px;
-  }
-
-  h2 {
-    font-size: 24px;
-  }
-
-  h3 {
-    font-size: 20px;
-  }
-
-  p {
-    font-size: 1rem;
-  }
-}
-
 
 #search {
-  padding: 0 6% 70px;
+  padding: 35px 6% 55px;
 }
 
-#search-container {
+#search-container,
+.company-container {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
 }
 
+/* BUSCADOR */
+
 .search-box {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
-  margin-top: 20px;
-  padding: 20px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 24px;
+  padding: 24px;
   background: var(--white);
   border: 1px solid var(--border);
-  border-radius: 20px;
+  border-radius: 22px;
   box-shadow: var(--shadow-md);
 }
 
@@ -88,18 +40,17 @@
 .category-select {
   width: 100%;
   min-width: 0;
-  height: 52px;
-  padding: 0 16px;
+  height: 54px;
+  box-sizing: border-box;
+  padding: 0 17px;
   border: 1px solid var(--border);
-  border-radius: var(--radius-md);
+  border-radius: 12px;
   outline: none;
   background: var(--white);
   font-family: var(--primary-font);
   font-size: 0.9rem;
   color: var(--text);
-  transition:
-    border-color 0.2s ease,
-    box-shadow 0.2s ease;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .search-box input::placeholder {
@@ -108,8 +59,8 @@
 
 .search-box input:focus,
 .category-select:focus {
-  border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px var(--color-accent);
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(0, 106, 103, 0.12);
 }
 
 #fecha {
@@ -124,31 +75,42 @@
   display: flex;
   flex-direction: column;
   gap: 7px;
+  min-width: 0;
+}
+
+.filter label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-muted);
 }
 
 select {
-  padding: 0;
+  width: 100%;
+  min-width: 0;
+  height: 54px;
+  padding: 0 14px;
   border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  height: 52px;
-  background: transparent;
-  text-align: left;
+  border-radius: 12px;
+  background: var(--white);
   font-family: var(--primary-font);
-  font-size: 0.78rem;
-  font-weight: 700;
+  font-size: 0.85rem;
+  font-weight: 600;
   color: var(--text);
+  cursor: pointer;
 }
 
 #search-button {
-  height: 52px;
-  padding: 0 24px;
+  height: 54px;
+  padding: 0 25px;
   border: none;
+  border-radius: 12px;
+  background: var(--color-primary);
+  color: var(--white);
+  font-family: var(--primary-font);
   font-size: 0.9rem;
   font-weight: 700;
   cursor: pointer;
-  transition:
-    transform 0.2s ease,
-    opacity 0.2s ease;
+  transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
 #search-button:hover {
@@ -156,38 +118,129 @@ select {
   transform: translateY(-2px);
 }
 
+/* DIRECTORIO DE RUTAS */
 
 #rutas-directory {
-  padding: 20px 6% 100px;
+  padding: 35px 6% 100px;
 }
 
 #rutas-directory>h2 {
   width: 100%;
   max-width: 1200px;
-  margin: 0 auto 35px;
+  margin: 0 auto 40px;
   font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 400;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -1.5px;
   color: var(--text);
 }
+
+/* SECCIONES POR EMPRESA */
 
 .company-section {
   display: flex;
   align-items: center;
-  margin-top: 20px;
-  margin-bottom: 22px;
-  padding-bottom: 14px;
+  justify-content: space-between;
+  margin: 35px 0 22px;
+  padding-bottom: 15px;
   border-bottom: 1px solid var(--border);
 }
 
 .company-section .company-name {
+  margin: 0;
   font-family: var(--primary-font);
-  font-size: 1.3rem;
-  font-weight: 400;
-  color: var(--text);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  letter-spacing: -0.4px;
 }
 
 .company-container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
+  margin-bottom: 45px;
+}
+
+/* TABLETS */
+
+@media (max-width: 1024px) {
+
+  #search,
+  #rutas-directory {
+    padding-left: 4%;
+    padding-right: 4%;
+  }
+
+  .search-box {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  #search-input {
+    grid-column: span 2;
+  }
+}
+
+/* MÓVILES */
+
+@media (max-width: 650px) {
+  #search {
+    padding: 25px 20px 35px;
+  }
+
+  #rutas-directory {
+    padding: 25px 20px 65px;
+  }
+
+  .search-box {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 18px;
+    border-radius: 18px;
+  }
+
+  #search-input {
+    grid-column: span 1;
+  }
+
+  .search-box input,
+  .category-select,
+  select,
+  #search-button {
+    height: 49px;
+  }
+
+  #rutas-directory>h2 {
+    margin-bottom: 28px;
+    font-size: 2rem;
+    letter-spacing: -1px;
+  }
+
+  .company-section {
+    margin-top: 28px;
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+  }
+
+  .company-section .company-name {
+    font-size: 1.15rem;
+  }
+
+  .company-container {
+    margin-bottom: 35px;
+  }
+}
+
+@media (max-width: 435px) {
+
+  #search,
+  #rutas-directory {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  #rutas-directory>h2 {
+    font-size: 1.75rem;
+  }
+
+  .search-box {
+    padding: 15px;
+  }
 }

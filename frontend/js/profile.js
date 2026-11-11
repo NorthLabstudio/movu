@@ -1,4 +1,4 @@
-
+import API_URL from '../config/api.js';
 document.addEventListener("DOMContentLoaded", () => {
   const token = sessionStorage.getItem("movuToken");
   const usuarioGuardado = sessionStorage.getItem("movuUsuario");
@@ -157,7 +157,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     try {
       // Enviar los cambios al backend.
-      const respuesta = await fetch("${API_URL}/api/auth/perfil", {
+      const respuesta = await fetch(`${API_URL}/api/auth/perfil`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -236,7 +236,7 @@ async function cargarFav() {
   if (!contenedor) return;
 
   try {
-    const respuesta = await fetch("${API_URL}/api/fav", {
+    const respuesta = await fetch(`${API_URL}/api/fav`, {
       method: "GET",
       headers: {
         "Authorization": `Bearer ${token}`
@@ -293,7 +293,7 @@ async function cargarHistorial() {
   if (!contenedor) return;
 
   try {
-    const respuesta = await fetch("${API_URL}/api/historial", {
+    const respuesta = await fetch(`${API_URL}/api/historial`, {
       method: "GET",
       headers: {
         "Authorization": `Bearer ${token}`
@@ -423,7 +423,7 @@ async function limpiarHistorial() {
 
   try {
     const respuesta = await fetch(
-      "${API_URL}/api/historial",
+      `${API_URL}/api/historial`,
       {
         method: "DELETE",
         headers: {
