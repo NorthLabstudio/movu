@@ -52,6 +52,7 @@ app.get('/api/rutas', async (req, res) => {
   }
 });
 
+app.use('/api/contacto', require('./routes/contacto'));
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/fav', require('./routes/fav'));
 app.use('/api/historial', require('./routes/historial'));

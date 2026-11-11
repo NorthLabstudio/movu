@@ -6,19 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>MOVU | ADMIN</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap"
-    rel="stylesheet">
-
-  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,600,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="admin.css">
 </head>
 
 <body>
-
   <!-- SIDEBAR -->
   <aside class="sidebar">
 
@@ -30,7 +21,6 @@
     <nav class="sidebar-nav">
 
       <p class="nav-title">GENERAL</p>
-
       <a href="#" class="nav-link active" id="enlace-dashboard">
         <span>⌂</span>
         Dashboard
@@ -41,9 +31,7 @@
         Rutas
       </a>
 
-
       <p class="nav-title">CONTENIDO</p>
-
       <a href="#" class="nav-link" id="enlace-actualizaciones">
         <span>↻</span>
         Actualizaciones
@@ -53,19 +41,15 @@
         Novedades
       </a>
 
-
       <p class="nav-title">USUARIOS</p>
 
       <a href="#" class="nav-link" id="enlace-usuarios">
         <span>♙</span>
         Usuarios
       </a>
-
     </nav>
 
-
     <div class="sidebar-bottom">
-
       <a href="#" class="nav-link">
         <span>⚙</span>
         Configuración
@@ -77,13 +61,11 @@
       </a>
 
     </div>
-
   </aside>
 
 
   <!-- MAIN CONTENT -->
   <main class="main-content">
-
     <!-- TOPBAR -->
     <header class="topbar">
 
@@ -102,7 +84,6 @@
           <strong>Administrador</strong>
           <span>Admin</span>
         </div>
-
       </div>
 
     </header>
@@ -110,7 +91,6 @@
 
     <!-- DASHBOARD -->
     <section class="dashboard" id="vista-dashboard">
-
       <!-- STATISTICS -->
       <section class="stats-grid">
 
@@ -120,12 +100,9 @@
             <span class="stat-label">Novedades activas</span>
             <span class="stat-icon">◉</span>
           </div>
-
           <strong class="stat-number" id="total-novedades">0</strong>
           <p>Novedades registradas</p>
-
         </div>
-
 
         <div class="stat-card">
 
@@ -136,9 +113,7 @@
 
           <strong class="stat-number" id="total-rutas">0</strong>
           <p>Rutas disponibles</p>
-
         </div>
-
 
         <div class="stat-card">
 
@@ -146,12 +121,9 @@
             <span class="stat-label">Consultas</span>
             <span class="stat-icon">⌖</span>
           </div>
-
           <strong class="stat-number" id="total-consultas">0</strong>
           <p>Consultas registradas</p>
-
         </div>
-
 
         <div class="stat-card">
 
@@ -159,36 +131,31 @@
             <span class="stat-label">USUARIOS</span>
             <span class="stat-icon">♙</span>
           </div>
-
           <strong class="stat-number" id="total-usuarios">0</strong>
           <p>Usuarios registrados</p>
 
         </div>
-
       </section>
+
+
       <!-- RECENT UPDATES -->
       <section class="section">
 
         <div class="section-header">
-
           <div>
             <span class="section-kicker">ACTIVIDAD</span>
             <h2>Últimas actualizaciones</h2>
           </div>
-
           <a href="#" class="view-all">
             Ver todo →
           </a>
-
         </div>
-
 
         <div class="updates-list" id="lista-actualizaciones">
           <p>Cargando últimas actualizaciones...</p>
         </div>
 
       </section>
-
     </section>
 
 
@@ -204,15 +171,9 @@
 
       </div>
 
-
       <div class="quick-actions">
-
-
-
         <button class="action-card" id="btn-agregar-ruta">
-
           <span class="action-icon">+</span>
-
           <div>
             <strong>Agregar ruta</strong>
             <p>Crear una nueva ruta</p>
@@ -233,8 +194,8 @@
         </button>
 
       </div>
-
     </section>
+
 
     <!-- VISTA DE RUTAS -->
     <section class="section" id="vista-rutas" hidden>
@@ -354,11 +315,10 @@
 
         </div>
       </div>
-
     </section>
 
-    <!--novedades-->
 
+    <!--novedades-->
     <section class="section" id="vista-novedades" hidden>
 
       <div class="section-header">
@@ -467,9 +427,8 @@
 
         </div>
       </div>
-
-
     </section>
+
 
     <!-- VISTA DE ACTUALIZACIONES -->
     <section id="vista-actualizaciones" class="vista-admin" hidden>
@@ -494,8 +453,9 @@
       <div class="updates-list" id="historial-actualizaciones">
         <p>Cargando historial...</p>
       </div>
-
     </section>
+
+
     <section id="vista-usuarios" class="vista-admin" hidden>
 
       <div class="section-header">
@@ -525,8 +485,8 @@
       <div id="lista-usuarios">
         <p>Cargando usuarios...</p>
       </div>
-
     </section>
+
 
     <!-- FOOTER -->
     <footer class="admin-footer">
@@ -540,11 +500,9 @@
       </span>
 
     </footer>
-
-
-
-
   </main>
+
+
   <script type="module" src="admin.js"></script>
 </body>
 

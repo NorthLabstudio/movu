@@ -4,224 +4,399 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Estilos globales -->
+
+  <meta name="description"
+    content="Movu conecta a los estudiantes universitarios de Barranquilla con información sobre rutas, novedades y movilidad urbana.">
+
+  <meta name="theme-color" content="#000B58">
+
+  <link rel="icon" href="src/assets/img/logomovu.png" type="image/png">
+
   <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/style.css">
-  <link rel="icon" href="src/assets/img/logomovu.png" type="image/png">
-  <title>Movu</title>
+
+  <title>Movu | Muévete por Barranquilla</title>
 </head>
 
 <body>
-  <!-- nav bar -->
+
+  <!-- NAV -->
+
   <header id="nav-bar">
-    <nav>
-      <div id="logo-container">
+    <nav class="navbar">
+
+      <a href="index.html" id="logo-container" aria-label="Movu, inicio">
         <div id="logo-image">
-          <img id="logo" src="src/assets/img/logomovu.png" alt="Movu">
+          <img id="logo" src="src/assets/img/logomovu.png" alt="Logo de Movu">
         </div>
-        <h2>Movu</h2>
-      </div>
+        <span class="brand-name">Movu</span>
+      </a>
+
       <div id="nav-links">
-        <a href="#features" class="link">¿Cómo funciona?</a>
-        <a href="#benefits" class="link">¿Por qué usar Movu?</a>
-        <a href="#mission" class="link">Nuestra misión</a>
+        <a href="#features" class="link">Explorar</a>
+        <a href="#mission" class="link">Nosotros</a>
+        <a href="#contact" class="link">Contacto</a>
       </div>
+
       <div id="auth-buttons">
-        <button id="login" onclick="window.location.href = 'login.html'">Iniciar sesión</button>
+        <a href="login.html" class="nav-register">Iniciar sesión <span>↗</span></a>
       </div>
+
     </nav>
   </header>
+
+
   <main>
 
-    <!-- sección de hero -->
-    <section id="hero">
-      <img src="src/assets/img/heroimg.png" alt="Persona esperando un bus">
+    <!-- HERO -->
+
+    <section id="hero" class="hero-section">
+
       <div class="hero-content">
-        <h1>Muévete sin sorpresas. Llega con confianza.</h1>
-        <p>Movilidad pensada para estudiantes universitarios de Barranquilla. Movu reúne en un solo lugar la
-          información que necesitas para planificar tus desplazamientos en transporte público. Consulta rutas,
-          recibe alertas de movilidad y encuentra alternativas para llegar a tu destino con mayor
-          tranquilidad.</p>
+
+        <span class="section-tag">
+          <span class="status-dot"></span>
+          MOVILIDAD URBANA · BARRANQUILLA
+        </span>
+
+        <h1>
+          Tu ciudad.
+          <span>Tus rutas.</span>
+          Tu tiempo.
+        </h1>
+
+        <p>
+          Moverte por Barranquilla debería ser más sencillo.
+          Encuentra información sobre transporte público,
+          conoce las novedades de movilidad y planifica
+          tus recorridos con Movu.
+        </p>
+
         <div class="button-container">
-          <button>Comienza ahora</button>
+          <a href="login.html" class="btn-primary">
+            Comienza con Movu <span>↗</span>
+          </a>
+
+          <a href="#features" class="btn-secondary">
+            Descubre cómo funciona
+          </a>
         </div>
+
+        <div class="hero-note">
+          <span>01</span>
+          <p>Una nueva forma de entender la movilidad de tu ciudad.</p>
+        </div>
+
+      </div>
+
+      <div class="hero-visual">
+
+        <div class="hero-image-main">
+          <img src="src/assets/img/heroimg.png" alt="Entorno urbano y transporte público de Barranquilla">
+        </div>
+
+        <div class="hero-floating-card">
+          <div class="floating-icon">
+            <img src="src/assets/img/ruta.png" alt="">
+          </div>
+
+          <div>
+            <span>MUÉVETE INFORMADO</span>
+            <strong>Tu próximo recorrido empieza aquí.</strong>
+          </div>
+        </div>
+
+        <span class="hero-decoration">MOVU / BAQ</span>
+
       </div>
 
     </section>
 
-    <!-- sección de problema -->
-    <section id="problema">
+
+    <!-- INTRO/PROBLEMA -->
+
+    <section id="problema" class="problem-section">
+
+      <div class="problem-heading">
+
+        <span class="section-tag">01 — EL PUNTO DE PARTIDA</span>
+
+        <h2>
+          La ciudad se mueve.
+          <span>Tu información también debería hacerlo.</span>
+        </h2>
+
+      </div>
 
       <div class="problema-container">
 
         <div class="problema-content">
 
-          <h2>
-            ¿Cuántas veces has esperado un bus sin saber si realmente va a pasar?
-          </h2>
-
-          <p>
-            Para muchos estudiantes, llegar a la universidad empieza mucho antes de entrar al salón. El
-            transporte público forma parte de su rutina diaria, pero no siempre cuentan con la información
-            clara sobre cambios de rutas, cierres de vías o retrasos. Esa incertidumbre provoca pérdida de
-            tiempo, estrés y desplazamientos poco eficientes.
+          <p class="problem-highlight">
+            ¿Cuántas veces has salido de casa sin saber
+            si tu ruta habitual tendrá algún cambio?
           </p>
 
-        </div>
-        <div class="problema-image">
+          <p>
+            Para muchos estudiantes universitarios, el transporte
+            público hace parte de todos los días. Sin embargo,
+            conocer los recorridos, las novedades y los cambios
+            que afectan un trayecto no siempre es sencillo.
+          </p>
 
+          <p>
+            Esa falta de información puede convertirse en tiempo
+            perdido, estrés e incertidumbre. Movu nace para
+            ayudarte a tomar decisiones mejor informadas durante
+            tus desplazamientos.
+          </p>
+
+          <a href="#features" class="text-link">
+            Conoce lo que estamos construyendo <span>↗</span>
+          </a>
+
+        </div>
+
+        <div class="problema-image">
           <div class="image-card">
-            <img src="src/assets/img/problemimg.png" alt="Persona esperando un bus">
+            <img src="src/assets/img/problemimg.png" alt="Persona esperando transporte público">
           </div>
+          <span class="image-caption">LA MOVILIDAD TAMBIÉN ES PARTE DE TU DÍA.</span>
         </div>
 
       </div>
 
     </section>
 
-    <!-- Se creara una sección de Features para mostrar las ventajas de usar Movu -->
-    <section id="features">
-      <h2>Navega con confianza.</h2>
-      <p>Una herramienta diseñada para resolver tu problema de transporte público.</p>
+
+    <!-- FUNCIONES -->
+
+    <section id="features" class="features-section">
+
+      <div class="section-heading">
+
+        <div>
+          <span class="section-tag">02 — EXPLORA MOVU</span>
+          <h2>Todo empieza con <span>mejor información.</span></h2>
+        </div>
+
+        <p>
+          Herramientas para conocer tus opciones,
+          mantenerte informado y organizar tus recorridos.
+        </p>
+
+      </div>
+
 
       <div class="features-grid">
-        <div class="feature-card feature-large" id="card1">
-          <div class="feature-icon">
-            <img src="src/assets/img/planificacion.png" alt="Icono de planificación">
+
+        <!-- Rutas -->
+
+        <article class="feature-card feature-large" id="card1">
+
+          <div class="feature-top">
+            <span class="feature-number">01 / RUTAS</span>
+
+            <div class="feature-icon">
+              <img src="src/assets/img/planificacion.png" alt="">
+            </div>
           </div>
 
           <div class="feature-content">
-            <h3>Planificación inteligente</h3>
+            <h3>Encuentra tu camino.</h3>
+
             <p>
-              Encuentra las mejores rutas alternativas en cuestión de segundos
-              cuando tu camino habitual esté cortado.
+              Explora recorridos de transporte público,
+              identifica sus paradas y conoce las opciones
+              disponibles para llegar a tu destino.
             </p>
           </div>
 
-        </div>
-        <div class="feature-card" id="card2">
+          <span class="feature-decoration">01</span>
+
+        </article>
+
+
+        <!-- Información de rutas -->
+
+        <article class="feature-card" id="card2">
+
+          <span class="feature-number">02 / INFORMACIÓN</span>
 
           <span class="feature-small-icon">
-            <img src="src/assets/img/ruta.png" alt="Icono de ruta">
+            <img src="src/assets/img/ruta.png" alt="">
           </span>
 
           <div class="feature-content">
-            <h3>Rutas confiables</h3>
+            <h3>Conoce tus rutas.</h3>
+
             <p>
-              Información actualizada sobre autobuses para cualquier destino.
-              Hacemos un seguimiento de las rutas que más te interesan,
-              desde Transmetro hasta las líneas circulares tradicionales.
+              Consulta información de empresas y recorridos
+              como Transmetro y las rutas tradicionales.
             </p>
           </div>
 
-        </div>
-        <div class="feature-card" id="card3">
+        </article>
+
+
+        <!-- Novedades -->
+
+        <article class="feature-card" id="card3">
+
+          <span class="feature-number">03 / NOVEDADES</span>
 
           <span class="feature-small-icon">
-            <img src="src/assets/img/notificacion.png" alt="Icono de alarma">
+            <img src="src/assets/img/notificacion.png" alt="">
           </span>
 
           <div class="feature-content">
-            <h3>Recibe alertas</h3>
+            <h3>Entérate de los cambios.</h3>
+
             <p>
-              Mantente al tanto de los cortes de carretera, paradas,
-              tiempos aproximados y los desvíos que afecten a tu trayecto
-              diario al trabajo. Conoce cierres, desvíos y cambios.
+              Consulta cierres, desvíos, paradas suspendidas
+              y otras novedades que pueden afectar tus recorridos.
             </p>
           </div>
 
-        </div>
+        </article>
 
-        <div class="feature-card feature-large" id="card4">
 
-          <span class="feature-small-icon">
-            <img src="src/assets/img/asistente.png" alt="Icono de asistente">
-          </span>
+        <!-- Asistente -->
+
+        <article class="feature-card feature-large" id="card4">
+
+          <div class="feature-top">
+            <span class="feature-number">04 / ASISTENTE</span>
+
+            <span class="feature-small-icon">
+              <img src="src/assets/img/asistente.png" alt="">
+            </span>
+          </div>
 
           <div class="feature-content">
-            <h3>Asistente inteligente</h3>
+            <h3>Conversa con Movu.</h3>
+
             <p>
-              Pregunta a Movu cómo llegar o qué alternativa tomar.
+              Un asistente inteligente para resolver dudas
+              sobre movilidad y ayudarte a encontrar información
+              relacionada con tus recorridos.
             </p>
           </div>
 
-        </div>
+          <span class="feature-decoration">04</span>
+
+        </article>
+
       </div>
 
     </section>
 
-    <!-- sección de Porque usar Movu/Beneficios -->
-    <section id="benefits">
-      <h2>¿Por qué usar Movu?</h2>
-      <p>Movu está diseñado para hacer que cada desplazamiento sea más simple y confiable. Reunimos la información
-        que necesitas para planificar tu viaje, mantenerte informado y tomar mejores decisiones mientras te
-        mueves por la ciudad.</p>
+
+    <!-- BENEFICIOS -->
+
+    <section id="benefits" class="benefits-section">
+
+      <div class="benefits-intro">
+
+        <span class="section-tag">03 — ¿POR QUÉ MOVU?</span>
+
+        <h2>
+          Más información.
+          <span>Menos incertidumbre.</span>
+        </h2>
+
+        <p>
+          No se trata solamente de encontrar una ruta.
+          Se trata de tener más herramientas para decidir
+          cómo moverte por la ciudad.
+        </p>
+
+      </div>
+
       <div class="benefits-grid">
-        <div class="benefit-card">
-          <h3>Muévete con confianza</h3>
-          <p>
-            Accede a la información que necesitas para planificar tus recorridos
-            y tomar decisiones con mayor tranquilidad.
-          </p>
-        </div>
-        <div class="benefit-card">
-          <h3>Menos incertidumbre</h3>
-          <p>
-            Conoce las novedades de movilidad y encuentra alternativas cuando
-            una ruta cambie o se presenten imprevistos en la ciudad.
-          </p>
-        </div>
-        <div class="benefit-card">
 
-          <h3>Creado desde la experiencia</h3>
-
+        <article class="benefit-card">
+          <span class="benefit-index">01</span>
+          <h3>Tu tiempo importa.</h3>
           <p>
-            Movu nació para resolver problemas cotidianos del transporte público
-            y ayudar a que cada recorrido sea más sencillo, organizado y
-            predecible.
+            Consulta información que te ayude a organizar
+            tus desplazamientos y anticiparte a los cambios.
           </p>
+        </article>
 
-        </div>
+        <article class="benefit-card">
+          <span class="benefit-index">02</span>
+          <h3>Una ciudad, diferentes recorridos.</h3>
+          <p>
+            Reúne información de distintas alternativas
+            de transporte público en un mismo lugar.
+          </p>
+        </article>
+
+        <article class="benefit-card">
+          <span class="benefit-index">03</span>
+          <h3>Construido desde la experiencia.</h3>
+          <p>
+            Movu parte de una necesidad cotidiana:
+            hacer más accesible y comprensible la información
+            sobre movilidad urbana.
+          </p>
+        </article>
 
       </div>
 
     </section>
-    <!-- sección de mission -->
 
-    <section id="mission">
+
+    <!-- MISION -->
+
+    <section id="mission" class="mission-section">
+
       <div class="mision-grid">
-        <!-- Imágenes -->
+
         <div class="mision-images">
 
           <div class="mision-gallery">
 
-            <img src="src/assets/img/img.png" alt="Personas esperando un bus">
+            <img src="src/assets/img/img.png" alt="Personas desplazándose por Barranquilla">
 
-            <img src="src/assets/img/imgsec.png" alt="Aplicación Movu">
+            <img src="src/assets/img/imgsec.png" alt="Interfaz de la plataforma Movu">
 
           </div>
-        </div>
-        <!-- Contenido mision -->
-        <div class="mision-content">
 
-          <span class="mision-tag">
-            Nuestra misión
+          <span class="image-caption">
+            HECHO DESDE Y PARA NUESTRA CIUDAD.
           </span>
 
+        </div>
+
+
+        <div class="mision-content">
+
+          <span class="section-tag">04 — NUESTRA MISIÓN</span>
+
           <h2>
-            MOVU empieza por estudiantes universitarios de Barranquilla. </h2>
+            Barranquilla es nuestra ciudad.
+            <span>Mejorar cómo nos movemos es nuestro punto de partida.</span>
+          </h2>
 
           <p>
-            Movu nació de una idea sencilla: utilizar el transporte público de nuestra ciudad no debería ser
-            un juego de adivinanzas. Estamos construyendo una plataforma de movilidad centrada en las
-            personas,
-            priorizando tu tiempo y tu tranquilidad.
+            Movu nace de una experiencia cotidiana y de una pregunta:
+            ¿por qué desplazarse por la ciudad tiene que implicar
+            tanta incertidumbre?
           </p>
 
           <p>
-            Combinando el conocimiento local del transporte ayudamos a estudiantes a desplazarse con
-            confianza. Más que mostrar rutas, queremos brindar
-            información confiable en cada rincón de la ciudad.
+            Estamos construyendo una plataforma de movilidad urbana
+            que conecta información sobre transporte público con
+            las necesidades de las personas que utilizan sus rutas
+            todos los días.
+          </p>
+
+          <p>
+            Comenzamos con los estudiantes universitarios de
+            Barranquilla, con la intención de seguir construyendo
+            soluciones que respondan a la realidad de nuestra ciudad.
           </p>
 
         </div>
@@ -230,69 +405,130 @@
 
     </section>
 
-    <!--sección de contacto-->
-    <section id="contact">
+
+    <!--CONTACTO -->
+
+    <section id="contact" class="contact-section">
+
       <div class="contact-container">
+
         <div class="info">
-          <h2>Hablemos de Movu</h2>
-          <p>Movu está siendo construido para las personas que usan el transporte público todos los días. Tu
-            experiencia
-            puede ayudarnos a entender mejor sus necesidades y crear una plataforma que realmente haga la
-            diferencia.
+
+          <span class="section-tag">05 — HABLEMOS</span>
+
+          <h2>
+            La movilidad también se construye escuchando.
+          </h2>
+
+          <p>
+            ¿Tienes una experiencia, una idea o una sugerencia
+            sobre el transporte público de Barranquilla?
+            Queremos conocerla.
           </p>
+
+          <span class="contact-decoration">MOVU / BAQ</span>
+
         </div>
 
-        <div class="form">
-          <h3>¿Tienes una idea, sugerencia o experiencia que quieras compartir?</h3>
 
-          <form action="" method="post">
+        <div class="form">
+
+          <h3>Cuéntanos qué piensas.</h3>
+
+          <form id="contact-form" action="" method="post">
+
             <div class="form-group">
-              <label for="nombre">Nombre:</label><br>
-              <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre">
+              <label for="nombre">Nombre</label>
+              <input type="text" id="nombre" name="nombre" required placeholder="¿Cómo te llamas?">
             </div>
 
             <div class="form-group">
-              <label for="email">Correo electrónico:</label><br>
+              <label for="email">Correo electrónico</label>
               <input type="email" id="email" name="email" required placeholder="tu@correo.com">
             </div>
 
             <div class="form-group">
-              <label for="mensaje">Mensaje:</label><br>
-              <textarea id="mensaje" name="mensaje" rows="4" required placeholder="Cuéntanos qué piensas..."></textarea>
+              <label for="mensaje">Mensaje</label>
+              <textarea id="mensaje" name="mensaje" rows="4" required
+                placeholder="Escribe tu mensaje aquí..."></textarea>
             </div>
 
-            <button type="submit" id="submit">Enviar mensaje</button>
+            <button type="submit" id="submit">
+              Enviar mensaje <span>↗</span>
+            </button>
+
           </form>
+
         </div>
+
       </div>
+
     </section>
 
-    <!-- Sección de Call to Action para invitar a los usuarios a crear una cuenta -->
-    <section id="calltoaction">
-      <h2>Descubre la ventaja de usar Movu</h2>
-      <p>Estamos construyendo una nueva forma de vivir el transporte público en Barranquilla. Conoce más sobre las
-        ventajas de usar Movu y comienza a usarla ahora mismo.Muevete con tranquilidad.</p>
-      <button>Crear cuenta</button>
+
+    <!-- CALL TO ACTION -->
+
+    <section id="calltoaction" class="cta-section">
+
+      <span class="section-tag">TU CIUDAD TE ESPERA</span>
+
+      <h2>
+        Muévete por Barranquilla.
+        <span>Muévete con Movu.</span>
+      </h2>
+
+      <p>
+        Explora las rutas, conoce las novedades
+        y empieza a planificar tus recorridos.
+      </p>
+
+      <a href="login.html" class="btn-cta">
+        Comienza ahora <span>↗</span>
+      </a>
+
+      <span class="cta-decoration">M / 2026</span>
+
     </section>
+
   </main>
 
-  <!-- En el Footer se agregar links de nav para accesibilidad -->
-  <footer>
-    <div class="footer-logo">
-      <div class="logo-container">
-        <img src="src/assets/img/logomovu.png" alt="logo">
+  <!--FOOTER -->
+
+  <footer class="footer">
+
+    <div class="footer-main">
+
+      <a href="index.html" class="footer-logo">
+        <img src="src/assets/img/logomovu.png" alt="Movu">
+        <span>Movu</span>
+      </a>
+
+      <p>
+        Movilidad urbana pensada desde Barranquilla.
+      </p>
+
+      <div class="footer-nav">
+        <a href="#features" class="link">Explorar</a>
+        <a href="#mission" class="link">Nosotros</a>
+        <a href="#contact" class="link">Contacto</a>
+        <a href="login.html" class="link">Iniciar sesión</a>
       </div>
-      <h2>Movu</h2>
+
     </div>
-    <div class="footer-nav">
-      <a href="#features" class="link">¿Cómo funciona?</a>
-      <a href="#benefits" class="link">¿Por qué usar Movu?</a>
-      <a href="#mission" class="link">Nuestra misión</a>
+
+    <div class="footer-bottom">
+
+      <p id="rights">© 2026 Movu. Todos los derechos reservados.</p>
+
+      <span>HECHO EN BARRANQUILLA, COLOMBIA.</span>
+
     </div>
-    <p id="rights">© 2026 Movu. All rights reserved.</p>
 
   </footer>
+
+
   <script src="js/index.js"></script>
+
 </body>
 
 </html>

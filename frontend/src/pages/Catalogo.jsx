@@ -1,6 +1,7 @@
 import Filter from '../componentes/Filter.jsx';
 import Cards from '../componentes/Cards.jsx';
 import Nav from '../componentes/Nav.jsx';
+
 import API_URL from '../../config/api.js';
 import { useEffect, useState } from 'react';
 
