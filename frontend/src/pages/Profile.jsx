@@ -365,64 +365,84 @@ function Profile() {
                 <h2 id="titulo-modal">Editar perfil</h2>
                 <p>Actualiza tu información personal y académica.</p>
 
+
                 <form onSubmit={guardarPerfil}>
 
-                  <label htmlFor="editar-nombre">Nombre completo</label>
-                  <input
-                    type="text"
-                    id="editar-nombre"
-                    name="nombre"
-                    minLength="2"
-                    required
-                    value={formulario.nombre}
-                    onChange={manejarCambio}
-                  />
+                  {/* INFORMACIÓN PERSONAL */}
+                  <div className="grupo-perfil">
 
-                  <label htmlFor="editar-email">Correo electrónico</label>
-                  <input
-                    type="email"
-                    id="editar-email"
-                    name="email"
-                    required
-                    value={formulario.email}
-                    onChange={manejarCambio}
-                  />
+                    <div className="campo-perfil">
+                      <label htmlFor="editar-nombre">Nombre completo</label>
+                      <input
+                        type="text"
+                        id="editar-nombre"
+                        name="nombre"
+                        minLength="2"
+                        required
+                        value={formulario.nombre}
+                        onChange={manejarCambio}
+                      />
+                    </div>
+
+                    <div className="campo-perfil">
+                      <label htmlFor="editar-email">Correo electrónico</label>
+                      <input
+                        type="email"
+                        id="editar-email"
+                        name="email"
+                        required
+                        value={formulario.email}
+                        onChange={manejarCambio}
+                      />
+                    </div>
+
+                  </div>
 
                   <hr />
 
+                  {/* INFORMACIÓN ACADÉMICA */}
                   <h3>Información académica</h3>
 
-                  <label htmlFor="editar-universidad">
-                    Universidad o institución
-                  </label>
+                  <div className="grupo-perfil">
 
-                  <input
-                    type="text"
-                    id="editar-universidad"
-                    name="universidad"
-                    placeholder="Ej. Universidad del Norte"
-                    value={formulario.universidad}
-                    onChange={manejarCambio}
-                  />
+                    <div className="campo-perfil">
+                      <label htmlFor="editar-universidad">
+                        Universidad o institución
+                      </label>
+                      <input
+                        type="text"
+                        id="editar-universidad"
+                        name="universidad"
+                        placeholder="Ej. Universidad del Norte"
+                        value={formulario.universidad}
+                        onChange={manejarCambio}
+                      />
+                    </div>
 
-                  <label htmlFor="editar-ciudad">Ciudad</label>
+                    <div className="campo-perfil">
+                      <label htmlFor="editar-ciudad">Ciudad</label>
+                      <input
+                        type="text"
+                        id="editar-ciudad"
+                        name="ciudad"
+                        placeholder="Ej. Barranquilla"
+                        value={formulario.ciudad}
+                        onChange={manejarCambio}
+                      />
+                    </div>
 
-                  <input
-                    type="text"
-                    id="editar-ciudad"
-                    name="ciudad"
-                    placeholder="Ej. Barranquilla"
-                    value={formulario.ciudad}
-                    onChange={manejarCambio}
-                  />
+                  </div>
 
+                  {/* MENSAJES */}
                   {mensaje && (
                     <p id="mensaje-perfil" role="status" aria-live="polite">
                       {mensaje}
                     </p>
                   )}
 
+                  {/* BOTONES */}
                   <div className="modal-acciones">
+
                     <button
                       type="button"
                       id="btn-cancelar-modal"
@@ -438,9 +458,11 @@ function Profile() {
                     >
                       {guardando ? 'Guardando...' : 'Guardar cambios'}
                     </button>
+
                   </div>
 
                 </form>
+
               </div>
             </div>
           )}
